@@ -1,0 +1,78 @@
+%! crea ambiente "mybox" para cajas de texto
+\newtcolorbox{mybox}
+{
+  colframe = black!40,
+  colback  = black!3
+}
+\newtcolorbox{mybox2}
+{
+  colframe = black!40,
+  colback  = white
+}
+
+
+%! redefinición de ambientes
+\newtranslation[to=spanish]{Section}{Secci\'on}
+\newtranslation[to=spanish]{Subsection}{Subsecci\'on}
+
+%! ambientes theorem
+\newtheorem{thm}{Teorema}
+\newtheorem{cor}[thm]{Corolario}
+\newtheorem{lem}[thm]{Lema}
+\newtheorem{propo}[thm]{Proposición}
+\newtheorem{prop}[thm]{Propiedades} %ambiente "proposition"
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definición}
+\newtheorem{eg}{Ejemplo}[section]
+\newtheorem{egs}{Ejemplos}[section]
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Nota}
+\numberwithin{equation}{section}
+
+%! funciones matemáticas
+\newcommand{\sen}{\operatorname{sen}}
+\newcommand{\tg}{\operatorname{tg}}
+\newcommand{\ctg}{\operatorname{ctg}}
+\newcommand{\sech}{\operatorname{sech}}
+\newcommand{\csch}{\operatorname{csch}}
+\newcommand{\ctgh}{\operatorname{ctgh}}
+\newcommand{\cosec}{\operatorname{cosec}}
+\newcommand{\Arctg}{\operatorname{Arctg}}
+\newcommand{\Arccot}{\operatorname{Arccot}}
+\newcommand{\Arccos}{\operatorname{Arccos}}
+\newcommand{\Arcsen}{\operatorname{Arcsen}}
+\newcommand{\To}{\longrightarrow}
+\newcommand{\ssi}{\leftrightarrow}
+\newcommand{\Ssi}{\Leftrightarrow}
+\newcommand{\Real}{\mathds{R}}
+\newcommand{\Ent}{\mathds{Z}}
+\newcommand{\Nat}{\mathds{N}}
+\newcommand{\Comp}{\mathds{C}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\gen}[1]{\left\langle #1\right\rangle}
+\newcommand{\interior}[1]{\accentset{\circ}{#1}}
+\newcommand{\prodin}[2]{\left\langle #1, #2\right\rangle}
+
+%! intervalos, evita que los paréntesis se descuadren en la IDE
+\newcommand{\intervaloAA}[1]{\left] #1 \right[}
+\newcommand{\intervaloAC}[1]{\left] #1 \right]}
+\newcommand{\intervaloCA}[1]{\left[ #1 \right[}
+\newcommand{\intervaloCC}[1]{\left[ #1 \right]}
+
+%! definición de operadores
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Ima}{\operatorname{Im}}
+
+%! K para campos
+\newcommand{\K}{\mathds{K}}
+
+%! definición colores de texto
+\newcommand{\red}[1]{{\color{red}{#1}}}
+\newcommand{\blue}[1]{{\color{blue}{#1}}}
+\definecolor{forestgreen}{rgb}{0.13, 0.55, 0.13}
+\newcommand{\green}[1]{{\color{forestgreen}{#1}}}
+\newcommand{\redbf}[1]{{\color{red}{\textbf{#1}}}}
+\newcommand{\violet}[1]{{\color{violet}{#1}}}
+\definecolor{col1}{RGB}{50,40,180}

@@ -1,0 +1,213 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage{dsfont,amsfonts}
+\usepackage{fancyhdr,multicol,multirow}
+\usepackage{graphicx,pgf,tikz,accents,multimedia,tcolorbox}
+\usepackage[explicit]{titlesec}
+\usepackage[top=3cm,bottom=2cm,left=2cm,right=2cm,headheight=1cm,headsep=1cm,footskip=1cm]{geometry}
+\usepackage{pstricks-add}
+
+%! Configuración de las enumeración
+\usepackage[shortlabels]{enumitem}
+
+%! Archivo de comandos personalizados generales
+\input{../../Comandos.tex}
+
+%! Datos de la evaluación
+\input{../../Datos.tex}
+\newcommand{\EVALUACION}{Certamen 3 - 1er. semestre 2025}
+
+%! Encabezado de pagina
+\pagestyle{fancy}
+\fancyhead{}
+\setlength{\headheight}{56pt}
+\setlength{\headsep}{5mm}
+\setlength{\textheight}{22cm}
+\fancyhead[L]{
+  \textbf{\large Departamento de Matemática}\\[1mm]
+  \textbf{\large Universidad Técnica Federico Santa María}
+  \vspace{1mm}
+}
+\fancyhead[R]{
+  \begin{flushright}
+    \textbf{\large Pauta \EVALUACION}\\[1mm]
+    \textbf{\large \SIGLACURSO}
+    \vspace{-5mm}
+  \end{flushright}
+}
+
+\begin{document}
+
+%!Encabezado Portada
+\thispagestyle{plain}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=.75]{logo-dmat-vertical.pdf}
+\end{center}
+\vspace{2mm}
+
+%!Titulo
+\begin{center}
+  \textbf{\Large \SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \textbf{\Large Pauta \EVALUACION}\\[2mm]
+  {\large\PROFESOR}\\
+\end{center}
+\vspace{5mm}
+
+\vspace{5mm}
+%! Pregunta 1
+\noindent\textbf{P1) } \textsf{[ 40 Pts. ] } Sea
+  $$f(x,y) = -x^3+3xy-y^3$$
+  \begin{enumerate}[a)]
+    \item \textsf{[ 20 Pts. ] } Calcule las primeras y segundas derivadas parciales de $f$.
+    \item \textsf{[ 10 Pts. ] } Encuentre la derivada direccional en la dirección de máximo crecimiento de la superficie $z=f(x,y)$ en el punto $(1,0)$.
+    \item \textsf{[ 10 Pts. ] } Encuentre y clasifique los puntos críticos de $f$.
+  \end{enumerate}
+
+\vspace{2mm}
+\noindent\textbf{Respuesta:} 
+\begin{enumerate}[a)]
+  \item Las primeras derivadas parciales son.
+    \begin{eqnarray*}
+      f_x(x,y) &=& -3x^2+3y\\
+      f_y(x,y) &=& 3x-3y^2
+    \end{eqnarray*}
+    Las segundas derivadas parciales son.
+      \begin{eqnarray*}
+        f_{xx}(x,y) &=& -6x\\
+        f_{xy}(x,y) &=& 3\\
+        f_{yx}(x,y) &=& 3\\
+        f_{yy}(x,y) &=& -6y
+      \end{eqnarray*}
+  \item La dirección de máximo crecimiento es la dirección del gradiente y la derivada direccional en esa dirección es la norma del gradiente. Primero calculamos
+    \begin{eqnarray*}
+      \nabla f(1,0) 
+        &=& \begin{bmatrix} f_x(1,0) \\ f_y(1,0) \end{bmatrix}\\
+        &=& \begin{bmatrix} -3\\ 3 \end{bmatrix}
+    \end{eqnarray*}
+  Siendo $\hat{u} = \frac{\nabla f(1,0)}{\norm{\nabla f(1,0)}}$, luego
+    \begin{eqnarray*}
+      D_{\hat{u}}f(1,0) 
+        &=& \norm{\nabla f(1,0)}\\
+        &=& \sqrt{(-3)^2+3^2}\\
+        &=& \sqrt{18}\\
+        &=& 3\sqrt{2}
+    \end{eqnarray*}
+  \item Para encontrar los puntos críticos, resolvemos el sistema de ecuaciones
+    $$\begin{array}{rcl}
+      f_x(x,y) & = & 0\\
+      f_y(x,y) & = & 0
+    \end{array}$$
+    es decir, resolvemos
+    $$\begin{array}{rcl}
+      -3x^2+3y & = & 0\\
+      3x-3y^2 & = & 0
+    \end{array}$$
+    cuyas soluciones son $(0,0)$ y $(1,1)$. Para clasificar los puntos críticos, calculamos el discriminante
+      $$D(x,y) = f_{xx}(x,y)f_{yy}(x,y)-(f_{xy}(x,y))^2$$
+    que en este caso es
+      $$D(x,y) = 36xy-9$$
+    Evaluando en los puntos críticos.
+    \begin{enumerate}[i)]
+      \item Para el punto $(0,0)$, tenemos $D(0,0) = -9 < 0$, por lo tanto hay un punto de silla.
+      \item Para el punto $(1,1)$, tenemos $D(1,1) = 27 > 0$ y $f_{xx}(1,1) = -6 < 0$, por lo tanto hay un máximo local.
+    \end{enumerate}
+\end{enumerate}
+
+%! Pregunta 2
+\newpage
+\noindent\textbf{P2) } \textsf{[ 30 Pts. ] } Calcule las siguientes integrales dobles.
+  \begin{enumerate}[a)]
+    \item $\displaystyle\iint_{D}\ x^3\sen(2y)\ dA$, donde $D = \intervaloCC{1,3}\times\intervaloCC{0,\frac{\pi}{4}}$.
+    \item $\displaystyle\iint_{D}\ xy^2\ dA$, donde $D$ es la región encerrada por las curvas $y=x^2$, $y=2x$.
+    % \item $\displaystyle\iint_{D}\ e^{x^2+y^2}\ dA$, donde $D$ es la región del semiplano superior limitada por las circunferencias de radio 1 y 2 centradas en el origen.
+  \end{enumerate}
+
+\vspace{2mm}
+\noindent\textbf{Respuesta:}
+\begin{enumerate}[a)]
+  \item 
+    \begin{eqnarray*}
+      \iint_{D}\ x^3\sen(2y)\ dA 
+        &=& \int_0^{\frac{\pi}{4}}\int_1^3 x^3\sen(2y)\ dx\ dy\\
+        &=& \int_0^{\frac{\pi}{4}} \left[ \frac{x^4}{4}\sen(2y)\right]_{x=1}^{x=3}\ dy\\
+        % &=& \int_0^{\frac{\pi}{4}} \left[ \frac{81}{4}\sen(2y) - \frac{1}{4}\sen(2y) \right] dy\\
+        &=& \int_0^{\frac{\pi}{4}} 20\sen(2y)\ dy\\
+        &=& \Big[ -10\cos(2y) \Big]_{y=0}^{y=\frac{\pi}{4}}\\
+        % &=& -10\left(\cos\left(\frac{\pi}{2}\right) - \cos(0)\right)\\
+        % &=& -10(0-1)\\
+        &=& 10
+    \end{eqnarray*}
+  \item
+    \begin{eqnarray*}
+      \iint_{D}\ xy^2\ dA 
+        &=& \int_0^2\int_{x^2}^{2x} xy^2\ dy\ dx\\
+        &=& \int_0^2 x\left[ \frac{y^3}{3} \right]_{y=x^2}^{y=2x}\ dx\\
+        % &=& \int_0^2 x\left[ \frac{(2x)^3}{3} - \frac{(x^2)^3}{3} \right]\ dx\\
+        % &=& \int_0^2 x\left[ \frac{8x^3}{3} - \frac{x^6}{3} \right]\ dx\\
+        &=& \int_0^2 \frac{1}{3}(8x^4 - x^7)\ dx\\
+        &=& \left[ \frac{1}{3}\left( \frac{8x^5}{5} - \frac{x^8}{8} \right) \right]_{0}^{2}\\
+        % &=& \frac{1}{3}\left( \frac{8(2^5)}{5} - \frac{(2^8)}{8} \right)\\
+        % &=& \frac{1}{3}\left( \frac{2^8}{5} - \frac{2^8}{2^3} \right)\\
+        % &=& \frac{2^5}{3}\left( \frac{8}{5} - 1 \right)\\
+        % &=& \frac{32}{3}\frac{3}{5}\\
+        &=& \frac{32}{5}
+    \end{eqnarray*}
+  % \item
+  %   \begin{eqnarray*}
+  %     \iint_{D}\ e^{x^2+y^2}\ dA 
+  %       &=& \int_0^{\pi}\int_1^2 e^{r^2}\ r\ dr\ d\theta\\
+  %       &=& \int_0^{\pi} \left[ \frac{e^{r^2}}{2} \right]_{r=1}^{r=2}\ d\theta\\
+  %       &=& \int_0^{\pi} \left( \frac{e^4}{2} - \frac{e}{2} \right)\ d\theta\\
+  %       &=& \int_0^{\pi} \frac{e^4 - e}{2}\ d\theta\\
+  %       &=& \pi\left( \frac{e^4 - e}{2} \right)
+  %   \end{eqnarray*}
+\end{enumerate}
+
+
+%! Pregunta 3
+\newpage
+\noindent\textbf{P3) } \textsf{[ 30 Pts. ] } Calcule las siguientes integrales triples.
+  \begin{enumerate}[a)]
+    \item $\displaystyle\iiint_D\ xz^2+y^2z\ dV$, con $D=[0,1]\times[1,2]\times[-1,1]$.
+    \item $\displaystyle\iiint_D\ x^2+y^2\ dV$, con $D$ es el interior del cilindro $x^2+y^2=1$, por encima del plano $z=0$ y debajo del plano $z=4$.
+  \end{enumerate}
+
+\vspace{2mm}
+\noindent\textbf{Respuesta:} 
+\begin{enumerate}[a)]
+  \item 
+    \begin{eqnarray*}
+      \iiint_D\ xz^2+y^2z\ dV 
+        &=& \int_{-1}^1\int_1^2\int_0^1\ xz^2+y^2z\ dx\ dy\ dz\\
+        &=& \int_{-1}^1\int_1^2 \left[ \frac{x^2z^2}{2} + xy^2z \right]_{x=0}^{x=1}\ dy\ dz\\
+        &=& \int_{-1}^1\int_1^2 \left( \frac{z^2}{2} + y^2z \right)\ dy\ dz\\
+        &=& \int_{-1}^1 \left[ \frac{z^2y}{2} + \frac{y^3z}{3} \right]_{y=1}^{y=2}\ dz\\
+        % &=& \int_{-1}^1 \left( \frac{z^2(2)}{2} + \frac{(2^3)z}{3} - \frac{z^2(1)}{2} - \frac{(1^3)z}{3} \right)\ dz\\
+        &=& \int_{-1}^1\ \frac{z^2}{2}+ \frac{7z}{3}\ dz\\
+        &=& \left[ \frac{z^3}{6} + \frac{7z^2}{6} \right]_{-1}^{1}\\
+        % &=& \left( \frac{1^3}{6} + \frac{7(1^2)}{6} \right) - \left( \frac{(-1)^3}{6} + \frac{7(-1)^2}{6} \right)\\
+        % &=& \left( \frac{1}{6} + \frac{7}{6} \right) - \left( -\frac{1}{6} + \frac{7}{6} \right)\\
+        % &=& \frac{2}{6}\\
+        &=& \frac{1}{3}
+    \end{eqnarray*}
+  \item Usando coordenadas cilíndricas, tenemos que el dominio $D$ se describe como
+    $$D^* = \set{(r,\theta,z) :\ 0\leq r\leq 1 \wedge 0\leq \theta < 2\pi \wedge 0\leq z\leq 4}$$
+    Por lo tanto, la integral queda como
+    \begin{eqnarray*}
+      \iiint_D\ x^2+y^2\ dV 
+        &=& \int_0^4\int_0^{2\pi}\int_0^1\ r^2\ r\ dr\ d\theta\ dz\\
+        &=& \int_0^4\int_0^{2\pi}\int_0^1\ r^3\ dr\ d\theta\ dz\\
+        &=& \int_0^4\int_0^{2\pi}\left[ \frac{r^4}{4} \right]_{r=0}^{r=1}\ d\theta\ dz\\
+        &=& \int_0^4\int_0^{2\pi}\frac{1}{4}\ d\theta\ dz\\
+        &=& \int_0^4\frac{1}{4}(2\pi)\ dz\\
+        &=& \int_0^4\frac{\pi}{2}\ dz\\
+        &=& \frac{\pi}{2}(4)\\
+        &=& 2\pi
+    \end{eqnarray*}
+\end{enumerate}
+
+\end{document}

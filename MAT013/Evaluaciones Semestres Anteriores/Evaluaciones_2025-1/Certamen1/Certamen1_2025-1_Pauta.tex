@@ -1,0 +1,191 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage{dsfont,amsfonts}
+\usepackage{fancyhdr,multicol,multirow}
+\usepackage{graphicx,pgf,tikz,accents,multimedia,tcolorbox}
+\usepackage[explicit]{titlesec}
+\usepackage[top=3cm,bottom=2cm,left=2cm,right=2cm,headheight=1cm,headsep=1cm,footskip=1cm]{geometry}
+\usepackage{pstricks-add}
+
+%! Configuración de las enumeración
+\usepackage[shortlabels]{enumitem}
+
+%! Archivo de comandos personalizados generales
+\input{../../Comandos.tex}
+
+%! Datos de la evaluación
+\input{../../Datos.tex}
+\newcommand{\EVALUACION}{Certamen 1 - 1er. semestre 2025}
+
+%! Encabezado de pagina
+\pagestyle{fancy}
+\fancyhead{}
+\setlength{\headheight}{56pt}
+\setlength{\headsep}{5mm}
+\setlength{\textheight}{22cm}
+\fancyhead[L]{
+  \textbf{\large Departamento de Matemática}\\[1mm]
+  \textbf{\large Universidad Técnica Federico Santa María}
+  \vspace{1mm}
+}
+\fancyhead[R]{
+  \begin{flushright}
+    \textbf{\large Pauta \EVALUACION}\\[1mm]
+    \textbf{\large \SIGLACURSO}
+    \vspace{-5mm}
+  \end{flushright}
+}
+
+\begin{document}
+
+%!Encabezado Portada
+\thispagestyle{plain}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=.75]{logo-dmat-vertical.pdf}
+\end{center}
+\vspace{2mm}
+
+%!Titulo
+\begin{center}
+  \textbf{\Large \SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \textbf{\Large Pauta \EVALUACION}\\[2mm]
+  {\large\PROFESOR}\\
+\end{center}
+\vspace{5mm}
+
+\vspace{5mm}
+%! Pregunta 1
+\noindent\textbf{P1) } \textsf{[ 30 Pts. ] } Calcule.
+\begin{enumerate}[a)]
+  \item $\displaystyle\lim_{n\to\infty}\sqrt{\dfrac{2n^2-n+1}{8n^2+3n-1}}$.
+  \item $\displaystyle\sum_{n=0}^{\infty} \dfrac{5(-2)^{n+1}}{3^{n-1}}$
+\end{enumerate}
+
+\vspace{0.25cm}
+\noindent\textbf{Respuesta:} 
+\begin{enumerate}[a)]
+  \item 
+    \begin{eqnarray*}
+      \lim_{n\to\infty}\sqrt{\dfrac{2n^2-n+1}{8n^2+3n-1}}
+        &=& \lim_{n\to\infty}\sqrt{\dfrac{2n^2-n+1}{8n^2+3n-1}}\\
+        &=& \lim_{n\to\infty}\sqrt{\dfrac{2n^2-n+1}{8n^2+3n-1}\cdot\dfrac{1/n^2}{1/n^2}}\\
+        &=& \sqrt{\lim_{n\to\infty}\dfrac{2-\frac{1}{n}+\frac{1}{n^2}}{8+\frac{3}{n}-\frac{1}{n^2}}}\\
+        &=& \sqrt{\dfrac{2}{8}}\\
+        &=& \dfrac{1}{2}
+    \end{eqnarray*}
+  \item 
+    \begin{eqnarray*}
+      \sum_{n=0}^{\infty} \dfrac{5(-2)^{n+1}}{3^{n-1}}
+        &=& \sum_{n=0}^{\infty} \dfrac{5(-2)^n(-2)}{3^n3^{-1}}\\
+        &=& \sum_{n=0}^{\infty} -30\dfrac{(-2)^n}{3^n}\\
+        &=& -30\sum_{n=0}^{\infty} \left(-\dfrac{2}{3}\right)^n\\
+        &=& -30\cdot\dfrac{1}{1-\left(-\dfrac{2}{3}\right)}\\
+        % &=& -30\cdot\dfrac{1}{\dfrac{5}{3}}\\
+        &=& -30\cdot\dfrac{3}{5}\\
+        &=& -18
+    \end{eqnarray*}
+\end{enumerate}
+
+
+%! Pregunta 2
+\newpage
+\noindent\textbf{P2) }\textsf{[ 30 Pts. ] } Indique si las siguientes series convergen o divergen. Justifique su respuesta.
+\begin{enumerate}[a)]
+  \item $\displaystyle\sum_{n=0}^{\infty}\dfrac{(-3)^n}{n!}$
+  \item $\displaystyle\sum_{n=1}^{\infty}\dfrac{(-1)^{n+1}}{\sqrt{n^2+1}}$
+\end{enumerate}
+
+
+\vspace{0.25cm}
+\noindent\textbf{Respuesta:} 
+\begin{enumerate}[a)]
+  \item Usando el criterio del cuociente, debemos calcular.
+    \begin{eqnarray*}
+      \lim_{n\to\infty}\abs{\dfrac{a_{n+1}}{a_n}}
+        &=& \lim_{n\to\infty}\abs{\dfrac{\dfrac{(-3)^{n+1}}{(n+1)!}}{\dfrac{(-3)^n}{n!}}}\\
+        &=& \lim_{n\to\infty}\abs{\dfrac{-3}{(n+1)}}\\
+        &=& \lim_{n\to\infty}\dfrac{3}{n+1}\\
+        &=& 0
+    \end{eqnarray*}
+    Como el límite es menor que $1$, la serie converge absolutamente.
+  \item Usando el criterio para series alternantes, debemos comprobar que $\dfrac{1}{\sqrt{n^2+1}}$ es decreciente y converge a $0$. Como $\lim\limits_{n\to\infty}n^2+1=\infty$, es fácil ver que
+    $$\lim_{n\to\infty}\dfrac{1}{\sqrt{n^2+1}}=0$$
+  para ver que es decreciente comprobaremos que $\dfrac{1}{\sqrt{x^2+1}}$ es decreciente para $x\geq 1$. Para esto, calculamos su derivada.
+    \begin{eqnarray*}
+      f(x) &=& \dfrac{1}{\sqrt{x^2+1}}\\
+      f'(x) &=& -\dfrac{x}{(x^2+1)^{3/2}}<0
+    \end{eqnarray*}
+    Por lo tanto, la serie converge por el criterio de series alternantes.
+\end{enumerate}
+
+
+%! Pregunta 3
+\newpage
+\noindent\textbf{P3) }\textsf{[ 40 Pts. ] } 
+\begin{enumerate}[a)]
+  \item \textsf{[ 20 Pts. ] }Encuentre el intervalo de convergencia de
+    $$\sum_{n=0}^{\infty}\dfrac{(2x)^n}{n+1}$$
+  \item \textsf{[ 10 Pts. ] }Encuentre la serie que representa la función $f(x)=\arctan(2x-2)$ indicando su intervalo de convergencia.
+  \item \textsf{[ 10 Pts. ] }Use el polinomio de Taylor de orden 3 para aproximar $f(1.1)$, donde $f$ es la función del item anterior.
+\end{enumerate}
+
+
+\vspace{0.25cm}
+\noindent\textbf{Respuesta:} 
+\begin{enumerate}[a)]
+  \item Usando el criterio del cuociente, debemos calcular
+    \begin{eqnarray*}
+      \lim_{n\to\infty}\abs{\dfrac{a_{n+1}}{a_n}}
+        &=& \lim_{n\to\infty}\abs{\dfrac{\dfrac{(2x)^{n+1}}{((n+1)+1)}}{\dfrac{(2x)^n}{(n+1)}}}\\
+        &=& \lim_{n\to\infty}\abs{\dfrac{(2x)^{n+1}(n+1)}{(2x)^n(n+2)}}\\
+        &=& \lim_{n\to\infty}\abs{\dfrac{(2x)(n+1)}{(n+2)}}\\
+        &=& \abs{2x}\lim_{n\to\infty}\dfrac{(n+1)}{(n+2)}\\
+        &=& \abs{2x}\cdot 1\\
+        &=& 2\abs{x}
+    \end{eqnarray*}
+    Por lo tanto, la serie converge si $2\abs{x}<1$, es decir, $\abs{x}<\dfrac{1}{2}$. Por lo tanto, el intervalo de convergencia es $\intervaloAA{-\dfrac{1}{2},\dfrac{1}{2}}$, pero debemos comprobar los extremos.
+    \begin{itemize}
+      \item Para $x=-\dfrac{1}{2}$, la serie se convierte en $\sum_{n=0}^{\infty}\dfrac{(-1)^n}{n+1}$, que converge por el criterio de series alternantes.
+      \item Para $x=\dfrac{1}{2}$, la serie se convierte en $\sum_{n=0}^{\infty}\dfrac{1}{n+1}$, que diverge por criterio de comparación en el límite con la serie armónica.
+    \end{itemize}
+    Por lo tanto, el intervalo de convergencia es $\intervaloCA{-\dfrac{1}{2},\dfrac{1}{2}}$.
+  \newpage
+  \item Para encontrar la serie que representa la función $f(x)=\arctan(2x-2)$, usaremos la serie de Taylor de $\arctan(x)$, que es
+    $$\arctan(x)=\sum_{n=0}^{\infty}\dfrac{(-1)^n}{2n+1}x^{2n+1}$$
+    cuyo intervalo de convergencia es $\intervaloCC{-1,1}$, es decir $-1\leq x\leq 1$. Ahora
+    \begin{eqnarray*}
+      \arctan(2x-2)
+        &=& \sum_{n=0}^{\infty}\dfrac{(-1)^n}{2n+1}(2x-2)^{2n+1}\\
+        &=& \sum_{n=0}^{\infty}\dfrac{(-1)^n}{2n+1}2^{2n+1}(x-1)^{2n+1}
+    \end{eqnarray*}
+    para $-1\leq 2x-2\leq 1$, esto es, $\dfrac{1}{2}\leq x\leq \dfrac{3}{2}$. Por lo tanto, el intervalo de convergencia es $\intervaloCC{\dfrac{1}{2},\dfrac{3}{2}}$.
+  \item Para identificar el polinomio de Taylor de orden 3, desarrollaremos los primeros términos de la serie del problema anterior
+    \begin{eqnarray*}
+      \arctan(2x-2)
+        &=& \frac{(-1)^02^1}{1}(x-1)^{1}+\frac{(-1)^12^3}{3}(x-1)^{3}+\frac{(-1)^22^5}{5}(x-1)^{5}+\cdots\\
+        &=& 2(x-1)-\dfrac{8}{3}(x-1)^3+\frac{32}{5}(x-1)^5+\cdots\\
+    \end{eqnarray*}
+    Por lo tanto, el polinomio de Taylor de orden 3 es
+    $$T_3(x)=2(x-1)-\dfrac{8}{3}(x-1)^3$$
+    Ahora, para aproximar $f(1.1)$, calculamos
+    \begin{eqnarray*}
+      T_3(1.1) &=& 2(1.1-1)-\dfrac{8}{3}(1.1-1)^3\\
+        &=& 2(0.1)-\dfrac{8}{3}(0.1)^3\\
+        &=& \frac{2}{10}-\dfrac{8}{3}\cdot\dfrac{1}{1000}\\
+        &=& \frac{2}{10}-\dfrac{8}{3000}\\
+        &=& \frac{2\cdot300-8}{3000}\\
+        &=& \frac{600-8}{3000}\\
+        &=& \frac{592}{3000}\\
+        % &=& \frac{148}{750}\\
+        &=& \frac{74}{375}\\
+        % &=& 0.1973
+    \end{eqnarray*}
+    Por lo tanto, $f(1.1)\approx\dfrac{74}{375}$.
+
+\end{enumerate}
+
+\end{document}

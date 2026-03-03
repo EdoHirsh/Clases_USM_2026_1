@@ -1,0 +1,202 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage{dsfont,amsfonts}
+\usepackage{fancyhdr,multicol,multirow}
+\usepackage{graphicx,pgf,tikz,accents,multimedia,tcolorbox}
+\usepackage[explicit]{titlesec}
+\usepackage[top=3cm,bottom=2cm,left=2cm,right=2cm,headheight=1cm,headsep=1cm,footskip=1cm]{geometry}
+\usepackage{pstricks-add}
+
+%! Configuración de las enumeración
+\usepackage[shortlabels]{enumitem}
+
+%! Archivo de comandos personalizados generales
+\input{../../Comandos.tex}
+
+%! Datos de la evaluación
+\input{../../Datos.tex}
+\newcommand{\EVALUACION}{Certamen 2 - 1er. semestre 2025}
+
+%! Encabezado de pagina
+\pagestyle{fancy}
+\fancyhead{}
+\setlength{\headheight}{56pt}
+\setlength{\headsep}{5mm}
+\setlength{\textheight}{22cm}
+\fancyhead[L]{
+  \textbf{\large Departamento de Matemática}\\[1mm]
+  \textbf{\large Universidad Técnica Federico Santa María}
+  \vspace{1mm}
+}
+\fancyhead[R]{
+  \begin{flushright}
+    \textbf{\large Pauta \EVALUACION}\\[1mm]
+    \textbf{\large \SIGLACURSO}
+    \vspace{-5mm}
+  \end{flushright}
+}
+
+\begin{document}
+
+%!Encabezado Portada
+\thispagestyle{plain}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=.75]{logo-dmat-vertical.pdf}
+\end{center}
+\vspace{2mm}
+
+%!Titulo
+\begin{center}
+  \textbf{\Large \SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \textbf{\Large Pauta \EVALUACION}\\[2mm]
+  {\large\PROFESOR}\\
+\end{center}
+\vspace{5mm}
+
+\vspace{5mm}
+%! Pregunta 1
+\noindent\textbf{P1) } \textsf{[ 30 Pts. ] }
+\begin{enumerate}[a)]
+  \item Encuentre la matriz canónica de la transformación lineal $T:\Real^3\to\Real^3$ definida por
+    $$T(x,y,z) = (2x+2y-z, 2x-3y+z, x+4y-3z)$$
+    % justifique brevemente su respuesta.
+  \item Determine si el siguiente conjunto es abierto, cerrado, compacto o conexo en $\Real^2$.
+    $$A = \set{(x,y)\in\Real^2\ :\ x^2-y^2\geq 1\ \wedge\ x^2+4y^2\leq 4}$$
+\end{enumerate}
+
+\vspace{3mm}
+\noindent\textbf{Respuesta:} 
+\begin{enumerate}[a)]
+  \item Las imágenes de los vectores canónicos son.
+    \begin{eqnarray*}
+      T(1,0,0) &=& (2,2,1)\\
+      T(0,1,0) &=& (2,-3,4)\\
+      T(0,0,1) &=& (-1,1,-3)
+    \end{eqnarray*}
+    Por lo tanto la matriz canónica es.
+    $$\left[\begin{array}{rrr}
+      2 &  2 & -1 \\
+      2 & -3 &  1 \\
+      1 &  4 & -3
+    \end{array}\right]$$
+  \vspace{2mm}
+  \item Gráficamente la region se ve de la siguiente manera.
+  \vspace{-8mm}
+  \begin{center}
+    \includegraphics[scale=0.5]{./imagenes/Pregunta1b.png}
+  \end{center}
+  \vspace{-8mm}
+    \begin{itemize}
+      \item $A$ no es abierto, pues el punto $(2,0)$ pertenece a $A$ y no es un punto interior de $A$.
+      \item $A$ es cerrado pues contiene a todos sus puntos frontera.
+      \item $A$ es compacto, porque es cerrado y acotado por la circunferencia de radio $3$ centrada en el origen.
+      \item $A$ no es conexo, pues se puede separar usando los abiertos dados por las inecuaciones $x>\frac{1}{2}$ y $x<-\frac{1}{2}$.
+    \end{itemize}
+\end{enumerate}
+
+
+%! Pregunta 2
+\newpage
+\noindent\textbf{P2) } \textsf{[ 30 Pts. ] } 
+\begin{enumerate}[a)]
+  \item Cuál de los siguientes gráficos corresponde a las curvas de nivel de la función (justifique su respuesta).
+    $$f(x,y)=x^2-y^2$$
+    \begin{multicols}{3}
+    \begin{enumerate}[i.]
+      \item $ $\\[-10mm]\hspace*{-8mm}\includegraphics[scale=0.4]{imagenes/Curvas_de_nivel_a.png}
+      \item $ $\\[-10mm]\hspace*{-8mm}\includegraphics[scale=0.4]{imagenes/Curvas_de_nivel_b.png}
+      \item $ $\\[-10mm]\hspace*{-8mm}\includegraphics[scale=0.4]{imagenes/Curvas_de_nivel_c.png}
+    \end{enumerate}
+    \end{multicols}
+  \vspace*{-10mm}
+  \item Identifique y esboce el gráfico de la superficie de ecuación.
+    $$25x^2-4y^2+100z^2-50x+16y-91 = 0$$
+\end{enumerate}
+
+% \vspace{3mm}
+\noindent\textbf{Respuesta:} 
+\begin{enumerate}[a)]
+  \item 
+    \begin{enumerate}[i.]
+      \item No corresponde a la función $f(x,y)=x^2-y^2$, pues las curvas de nivel son hipérbolas, y en este gráfico se observan circunferencias.
+      \vspace{3mm}
+      \item No corresponde a la función $f(x,y)=x^2-y^2$, pues las curvas de nivel son hipérbolas con eje real horizontal, y en este gráfico se observan hipérbolas con eje real vertical.
+      \vspace{2mm}
+      \item Corresponde a la función $f(x,y)=x^2-y^2$, pues las curvas de nivel son hipérbolas con eje real horizontal, y en este es el único gráfico en el cual se observan hipérbolas con eje real horizontal.
+    \end{enumerate}
+  \vspace{2mm}
+  \item Para identificar la superficie, reescribiremos la ecuación para que sea una de las formas básicas trasladadas.
+    \begin{eqnarray*}
+      25x^2-4y^2+100z^2-50x+16y-91 &=& 0\\
+      % 25x^2-50x-y^2+16y+100z^2-91 &=& 0\\
+      25\left(x^2-2x\right)-4\left(y^2-4y\right)+100z^2-91 &=& 0\\
+      % 25\left((x-1)^2-1\right)-4\left((y-2)^2-4\right)+100z^2-91 &=& 0\\
+      25(x-1)^2-4(y-2)^2+100z^2-25+16-91 &=& 0\\
+      25(x-1)^2-4(y-2)^2+100z^2 &=& 100\\
+      \frac{(x-1)^2}{4} - \frac{(y-2)^2}{25} + \frac{z^2}{1} &=& 1
+    \end{eqnarray*}
+    Esta es la ecuación de un hiperboloide de una hoja centrado en $(1,2,0)$, que tiene su eje imaginario en la dirección del eje $y$. Cuyo gráfico es el siguiente.
+    \vspace{-10mm}
+    \begin{center}
+      \includegraphics[scale=0.55]{imagenes/Hiperboloide.png}
+    \end{center}
+    % \vspace{-8mm}
+\end{enumerate}
+
+
+%! Pregunta 3
+\newpage
+\noindent\textbf{P3) } \textsf{[ 40 Pts. ] } Dada la función
+$$f(x,y) =\begin{cases}
+  \dfrac{y^2\ln\left(1-x^2\right)}{x^2+y^2} & \text{si } y>x^2\\
+  x^2+4y^2-1  & \text{si } x^2\geq y
+\end{cases}$$
+\begin{enumerate}[a)]
+  \item \textsf{[10 Pts.] } Calcule $\displaystyle\lim_{(x,y)\to (0,1)}\ f(x,y)$
+  \item \textsf{[10 Pts.] } Calcule $\displaystyle\lim_{(x,y)\to (0,-1)}\ f(x,y)$
+  \item \textsf{[20 Pts.] }¿Es continua la función $f$ en $(0,0)$?
+\end{enumerate}
+
+\vspace{2mm}
+\noindent\textbf{Respuesta:} 
+\begin{enumerate}[a)]
+  \item 
+    \begin{eqnarray*}
+      \lim_{(x,y)\to (0,1)}\ f(x,y)
+      &=& \lim_{(x,y)\to (0,1)}\ \dfrac{y^2\ln\left(1-x^2\right)}{x^2+y^2}\\
+      &=& \dfrac{1\cdot\ln(1)}{0+1}\\
+      % &=& \dfrac{0}{1}\\
+      &=& 0
+    \end{eqnarray*}
+  \vspace{2mm}
+  \item 
+    \begin{eqnarray*}
+      \lim_{(x,y)\to (0,-1)}\ f(x,y)
+      &=& \lim_{(x,y)\to (0,-1)}\ x^2+4y^2-1\\
+      &=& 0^2+4(-1)^2-1\\
+      % &=& 0+4-1\\
+      &=& 3
+    \end{eqnarray*}
+  \vspace{2mm}
+  \item Para determinar si la función es continua en $(0,0)$, debemos comprobar que $\lim\limits_{(x,y)\to (0,0)}\ f(x,y) =~f(0,0)$. Calculamos el límite.
+    $$\lim_{(x,y)\to (0,0)}\ f(x,y)$$
+    Como $(0,0)$ está en la frontera de las dos regiones, separamos el límite en dos casos.
+    \begin{enumerate}[i.]
+      \item Si $y>x^2$, entonces
+        $$\lim_{(x,y)\to (0,0)}\ f(x,y) = \lim_{(x,y)\to (0,0)}\ \dfrac{y^2\ln\left(1-x^2\right)}{x^2+y^2}$$
+        Para este caso notamos que
+        $$0\leq \dfrac{y^2\ln\left(1-x^2\right)}{x^2+y^2} \leq \frac{y^2\ln(1-x^2)}{y^2}=\ln(1-x^2)$$
+        Ahora como $\lim\limits_{x\to 0}\ln(1-x^2)=\ln(1)=0$, por el teorema del sandwich, tenemos que para este caso.
+        $$\lim_{(x,y)\to (0,0)}\ f(x,y) = 0$$
+      \item Si $x^2\geq y$, entonces
+        $$\lim_{(x,y)\to (0,0)}\ f(x,y) = \lim_{(x,y)\to (0,0)}\ x^2+4y^2-1$$
+        Luego el límite en este caso es $-1$.
+    \end{enumerate}
+    Por lo tanto el límite no existe, y la función no puede ser continua en $(0,0)$.
+\end{enumerate}
+
+\end{document}

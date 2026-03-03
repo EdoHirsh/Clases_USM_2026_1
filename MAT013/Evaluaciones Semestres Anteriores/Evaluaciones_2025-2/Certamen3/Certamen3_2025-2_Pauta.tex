@@ -1,0 +1,214 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage{dsfont,amsfonts}
+\usepackage{fancyhdr,multicol,multirow}
+\usepackage{graphicx,pgf,tikz,accents,multimedia,tcolorbox}
+\usepackage[explicit]{titlesec}
+\usepackage[top=3cm,bottom=2cm,left=2cm,right=2cm,headheight=1cm,headsep=1cm,footskip=1cm]{geometry}
+\usepackage{pstricks-add}
+
+%! Configuración de las enumeración
+\usepackage[shortlabels]{enumitem}
+
+%! Archivo de comandos personalizados generales
+\input{../../Comandos.tex}
+
+%! Datos de la evaluación
+\input{../../Datos.tex}
+\newcommand{\EVALUACION}{Certamen 3 - 2do. semestre 2025}
+
+%! Encabezado de pagina
+\pagestyle{fancy}
+\fancyhead{}
+\setlength{\headheight}{56pt}
+\setlength{\headsep}{5mm}
+\setlength{\textheight}{22cm}
+\fancyhead[L]{
+  \textbf{\large Departamento de Matemática}\\[1mm]
+  \textbf{\large Universidad Técnica Federico Santa María}
+  \vspace{1mm}
+}
+\fancyhead[R]{
+  \begin{flushright}
+    \textbf{\large Pauta \EVALUACION}\\[1mm]
+    \textbf{\large \SIGLACURSO}
+    \vspace{-5mm}
+  \end{flushright}
+}
+
+\begin{document}
+
+%!Encabezado Portada
+\thispagestyle{plain}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=.75]{logo-dmat-vertical.pdf}
+\end{center}
+\vspace{2mm}
+
+%!Titulo
+\begin{center}
+  \textbf{\Large \SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \textbf{\Large Pauta \EVALUACION}\\[2mm]
+  {\large\PROFESOR}\\
+\end{center}
+\vspace{5mm}
+
+%! Preguntas
+\begin{enumerate}[{\bf P1)}, leftmargin=*, labelsep=3mm]
+  %* Pregunta 1
+  \item Sea
+    $$f(x,y) = x^2+y^2+4x-4y$$
+    \begin{enumerate}
+      \item Calcule las primeras y segundas derivadas parciales de $f$.
+      \vspace{2mm}
+      \item Encuentre y clasifique los puntos críticos de $f$.
+      \vspace{2mm}
+      \item Encuentre los valores máximos y mínimos absolutos de $f$ en la circunferencia $x^2+y^2 = 9$.
+    \end{enumerate}
+
+  \vspace{5mm}
+  \noindent\textbf{Respuesta:}
+    \begin{enumerate}[a)]
+      \item Las derivadas parciales son
+        \begin{eqnarray*}
+          f_x(x,y) &=& 2x + 4\\
+          f_y(x,y) &=& 2y - 4\\
+          f_{xx}(x,y) &=& 2\\
+          f_{yy}(x,y) &=& 2\\
+          f_{xy}(x,y) &=& 0
+        \end{eqnarray*}
+      \item Los puntos críticos se encuentran resolviendo el sistema
+        $$\begin{array}{rcl|}
+          f_x(x,y) &=& 0\\
+          f_y(x,y) &=& 0\\
+          \hline
+        \end{array}$$
+        esto es
+        $$\begin{array}{rcl|}
+          2x + 4 &=& 0\\
+          2y - 4 &=& 0\\
+          \hline
+        \end{array}$$
+        cuya solución es el punto crítico $(-2,2)$. Evaluamos el Hessiano
+          $$H(x,y) = f_{xx}(x,y) f_{yy}(x,y) - (f_{xy}(x,y))^2$$
+        en el punto crítico
+          $$H(-2,2) = 2\cdot 2 - 0^2$$
+        Como $H(-2,2) > 0$ y $f_{xx}(-2,2) > 0$, el punto crítico es un mínimo local.
+      \newpage
+      \item Usando multiplicadores de Lagrange, definimos la función auxiliar.
+        $$L(x,y,\lambda) = f(x,y) + \lambda (g(x,y) - 9)$$
+        en este caso
+        $$L(x,y,\lambda) = x^2 + y^2 + 4x - 4y + \lambda (x^2 + y^2 - 9)$$
+        cuyo gradiente es
+        $$\nabla L(x,y,\lambda) = \begin{bmatrix}
+          2x + 4 + 2\lambda x\\
+          2y - 4 + 2\lambda y\\
+          x^2 + y^2 - 9
+        \end{bmatrix}$$
+        Igualando a cero, se obtiene el sistema
+        $$\begin{array}{rcl|}
+          2x + 4 + 2\lambda x &=& 0\\
+          2y - 4 + 2\lambda y &=& 0\\
+          x^2 + y^2 - 9 &=& 0\\
+          \hline
+        \end{array}$$
+        Resolviendo se obtienen los puntos críticos, $\left(\frac{3\sqrt{2}}{2},-\frac{3\sqrt{2}}{2}\right)$ y $\left(-\frac{3\sqrt{2}}{2},\frac{3\sqrt{2}}{2}\right)$, evaluando $f$ en estos puntos se obtiene
+        \begin{eqnarray*}
+          f\left(\frac{3\sqrt{2}}{2},-\frac{3\sqrt{2}}{2}\right) &=& \left(\frac{3\sqrt{2}}{2}\right)^2 + \left(-\frac{3\sqrt{2}}{2}\right)^2 + 4\cdot \frac{3\sqrt{2}}{2} - 4\cdot \left(-\frac{3\sqrt{2}}{2}\right)\\
+          &=& \dfrac{9}{2} + \dfrac{9}{2} + 6\sqrt{2} + 6\sqrt{2}\\
+          &=& 9 + 12\sqrt{2}
+        \end{eqnarray*}
+        \begin{eqnarray*}
+          f\left(-\frac{3\sqrt{2}}{2},\frac{3\sqrt{2}}{2}\right) &=& \left(-\frac{3\sqrt{2}}{2}\right)^2 + \left(\frac{3\sqrt{2}}{2}\right)^2 + 4\cdot \left(-\frac{3\sqrt{2}}{2}\right) - 4\cdot \frac{3\sqrt{2}}{2}\\
+          &=& \dfrac{9}{2} + \dfrac{9}{2} - 6\sqrt{2} - 6\sqrt{2}\\
+          &=& 9 - 12\sqrt{2}
+        \end{eqnarray*}
+        Por lo tanto, el valor máximo absoluto es $9 + 12\sqrt{2}$ y el valor mínimo absoluto es $9 - 12\sqrt{2}$ y se alcanzan en los puntos $\left(\frac{3\sqrt{2}}{2},-\frac{3\sqrt{2}}{2}\right)$ y $\left(-\frac{3\sqrt{2}}{2},\frac{3\sqrt{2}}{2}\right)$ respectivamente.
+    \end{enumerate}
+
+  \newpage
+  %* Pregunta 2
+  \item Calcule las siguientes integrales dobles.
+    \begin{enumerate}[a)]
+      \item $\displaystyle\iint_D\ y^2\ dA$, donde $D$ es el triangulo con vértices en $(0,1)$, $(1,2)$ y $(4,1)$. 
+      \item $\displaystyle\iint_D\ \dfrac{y^2}{x^2+y^2}\ dA$, donde $D$ la región entre las circunferencias $x^2+y^2=1$ y $x^2+y^2=4$. 
+    \end{enumerate}
+
+  \vspace{5mm}
+  \noindent\textbf{Respuesta:} 
+    \begin{enumerate}[a)]
+      \item La región $D$ se puede describir como
+          $$D = \set{(x,y): 1\leq y \leq 2 \wedge y-1 \leq x \leq 7-3y}$$
+        Luego la integral queda como
+        \begin{eqnarray*}
+          \iint_D y^2\ dA 
+            &=& \int_1^2 \int_{y-1}^{7-3y} y^2\ dx\ dy\\
+            &=& \int_1^2 y^2(8-4y)\ dy\\
+            &=& \int_1^2 (8y^2 - 4y^3)\ dy\\
+            &=& \left.\left(\dfrac{8y^3}{3} - y^4\right)\right|_1^2\\
+            &=& \left(\dfrac{64}{3} - 16\right) - \left(\dfrac{8}{3} - 1\right)\\
+            &=& \dfrac{11}{3}
+        \end{eqnarray*}
+      \item Usando coordenadas polares, la region se puede describir como
+        $$D = \set{(r,\theta): 0 \leq \theta \leq 2\pi \wedge 1 \leq r \leq 2}$$
+        Luego la integral queda como
+        \begin{eqnarray*}
+          \iint_D \dfrac{y^2}{x^2+y^2}\ dA 
+            &=& \int_0^{2\pi} \int_1^2 \dfrac{r^2\sin^2(\theta)}{r^2} r\ dr\ d\theta\\
+            &=& \int_0^{2\pi} \sin^2(\theta) \int_1^2 r\ dr\ d\theta\\
+            &=& \int_0^{2\pi} \sin^2(\theta) \left.\dfrac{r^2}{2}\right|_1^2\ d\theta\\
+            &=& \dfrac{3}{2} \int_0^{2\pi} \sin^2(\theta)\ d\theta\\
+            &=& \dfrac{3}{2} \int_0^{2\pi} \dfrac{1-\cos(2\theta)}{2}\ d\theta\\
+            &=& \dfrac{3}{4} \int_0^{2\pi} 1 - \cos(2\theta)\ d\theta\\
+            &=& \dfrac{3}{4} \left.\left(\theta - \dfrac{\sin(2\theta)}{2}\right)\right|_0^{2\pi}\\
+            &=& \dfrac{3\pi}{2}
+        \end{eqnarray*}
+    \end{enumerate}
+
+  \newpage
+  %* Pregunta 3
+  \item Calcule las siguientes integrales triples.
+    \begin{enumerate}[a)]
+      \item $\displaystyle\iiint_D\ x^2-xy+z^2x\ dV$, con $D=[0,2]\times[0,1]\times[0,3]$. 
+      \item $\displaystyle\iiint_D\ 6xy\ dV$, con $D=\set{(x,y,z):0\leq y\leq 1\wedge 0\leq x \leq y^2 \wedge 0\leq z \leq 1+x+y}$.
+    \end{enumerate}
+
+  \vspace{5mm}
+  \noindent\textbf{Respuesta:}
+    \begin{enumerate}[a)]
+      \item 
+        \begin{eqnarray*}
+          \iiint_D x^2 - xy + z^2 x\ dV 
+            &=& \int_0^2 \int_0^1 \int_0^3 x^2 - xy + z^2 x\ dz\ dy\ dx\\
+            &=& \int_0^2 \int_0^1 \left.x^2 z - xyz + \dfrac{z^3 x}{3}\right|_0^3\ dy\ dx\\
+            &=& \int_0^2 \int_0^1 3x^2 - 3xy + 9x\ dy\ dx\\
+            &=& \int_0^2\left.\left(3x^2y-\dfrac{3x y^2}{2}+9xy\right)\right|_0^1\ dx\\
+            &=& \int_0^2 3x^2 - \dfrac{3x}{2} + 9x\ dx\\
+            &=& \int_0^2 3x^2 + \dfrac{15x}{2}\ dx\\
+            &=& \left.\left(x^3 + \dfrac{15x^2}{4}\right)\right|_0^2\\
+            % &=& 8 + 15\\
+            &=& 23
+        \end{eqnarray*}
+      \item 
+        \begin{eqnarray*}
+          \iiint_D 6xy\ dV 
+            &=& \int_0^1 \int_0^{y^2} \int_0^{1+x+y} 6xy\ dz\ dx\ dy\\
+            &=& \int_0^1 \int_0^{y^2} 6xy (1 + x + y)\ dx\ dy\\
+            &=& \int_0^1 \int_0^{y^2} 6xy + 6x^2 y + 6xy^2\ dx\ dy\\
+            &=& \int_0^1 \left. \left(3x^2 y + 2x^3 y + 3x^2 y^2\right) \right|_0^{y^2}\ dy\\
+            &=& \int_0^1 3y^5 + 2y^7 + 3y^6\ dy\\
+            &=& \left.\left(\dfrac{3y^6}{6} + \dfrac{2y^8}{8} + \dfrac{3y^7}{7}\right)\right|_0^1\\
+            &=& \dfrac{3}{6} + \dfrac{2}{8} + \dfrac{3}{7}\\
+            % &=& \dfrac{1}{2} + \dfrac{1}{4} + \dfrac{3}{7}\\
+            % &=& \dfrac{14+7+12}{28}\\
+            &=& \dfrac{33}{28}
+        \end{eqnarray*}
+    \end{enumerate}
+
+
+\end{enumerate}
+\end{document}

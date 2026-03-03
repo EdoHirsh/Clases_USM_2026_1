@@ -1,0 +1,123 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage{dsfont,amsfonts}
+\usepackage{fancyhdr,multicol,multirow}
+\usepackage{graphicx,pgf,tikz,accents,multimedia,tcolorbox}
+\usepackage[top=3cm,bottom=2cm,left=2cm,right=2cm,headheight=1cm,headsep=1cm,footskip=1cm]{geometry}
+\usepackage[shortlabels]{enumitem}
+
+%! Archivo de comandos personalizados generales
+\input{../../Comandos.tex}
+
+%! Configuración de las enumeración
+% \usepackage[shortlabels]{enumitem} % facilita la personalización de listas funciona mejor en article
+% \renewcommand{\labelenumii}{\theenumi.\alph{enumii})}
+\renewcommand{\labelenumii}{\alph{enumii})}
+\renewcommand{\theenumii}{\alph{enumii}}
+\makeatletter
+\renewcommand{\p@enumii}{\theenumi.}
+\makeatother
+
+%! Datos de la Guía
+\input{../../Datos.tex}
+\newcommand{\GUIA}{Guía Funciones de Varias Variables}
+
+%! Encabezado de pagina
+\pagestyle{fancy}
+\fancyhead{}
+\setlength{\headheight}{56pt}
+\setlength{\headsep}{5mm}
+\setlength{\textheight}{22cm}
+\fancyhead[L]{
+  \textbf{\large Departamento de Matemática}\\[1mm]
+  \textbf{\large Universidad Técnica Federico Santa María}
+  \vspace{1mm}
+}
+\fancyhead[R]{
+  \begin{flushright}
+    \textbf{\large \GUIA}\\[1mm]
+    \textbf{\large \SIGLACURSO}
+    \vspace{-5mm}
+  \end{flushright}
+}
+
+%! Inicio del documento
+\begin{document}
+
+%! Encabezado
+\thispagestyle{empty}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=.75]{logo-dmat-vertical.pdf}
+\end{center}
+% \vspace{1mm}
+% \noindent\rule[0mm]{175mm}{0.1mm}
+
+%! Titulo
+\begin{center}
+  \textbf{\Large\SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \textbf{\Large\GUIA}\\
+  {\large\PROFESOR}\\
+  \FECHACORTO
+\end{center}
+\vspace{5mm}
+
+%! Ejercicios
+\begin{enumerate}
+  \item Decida si las siguientes funciones son transformaciones lineales. En caso afirmativo, determine su matriz asociada, en caso contrario, justifique.
+    \begin{enumerate}
+      \item $T:\Real^2\to\Real^2$ dada por $T(x,y) = (x+2y, x-3y)$
+      \item $T:\Real^2\to\Real^2$ dada por $T(x,y) = (x^2-y^2, y^2+x)$
+      \item $T:\Real^2\to\Real^3$ dada por $T(x,y) = (x+y, x-y, 2x-1)$
+      \item $T:\Real^3\to\Real^2$ dada por $T(x,y,z) = (x+y-z, \sqrt{x^2-y^2})$
+      \item $T:\Real^3\to\Real^3$ dada por $T(x,y,z) = (2x-3y+z, x+2y-3z, 3x-2y+z)$
+      \item $T:\Real^3\to\Real^3$ dada por $T(x,y,z) = (x^2+2xy+y^2, x^2-y^2, z)$
+    \end{enumerate}
+  \vspace{2mm}
+  \item En los siguientes conjuntos, grafique el conjunto y determine si son abiertos, cerrados, compactos, conexos, disconexos, regiones o ninguno de los anteriores.
+    \begin{enumerate}
+      \item $\set{(x,y)\in\Real^2\ :\ x^2+y^2<1\wedge y<\abs{x}}$
+      \item $\set{(x,y)\in\Real^2\ :\ x-2y<1 \wedge x+y\geq 1}$
+      \item $\set{(x,y)\in\Real^2\ :\ 4x^2+9y^2\leq 36 \wedge \abs{x+y}\geq 1}$
+      \item $\set{(x,y)\in\Real^2\ :\ xy\geq 1 \wedge x^2+y^2\leq 4 \wedge x>0}$
+    \end{enumerate}
+  \vspace{2mm}
+  \item Use curvas de nivel y cortes transversales, para hacer un bosquejo del gráfico de las siguientes funciones.
+    \begin{enumerate}
+      \item $f(x,y)=1-x^2-4y^2$.
+      \item $f(x,y)=1-x^2$.
+      \item $f(x,y)=x^2-y^2$.
+      \item $f(x,y)=\sqrt{36-4x^2-9y^2}$.
+    \end{enumerate}
+  \vspace{2mm}
+  \item Escriba las siguientes ecuaciones en forma estándar y realice un bosquejo de la superficie cuádrica correspondiente.
+    \begin{enumerate}
+      \item $x^2+2z^2-2x-8z-7=0$
+      \item $4x^2-y^2+z^2+8x+4y+2z+3=0$
+      \item $x^2-y^2-2z^2+6x+4y+4z+1=0$
+      \item $x^2+z^2-2x-4y-2z-4=0$
+      \item $x^2-z^2-2x-y-2z-1=0$
+      \item $x^2+4y^2+25z^2-2x-16y-100z+17=0$
+    \end{enumerate}
+  \vspace{2mm}
+  \newpage
+  \item Calcule el límite de las siguientes funciones o muestre que no existe.
+    \begin{enumerate}
+      \item $\lim\limits_{(x,y)\to(1,2)}\dfrac{x^2y^2-4xy}{x^2+y^2-3x-6y+2}$
+      \item $\lim\limits_{(x,y)\to(0,0)}\cos\left(\dfrac{x^2+\pi}{x^2+y^2-2}\right)$
+      \item $\lim\limits_{(x,y)\to(0,0)}\dfrac{x^2y^2}{\sqrt{x^2+y^2+1}-1}$
+      \item $\lim\limits_{(x,y)\to(0,0)}\dfrac{x^4-y^4}{x^2+y^2}$
+      \item $\lim\limits_{(x,y)\to(0,0)}\dfrac{x^2\sen^2(y)}{x^2+2y^2}$
+      \item $\lim\limits_{(x,y)\to(0,0)}\dfrac{x^2y^4}{x^2+y^8}$
+    \end{enumerate}
+  \vspace{2mm}
+  \item Analice la continuidad de 
+    $$f(x,y)=\begin{cases}
+      \dfrac{x^4y^2}{x^4+y^4} & \text{si } (x,y)\neq(0,0)\\
+      0 & \text{si } (x,y)=(0,0)
+    \end{cases}$$
+\end{enumerate}
+\end{document}

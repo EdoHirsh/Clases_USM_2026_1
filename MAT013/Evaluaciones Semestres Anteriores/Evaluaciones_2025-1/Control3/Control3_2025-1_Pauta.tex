@@ -1,0 +1,172 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage{dsfont,amsfonts}
+\usepackage{fancyhdr,multicol,multirow}
+\usepackage{graphicx,pgf,tikz,accents,multimedia,tcolorbox}
+\usepackage[explicit]{titlesec}
+\usepackage[top=3cm,bottom=2cm,left=2cm,right=2cm,headheight=1cm,headsep=1cm,footskip=1cm]{geometry}
+\usepackage{pstricks-add}
+
+%! Configuración de las enumeración
+\usepackage[shortlabels]{enumitem}
+
+%! Archivo de comandos personalizados generales
+\input{../../Comandos.tex}
+
+%! Datos de la evaluación
+\input{../../Datos.tex}
+\newcommand{\EVALUACION}{Control 3 - 1er. semestre 2025}
+
+%! Encabezado de pagina
+\pagestyle{fancy}
+\fancyhead{}
+\setlength{\headheight}{56pt}
+\setlength{\headsep}{5mm}
+\setlength{\textheight}{22cm}
+\fancyhead[L]{
+  \textbf{\large Departamento de Matemática}\\[1mm]
+  \textbf{\large Universidad Técnica Federico Santa María}
+  \vspace{1mm}
+}
+\fancyhead[R]{
+  \begin{flushright}
+    \textbf{\large Pauta \EVALUACION}\\[1mm]
+    \textbf{\large \SIGLACURSO}
+    \vspace{-5mm}
+  \end{flushright}
+}
+
+\begin{document}
+
+%!Encabezado Portada
+\thispagestyle{plain}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=0.75]{logo-dmat-vertical.pdf}
+\end{center}
+\vspace{2mm}
+
+%!Titulo
+\begin{center}
+  \textbf{\Large \SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \textbf{\Large Pauta \EVALUACION}\\[2mm]
+  {\large\PROFESOR}\\
+\end{center}
+\vspace{5mm}
+
+%! Pregunta 1
+\noindent\textbf{P1) } Sea
+  $$f(x,y) = x\sen(x+y)$$
+  \begin{enumerate}[a)]
+    \item \textsf{[20 pts.]} Calcule $\nabla f$.
+    \item \textsf{[20 pts.]} Encuentre la ecuación del plano tangente a la superficie $z=f(x,y)$ en el punto $( -1, 1, 0)$.
+    \item \textsf{[10 pts.]} Calcule la derivada direccional de $f$ en el punto $( -1, 1)$ en la dirección de máximo crecimiento de $f$.
+  \end{enumerate}
+
+\vspace{5mm}
+\noindent\textbf{Respuesta:}
+\begin{enumerate}[a)]
+  \item El gradiente de $f$ es
+    \begin{eqnarray*}
+      \nabla f(x,y) &=& \left[\begin{array}{c}f_x(x,y) \\ f_y(x,y) \end{array} \right] \\
+        &=& \left[\begin{array}{c} \sen(x+y) + x\cos(x+y) \\ x\cos(x+y) \end{array} \right]
+    \end{eqnarray*}
+  \item Evaluando el gradiente en el punto $( -1, 1)$, obtenemos
+    \begin{eqnarray*}
+      \nabla f(-1, 1) &=& \left[\begin{array}{c} \sen(-1+1) + (-1)\cos(-1+1) \\ (-1)\cos(-1+1) \end{array} \right] \\
+        &=& \left[\begin{array}{c} \sen(0) + (-1)\cos(0) \\ (-1)\cos(0) \end{array} \right] \\
+        &=& \left[\begin{array}{c} 0 - 1 \\ -1 \end{array} \right] \\
+        &=& \left[\begin{array}{c} -1 \\ -1 \end{array} \right]
+    \end{eqnarray*}
+    La ecuación del plano tangente es:
+    $$z - 0 = -1(x + 1) - 1(y - 1),$$
+    que simplificando nos da:
+    $$z = -x - y$$
+  \item Por teorema sabemos que dirección de máximo crecimiento es la dirección del gradiente y que la derivada direccional en esa dirección es la norma del gradiente. Luego, siendo $\hat{u} = \frac{\nabla f(-1, 1)}{\norm{\nabla f(-1, 1)}}$, la derivada en la dirección de máximo crecimiento es.
+    \begin{eqnarray*}
+      D_{\hat{u}}f(-1, 1) &=& \norm{\nabla f(-1, 1)} \\
+        &=& \sqrt{(-1)^2 + (-1)^2} \\
+        &=& \sqrt{2}.
+    \end{eqnarray*}
+\end{enumerate}
+
+
+\newpage
+%! Pregunta 2
+\noindent\textbf{P2) } \textsf{[50 pts.]} 
+  \begin{enumerate}[a)]
+    \item Encuentre y clasifique los puntos críticos de
+        $$f(x,y) = 8x^3-12xy+y^3$$
+    \item Determine los máximos y mínimos globales de 
+        $$g(x,y) = x^2-y^2$$
+      en el conjunto $D = \set{(x,y) \in \Real^2 : \dfrac{x^2}{4}+y^2 = 1}$.
+  \end{enumerate}
+
+\vspace{5mm}
+\noindent\textbf{Respuesta:}
+\begin{enumerate}[a)]
+  \item Para encontrar los puntos críticos de $f$ calcularemos las derivadas parciales
+      \begin{eqnarray*}
+        f_x(x,y) &=& 24x^2 - 12y \\
+        f_y(x,y) &=& -12x + 3y^2
+      \end{eqnarray*}
+    Igualando a cero, obtenemos el sistema de ecuaciones
+      \begin{eqnarray*}
+        24x^2 - 12y &=& 0 \\
+        -12x + 3y^2 &=& 0
+      \end{eqnarray*}
+    Cuyas soluciones son $(0,0)$ y $(1,2)$. Para clasificar los puntos críticos, usaremos el discriminante
+      $$D(x,y) = f_{xx}(x,y)f_{yy}(x,y) - (f_{xy}(x,y))^2$$
+    donde las segundas derivadas son
+      \begin{eqnarray*}
+        f_{xx}(x,y) &=& 48x \\
+        f_{yy}(x,y) &=& 6y \\
+        f_{xy}(x,y) &=& -12.
+      \end{eqnarray*}
+    Evaluando en los puntos críticos
+    \begin{enumerate}[i)]
+      \item En $(0,0)$
+        \begin{eqnarray*}
+          D(0,0) &=& f_{xx}(0,0)f_{yy}(0,0) - (f_{xy}(0,0))^2 \\
+            &=& 48\cdot 0\cdot 6\cdot 0 - (-12)^2 \\
+            &=& -144 < 0.
+        \end{eqnarray*}
+        Luego en el punto $(0,0)$ hay un punto silla.
+      \item En $(1,2)$
+        \begin{eqnarray*}
+          D(1,2) &=& f_{xx}(1,2)f_{yy}(1,2) - (f_{xy}(1,2))^2 \\
+            &=& 48\cdot 1\cdot 6\cdot 2 - (-12)^2 \\
+            &=& 576 - 144 \\
+            &=& 432 > 0.
+        \end{eqnarray*}
+        Además, $f_{xx}(1,2) = 48 > 0$, por lo que en el punto $(1,2)$ hay un mínimo local.
+    \end{enumerate}
+  \newpage
+  \item Para determinar los máximos y mínimos globales de $f$ en el conjunto $D = \set{(x,y) \in \Real^2 : \dfrac{x^2}{4}+y^2 = 1}$, usaremos el método de los multiplicadores de Lagrange. Definimos la función
+    $$L(x,y,\lambda) = g(x,y) - \lambda \left(\dfrac{x^2}{4}+y^2-1\right)$$
+    y calculamos las derivadas parciales
+    \begin{eqnarray*}
+      L_x(x,y,\lambda) &=& 2x - \lambda\cdot \frac{x}{2} \\
+      L_y(x,y,\lambda) &=& -2y - 2\lambda y \\
+      L_\lambda(x,y,\lambda) &=& -\left(\dfrac{x^2}{4}+y^2-1\right)
+    \end{eqnarray*}
+    Igualando a cero, obtenemos el sistema de ecuaciones
+    \begin{eqnarray*}
+      2x - \lambda\cdot \frac{x}{2} &=& 0 \\
+      -2y - 2\lambda y &=& 0 \\
+      -\left(\dfrac{x^2}{4}+y^2-1\right) &=& 0
+    \end{eqnarray*}
+    Cuyas soluciones son $(2,0)$, $(-2,0)$, $(0,1)$ y $(0,-1)$. Evaluando $g$ en estos puntos, obtenemos
+    \begin{eqnarray*}
+      g(2,0) &=& 2^2 - 0^2 = 4 \\
+      g(-2,0) &=& (-2)^2 - 0^2 = 4 \\
+      g(0,1) &=& 0^2 - 1^2 = -1 \\
+      g(0,-1) &=& 0^2 - (-1)^2 = -1
+    \end{eqnarray*}
+    Por lo tanto, el máximo global de $g$ es $4$ y ocurre en los puntos $(2,0)$ y $(-2,0)$, mientras que el mínimos global es $-1$ y ocurre en los puntos $(0,1)$ y $(0,-1)$.
+\end{enumerate}
+
+\end{document}

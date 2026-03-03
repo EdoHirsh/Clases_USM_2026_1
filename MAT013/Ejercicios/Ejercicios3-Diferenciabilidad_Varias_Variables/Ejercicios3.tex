@@ -1,0 +1,172 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage{dsfont,amsfonts}
+\usepackage{fancyhdr,multicol,multirow}
+\usepackage{graphicx,pgf,tikz,accents,multimedia,tcolorbox}
+\usepackage[top=3cm,bottom=2cm,left=2cm,right=2cm,headheight=1cm,headsep=1cm,footskip=1cm]{geometry}
+\usepackage[shortlabels]{enumitem}
+
+%! Archivo de comandos personalizados generales
+\input{../../Comandos.tex}
+
+%! Configuración de las enumeración
+% \usepackage[shortlabels]{enumitem} % facilita la personalización de listas funciona mejor en article
+% \renewcommand{\labelenumii}{\theenumi.\alph{enumii})}
+\renewcommand{\labelenumii}{\alph{enumii})}
+\renewcommand{\theenumii}{\alph{enumii}}
+\makeatletter
+\renewcommand{\p@enumii}{\theenumi.}
+\makeatother
+
+%! Datos de la Guía
+\input{../../Datos.tex}
+\newcommand{\GUIA}{Guía Calculo Diferencial en $\Real^n$}
+
+%! Encabezado de pagina
+\pagestyle{fancy}
+\fancyhead{}
+\setlength{\headheight}{56pt}
+\setlength{\headsep}{5mm}
+\setlength{\textheight}{22cm}
+\fancyhead[L]{
+  \textbf{\large Departamento de Matemática}\\[1mm]
+  \textbf{\large Universidad Técnica Federico Santa María}
+  \vspace{1mm}
+}
+\fancyhead[R]{
+  \begin{flushright}
+    \textbf{\large \GUIA}\\[1mm]
+    \textbf{\large \SIGLACURSO}
+    \vspace{-5mm}
+  \end{flushright}
+}
+
+%! Inicio del documento
+\begin{document}
+
+%! Encabezado
+\thispagestyle{empty}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=.75]{logo-dmat-vertical.pdf}
+\end{center}
+% \vspace{1mm}
+% \noindent\rule[0mm]{175mm}{0.1mm}
+
+%! Titulo
+\begin{center}
+  \textbf{\Large\SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \textbf{\Large\GUIA}\\
+  {\large\PROFESOR}\\
+  \FECHACORTO
+\end{center}
+\vspace{5mm}
+
+%! Ejercicios
+\begin{enumerate}
+  \item Calcule las derivadas parciales de las siguientes funciones.
+    \begin{enumerate}
+      \item $f(x,y)=2x^3y^2-3x^2y^3+4xy$
+      \item $z=(3x-5y)^{12}$
+      \item $f(x,y)=\dfrac{ax+by}{cx+dy}$
+      \item $w(u,v)=\dfrac{e^{v^2}}{u^2+v}$
+      \item $u(r,\theta)=\cos(r^2\sen(\theta))$
+      \item $f(x,y)=x^y$
+    \end{enumerate}
+  \vspace{2mm}
+  \item Sea $f:\Real^2\to\Real$ la función definida por
+    $$f(x,y)=\begin{cases}
+      \frac{x^2y^2}{x^2+y^2}+x+2y-1 & \text{ si }(x,y)\neq (0,0)\\
+      -1                     & \text{ si }(x,y)=(0,0)
+    \end{cases}$$
+    calcule las derivadas parciales de $f$ en el punto $(0,0)$.
+  \vspace{2mm}
+  \item Calcule las segundas derivadas parciales de las siguientes funciones.
+    \begin{enumerate}
+      \item $f(x,y)=\cos(x^2+y^2)$
+      \item $w=\dfrac{uv}{v-u}$
+      \item $u=e^{x\cos(y)}$
+    \end{enumerate}
+  \vspace{2mm}
+  \item Encuentre la ecuación del plano tangente a la superficie dada en el punto dado.
+    \begin{enumerate}
+      \item $f(x,y)=x\cos(xy)$ en $(1,0)$
+      \item $z=xe^{y^2}$ en $(1,0,1)$
+      \item $z=\ln(x-y)$ en $(2,1,0)$
+    \end{enumerate}
+  \vspace{2mm}
+  \item Encuentre la aproximación lineal de la función dada en el punto dado.
+    \begin{enumerate}
+      \item $f(x,y)=\sen(x^2y)$ en $(0,0)$
+      \item $g(x,y)=\dfrac{x^2}{y}$ en $(1,1)$
+      \item $h(x,y)=\dfrac{1}{x^2+y^2}$ en $(1,1)$
+    \end{enumerate}
+  \vspace{2mm}
+  \item Calcule la derivada direccional de la función indicada en el punto y la dirección de $\vec{v}$
+    \begin{enumerate}
+      \item $f(x,y)=x^2y^3$ en $(1,2)$ en la dirección de $\vec{v}=(1,1)$
+      \item $g(x,y)=\dfrac{x}{x^2+y^2}$, $(1,3)$ en la dirección de $\vec{v}=(3,5)$
+      \item $h(x,y)=\sen(x^2+y^2)$ en $(0,0)$ en la dirección de $\vec{v}=(1,1)$
+    \end{enumerate}
+  \vspace{2mm}
+  \item Encuentra la ecuación de la recta tangente a la curva dada en el punto dado.
+    \begin{enumerate}
+      \item $x^2+xy^2=2$ en $(1,1)$
+      \item $e^{x^2+xy}=1$ en $(0,1)$
+    \end{enumerate}
+  \vspace{2mm}
+  \item Encuentre la ecuación del plano tangente a la superficie dada en el punto dado.
+    \begin{enumerate}
+      \item $xyz^2=6$ en $(3,2,1)$.
+      \item $xy+yz+xz=3$ en $(1,1,1)$.
+    \end{enumerate}
+  \vspace{2mm}
+  \item Suponga que el potencial eléctrico en un punto $(x,y,z)$ es $V(x,y,z)=5x^2-3xy+xyz$. Encuentre la dirección en la que el potencial decrece más rápidamente en el punto $(3,4,5)$.
+  \vspace{0.2cm}
+  \item Sea $f:U\subseteq\mathbb{R}^2\to\mathbb{R}$ una función diferenciable definida en el conjunto abierto $U$ de $\mathbb{R}^2$ y sea $p\in U$. Suponga que las derivadas direccionales $\frac{\delta f}{\delta u}(p)=3$ y $\frac{\delta f}{\delta v}(p)=2$, donde $u=\left(\frac{1}{\sqrt{2}},-\frac{1}{\sqrt{2}}\right)$ y $v=\left(\frac{\sqrt{3}}{2},\frac{1}{2}\right)$. Calcule las derivadas parciales de $f$ en $p$.
+  \vspace{2mm}
+  \item Sea $f:\mathbb{R}^2\to\mathbb{R}$ una función diferenciable definida en $\mathbb{R}^2$. Suponga que $f(1,2)=3$, $\frac{\delta f}{\delta x}(1,2)=2$ y $\frac{\delta f}{\delta y}(1,2)=-1$. Calcule la derivada direccional de $f$ en $(1,2)$ en la dirección del vector $v=(1,1)$.
+  \vspace{2mm}
+  \item Usando regla de la cadena, calcule las derivadas parciales que se indican.
+    \begin{enumerate}
+      \item $z=x^2y^3$, $x=s\cos(t)$, $y=s\sen(t)$, calcule $\dfrac{\delta z}{\delta s}$ y $\dfrac{\delta z}{\delta t}$.
+      \item $w=\tan\left(\frac{u}{v}\right)$, $u=2s+3t$, $v=3s-2t$, calcule $\dfrac{\delta w}{\delta s}$ y $\dfrac{\delta w}{\delta t}$.
+      \item $f(x,y)=\sen(x^2+y^2)$, $x=st$, $y=s^2-t^2$, calcule $\dfrac{\delta f}{\delta s}$ y $\dfrac{\delta f}{\delta t}$.
+      \item $g(x,y,z)=e^{x^2+y^2+z^2}$, $x=st+u^2$, $y=s^2-ut^2$, $z=s+t$, calcule $\dfrac{\delta g}{\delta s}$ y $\dfrac{\delta g}{\delta u}$.
+    \end{enumerate}
+  \vspace{2mm}
+  \item Usando regla de la cadena, exprese matricialmente $D_{(s,t)}(u,v)$ donde para $x(s,t)= e^{s^2+t^2}$, $y(s,t)=s\ln(t) $, $u(x,y)=x^2-xy$ y $v(x,y)=xy^2-y^2$. Evalúe en el punto $(s,t)=(1,1)$.
+  \item Calcule usando derivación implícita $\dfrac{\delta z}{\delta x}$ y $\dfrac{\delta z}{\delta y}$ en las ecuaciones.
+    \begin{enumerate}
+      \item $x^2-y^2+xz^2=1$
+      \item $e^z=xyz$
+      \item $yz+x\ln(y)=z^2$
+    \end{enumerate}
+  % \newpage
+  \vspace{2mm}
+  \item Usando derivación implícita, exprese matricialmente $D_{(x,y)}(u,v)$ donde $u$ y $v$ se definen implícitamente por las ecuaciones.
+    $$\begin{array}{rcl}
+      e^{x+y}+xy+2u^2-\cos(uv) & = & 0\\
+      x^2+2xy-y^2+3v^2-u^3     & = & 0\\
+    \end{array}$$
+  \vspace{2mm}
+  \item Encuentre y clasifique los puntos críticos de las siguientes funciones.
+    \begin{enumerate}
+      \item $f(x,y)=x^2+y^2-2x-4y+4$
+      \item $f(x,y)=(x^2+y^2)e^{y^2-x^2}$
+      \item $f(x,y)=y\cos(x)$
+      \item $f(x,y)=y^2-2y\cos(x)$, con $1\leq x\leq 7$
+    \end{enumerate}
+  \vspace{2mm}
+  \item Use multiplicadores de Lagrange para encontrar los valores máximos y mínimos de la función $f(x,y,z)=x^2y^2z^2$ restringida por $x^2+y^2+z^2=1$.
+  \vspace{2mm}
+  \item Use multiplicadores de Lagrange para encontrar los valores máximos y mínimos de la función $f(x,y,z)=3x-y-3z$ restringida por $x+y-z=0$ e $x^2+2z^2=1$.
+  \vspace{2mm}
+  \item Encuentre los extremos globales de la función $f(x,y)=x^2+y^2+x^2y+4$ en el conjunto 
+    $$D=\set{(x,y)\in\Real^2:\ \abs{x}\leq 1\wedge\abs{y}\leq 1}$$
+  \item Determine las dimensiones de la caja rectangular con el mayor volumen si el área superficial total es de $64cm^2$.
+\end{enumerate}
+\end{document}

@@ -1,0 +1,141 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage{dsfont,amsfonts}
+\usepackage{fancyhdr,multicol,multirow}
+\usepackage{graphicx,pgf,tikz,accents,multimedia,tcolorbox}
+\usepackage[explicit]{titlesec}
+\usepackage[top=3cm,bottom=2cm,left=2cm,right=2cm,headheight=1cm,headsep=1cm,footskip=1cm]{geometry}
+\usepackage{pstricks-add}
+
+%! Configuración de las enumeración
+\usepackage[shortlabels]{enumitem}
+
+%! Archivo de comandos personalizados generales
+\input{../../Comandos.tex}
+
+%! Datos de la evaluación
+\input{../../Datos.tex}
+\newcommand{\EVALUACION}{Control 2 - 2do. semestre 2025}
+
+%! Encabezado de pagina
+\pagestyle{fancy}
+\fancyhead{}
+\setlength{\headheight}{56pt}
+\setlength{\headsep}{5mm}
+\setlength{\textheight}{22cm}
+\fancyhead[L]{
+  \textbf{\large Departamento de Matemática}\\[1mm]
+  \textbf{\large Universidad Técnica Federico Santa María}
+  \vspace{1mm}
+}
+\fancyhead[R]{
+  \begin{flushright}
+    \textbf{\large Pauta \EVALUACION}\\[1mm]
+    \textbf{\large \SIGLACURSO}
+    \vspace{-5mm}
+  \end{flushright}
+}
+
+\begin{document}
+
+%!Encabezado Portada
+\thispagestyle{plain}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=0.75]{logo-dmat-vertical.pdf}
+\end{center}
+\vspace{2mm}
+
+%!Titulo
+\begin{center}
+  \textbf{\Large \SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \textbf{\Large Pauta \EVALUACION}\\[2mm]
+  {\large\PROFESOR}\\
+\end{center}
+\vspace{5mm}
+
+%! Pregunta 1
+\noindent\textbf{P1) } \textsf{[50 pts.]} 
+\begin{enumerate}[a)]
+  \item Identifique si el siguiente conjunto es abierto, cerrado, compacto o conexo. Justifique su respuesta.
+    $$A=\set{(x,y)\in\Real^2: y^2-x^2\geq 1 \text{ y } x^2+y^2\leq 4}$$
+  \item Determine si la función
+    $$T(x,y)=(2x-y+1,x-y^2)$$
+    es una transformación lineal. Justifique su respuesta.
+\end{enumerate}
+
+\vspace{5mm}
+\noindent\textbf{Respuesta:}
+\begin{enumerate}[a)]
+  \item Gráficamente el conjunto $A$ se ve de la siguiente manera.
+  \vspace{-10mm}
+  \begin{center}
+    \includegraphics[scale=0.5]{./imagenes/Pregunta1a.png}
+  \end{center}
+    \begin{itemize}
+      \item $A$ no es abierto, porque contiene puntos de frontera, por ejemplo el punto $(0,2)$ es un punto de frontera y pertenece a $A$.
+      \item $A$ es cerrado, contiene todos sus puntos de frontera.
+      \item $A$ es compacto, pues es cerrado y acotado por el circulo $x^2+y^2<5$.
+      \item $A$ no es conexo, pues se puede separar usando los abiertos dados por las inecuaciones $y>\frac{1}{2}$ e $y<-\frac{1}{2}$.
+    \end{itemize}
+  \item La función $T$ no es una transformación lineal, pues no cumple la propiedad $T(\vec{0})=\vec{0}$, ya que
+    $$T(0,0)=(2\cdot 0 - 0 + 1, 0 - 0^2) = (1,0)$$
+\end{enumerate}
+
+
+\newpage
+%! Pregunta 2
+\noindent\textbf{P2) } \textsf{[50 pts.]} 
+\begin{enumerate}[a)]
+  \item Dado el siguiente gráfico de las curvas de nivel de una función $f(x,y)$.\\
+  \vspace{-10mm}
+  \begin{figure}[h!]
+    \begin{center}
+    \includegraphics[scale=0.6]{imagenes/Pregunta2a.png}
+    \end{center}
+  \end{figure}
+  \vspace{-13mm}
+  \par identifique, justificando su respuesta, cuál de las siguientes opciones podría corresponder a la función $f(x,y)$.
+  \begin{multicols}{4}
+    \begin{enumerate}[i.]
+      \item $f(x,y)=x^2-y^2$
+      \item $f(x,y)=2x^2+y^2$
+      \item $f(x,y)=xy$
+      \item $f(x,y)=x^2+2y^2$
+    \end{enumerate}
+  \end{multicols}
+  \item Identifique y esboce el gráfico de la cuádrica de ecuación.
+    $$9x^2-4y^2+4z^2-18x-8z-23 = 0$$
+\end{enumerate}
+
+\vspace{5mm}
+\noindent\textbf{Respuesta:}
+\begin{enumerate}[a)]
+  \item 
+    \begin{enumerate}[i.]
+      \item No corresponde al gráfico porque el gráfico contiene elipses y la función tiene curvas de nivel $f(x,y)=c$ correspondientes a hipérbolas, por ejemplo para $c=1$ se tiene que $x^2-y^2=1$ que es una hipérbola de vertices en el eje $x$.
+      \item Corresponde al gráfico porque el gráfico contiene elipses con eje mayor en el eje $y$ y esta es la única función con curvas de nivel $f(x,y)=c$ correspondientes a elipses con eje mayor en el eje $y$, por ejemplo para $c=1$ se tiene que $2x^2+y^2=1$.
+      \item No corresponde al gráfico porque el gráfico contiene elipses y la función tiene curvas de nivel $f(x,y)=c$ correspondientes a hipérbolas, por ejemplo para $c=1$ se tiene que $xy=1$ que no es una elipse.
+      \item No corresponde al gráfico porque el gráfico contiene elipses con eje mayor en el eje $y$ y la función tiene curvas de nivel $f(x,y)=c$ correspondientes a elipses con eje mayor en el eje $x$, por ejemplo para $c=1$ se tiene que $x^2+2y^2=1$.
+    \end{enumerate}
+  \newpage
+  \item
+    \begin{eqnarray*}
+      9x^2-4y^2+4z^2-18x-8z-23 &=& 0\\
+      9(x^2-2x)-4y^2+4(z^2-2z)-23 &=& 0\\
+      9(x^2-2x+1)-4y^2+4(z^2-2z+1)-23 &=& 9+4\\
+      9(x-1)^2-4y^2+4(z-1)^2 &=& 36\\
+      \frac{(x-1)^2}{4}-\frac{y^2}{9}+\frac{(z-1)^2}{9} &=& 1
+    \end{eqnarray*}
+    La cuádrica es un hiperboloide de una hoja, con centro en el punto $(1,0,1)$, orientada horizontalmente siguiendo la dirección del eje $y$ como en la imagen.
+    \begin{figure}[h!]
+      \begin{center}
+        \includegraphics[scale=0.55]{imagenes/Pregunta2b.png}
+      \end{center}
+    \end{figure}
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,319 @@
+% !TEX root = ./0-Presentacion_Slides.tex
+
+\input{../Datos.tex}
+
+%! Datos presentación
+\newcommand{\NOMBREDOCUMENTO}{Aspectos Generales del Curso}
+\author{\PROFESOR}
+\title[\SIGLACURSO]{\SIGLACURSO\ - \NOMBRECURSO\\ \NOMBREDOCUMENTO}
+\date[\FECHACORTO]{\FECHA}
+\institute[]{}
+
+\begin{document}
+
+\only<article>{
+%! Encabezado
+\thispagestyle{empty}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=.75]{logo-dmat-vertical.pdf}
+\end{center}
+% \vspace{1mm}
+% \noindent\rule[0mm]{175mm}{0.1mm}
+%! Titulo
+\begin{center}
+  \Large\textbf{\SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \Large\textbf{\NOMBREDOCUMENTO}\\
+  {\large\PROFESOR}\\
+  \FECHACORTO
+\end{center}
+\vspace{5mm}
+}
+
+\only<presentation>{
+\begin{frame}
+  \begin{center}
+  \includegraphics[scale=.6]{Logo_USM_MAT.pdf}
+  \end{center}
+  \titlepage
+  % \begin{center}\includegraphics[scale=.20]{Logo_Depto.pdf}\end{center}
+  \vspace{2cm}
+\end{frame}
+}
+
+\only<presentation>{
+%! tabla de contenidos completa
+\begin{frame}
+\tableofcontents
+\end{frame}
+}
+
+%! sección
+\section{Introducción}
+\begin{frame}
+\sectionpage
+\end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsection]
+% \end{frame}
+
+%! subsección
+% \subsection{}
+% \begin{frame}
+% \subsectionpage
+% \end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsubsection]
+% \end{frame}
+
+\begin{frame}
+  Toda la información oficial, los detalles del reglamento del curso, y todos los documentos relevantes los podrán encontrar en:\\ 
+  \begin{center}\href{aula.usm.cl}{aula.usm.cl}\end{center}
+  \vspace{1cm}
+  \onslide<2->{
+  \begin{rem}%* fecha generada automáticamente
+    La información contenida en este documento fue creada con los datos que se tenían el dia \today , esta información podría cambiar en las semanas posteriores a la publicación de este documento. La información oficial actualizada la pueden encontrar en \url{aula.usm.cl}.
+  \end{rem}
+  }
+\end{frame}
+
+%! sección
+\section{Programa del Curso}
+\begin{frame}
+\sectionpage
+\end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsection]
+% \end{frame}
+
+\only<presentation>{
+%! subsección
+\subsection{Resumen de Contenidos}
+% \begin{frame}
+% \subsectionpage
+% \end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsubsection]
+% \end{frame}
+}
+
+\begin{frame}
+  \begin{block}{\only<presentation>{Contenidos}}
+  \begin{enumerate}[<+->]
+    \item Sucesiones y límites de sucesiones.
+    \item Series.
+    \item Series de potencias.
+    \item Transformaciones Lineales.
+    \item Funciones de varias variables.
+    \item Integrales múltiples.
+  \end{enumerate}
+  \end{block}
+\end{frame}
+
+\only<presentation>{
+%! subsección
+\subsection{Bibliografía}
+% \begin{frame}
+% \subsectionpage
+% \end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsubsection]
+% \end{frame}
+
+
+
+\begin{frame}{}
+  \begin{block}{\only<presentation>{Bibliografía sugerida}}
+    \begin{thebibliography}{}
+      \bibitem{Stewart}
+      James Stewart.
+      \newblock Cálculo - Trascendentes tempranas.
+      \onslide<2->{
+      \bibitem{Marsden}
+      Marsden \& Tromba
+      \newblock Cálculo Vectorial.
+      }
+      \onslide<3->{
+      \bibitem{Lay}
+      Lay D.
+      \newblock Algebra lineal y sus aplicaciones.
+      }
+    \end{thebibliography}
+  \end{block}
+\end{frame}
+}
+
+%! sección
+\section{Métodos de Evaluación}
+\begin{frame}
+\sectionpage
+\end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsection]
+% \end{frame}
+
+\only<presentation>{
+%! subsección
+\subsection{Controles}
+% \begin{frame}
+% \subsectionpage
+% \end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsubsection]
+% \end{frame}
+}
+
+\begin{frame}
+  \begin{block}{Fechas de Controles}
+    \begin{enumerate}
+        \item[$Q_1$] Miércoles 25 de Marzo.
+        \item[$Q_2$] Miércoles 29 de Abril.
+        \item[$Q_3$] Miércoles  3 de Junio.
+    \end{enumerate}
+    % \alert{
+    %   Las fechas de los controles se informarán oportunamente.
+    % }
+  \end{block}
+  \vspace{3mm}
+  Los controles se realizarán en horario de ayudantía.\\
+  \onslide<2->{
+    \vspace{3mm}
+    Los controles entregarán una nota $NQ$, la cual se calculará mediante la siguiente fórmula:
+    $$NQ = \frac{Q_1 + Q_2 + Q_3}{3}$$
+  }
+\end{frame}
+
+\only<presentation>{
+%! subsección
+\subsection{Certámenes}
+% \begin{frame}
+% \subsectionpage
+% \end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsubsection]
+% \end{frame}
+}
+
+\begin{frame}
+  \begin{block}{Fechas de Certámenes}
+    \begin{enumerate}
+      \item[$C_1$] Viernes 10 de Abril.
+      \item[$C_2$] Viernes 15 de Mayo.
+      \item[$C_3$] Viernes 19 de Junio.
+    \end{enumerate}
+    % \alert{
+    %   Las fechas de los certámenes se informarán oportunamente.
+    % }
+  \end{block}
+  \vspace{3mm}
+  Los certámenes se realizarán en horario de cátedra.
+\end{frame}
+
+\only<presentation>{
+%! subsección
+\subsection{Certamen Global}
+% \begin{frame}
+% \subsectionpage
+% \end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsubsection]
+% \end{frame}
+}
+
+\begin{frame}
+  \begin{block}{Fecha Certamen Global}
+    \begin{enumerate}
+      \item[$CG$] Miércoles 1 de Julio.
+    \end{enumerate}
+    % \alert{
+    %   La fecha del certamen global se informará oportunamente.
+    % }
+  \end{block}
+  % El horario de rendición del certamen global se informará oportunamente.
+\end{frame}
+
+\only<presentation>{
+%! subsección
+\subsection{Nota Final}
+% \begin{frame}
+% \subsectionpage
+% \end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsubsection]
+% \end{frame}
+}
+
+\begin{frame}
+  \begin{block}{Nota Semestral}
+    $$NS=0,25\cdot NQ+0,20\cdot C_1+0,25\cdot C_2+0,3\cdot C_3$$
+  \end{block}
+  \vspace{0.25cm}
+  \onslide<2->{
+  \begin{block}{Nota Final}
+    \par Se tendrán dos casos
+    \begin{itemize}
+      \item si $NS\geq 54,5$ entonces aprueba con nota final 
+        $$NF=NS$$
+      \item si $NS   < 54,5$ podrá rendir el certamen global.
+        % $$NF=0.7\cdot NS+0.3\cdot CG$$
+      % \item si $NS<45$ entonces reprueba con nota final
+      %   $$NF=NS$$
+    \end{itemize}
+  \end{block}
+  }
+  \vspace{0.25cm}
+  \onslide<3->{
+    En caso de rendir el certamen global el cálculo de la nota final será \textbf{recalculando} la nota $NS$, donde $CG$ sustituye sólo uno de los 3 certámenes rendidos, quedando como Nota Final $NF$ aquel caso en que se maximiza $NF$.
+  }
+\end{frame}
+
+\only<presentation>{
+%! subsección
+\subsection{Evaluaciones Recuperativas}
+% \begin{frame}
+% \subsectionpage
+% \end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsubsection]
+% \end{frame}
+}
+
+\begin{frame}
+  \begin{block}{Evaluaciones recuperativas}
+    \par En caso de faltar a un control de forma justificada, la pregunta del certamen correspondiente a ese control será considerada como nota recuperativa.
+    \vspace{2mm}
+    \par En caso de faltar a un certamen de forma justificada, al final del semestre, en una fecha y horario por determinar, se realizará una evaluación recuperativa para ese certamen.
+  \end{block}
+\end{frame}
+
+\only<article>{
+  \only<article>{\renewcommand{\refname}{Bibliografía sugerida}}
+  \begin{thebibliography}{}
+    \bibitem{Stewart}
+    James Stewart.
+    \newblock Cálculo - Trascendentes tempranas.
+    \onslide<2->{
+    \bibitem{Marsden}
+    Marsden \& Tromba
+    \newblock Cálculo Vectorial.
+    }
+    \onslide<3->{
+    \bibitem{Lay}
+    Lay D.
+    \newblock Algebra lineal y sus aplicaciones.
+    }
+  \end{thebibliography}
+}
+
+\end{document}

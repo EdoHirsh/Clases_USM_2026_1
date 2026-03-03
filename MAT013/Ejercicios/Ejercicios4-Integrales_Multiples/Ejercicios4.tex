@@ -1,0 +1,103 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage{dsfont,amsfonts}
+\usepackage{fancyhdr,multicol,multirow}
+\usepackage{graphicx,pgf,tikz,accents,multimedia,tcolorbox}
+\usepackage[top=3cm,bottom=2cm,left=2cm,right=2cm,headheight=1cm,headsep=1cm,footskip=1cm]{geometry}
+\usepackage[shortlabels]{enumitem}
+
+%! Archivo de comandos personalizados generales
+\input{../../Comandos.tex}
+
+%! Configuración de las enumeración
+% \usepackage[shortlabels]{enumitem} % facilita la personalización de listas funciona mejor en article
+% \renewcommand{\labelenumii}{\theenumi.\alph{enumii})}
+\renewcommand{\labelenumii}{\alph{enumii})}
+\renewcommand{\theenumii}{\alph{enumii}}
+\makeatletter
+\renewcommand{\p@enumii}{\theenumi.}
+\makeatother
+
+%! Datos de la Guía
+\input{../../Datos.tex}
+\newcommand{\GUIA}{Guía Integrales Múltiples}
+
+%! Encabezado de pagina
+\pagestyle{fancy}
+\fancyhead{}
+\setlength{\headheight}{56pt}
+\setlength{\headsep}{5mm}
+\setlength{\textheight}{22cm}
+\fancyhead[L]{
+  \textbf{\large Departamento de Matemática}\\[1mm]
+  \textbf{\large Universidad Técnica Federico Santa María}
+  \vspace{1mm}
+}
+\fancyhead[R]{
+  \begin{flushright}
+    \textbf{\large \GUIA}\\[1mm]
+    \textbf{\large \SIGLACURSO}
+    \vspace{-5mm}
+  \end{flushright}
+}
+
+%! Inicio del documento
+\begin{document}
+
+%! Encabezado
+\thispagestyle{empty}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=.9]{logo-dmat-vertical.pdf}
+\end{center}
+% \vspace{1mm}
+% \noindent\rule[0mm]{175mm}{0.1mm}
+
+%! Titulo
+\begin{center}
+  \textbf{\Large\SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \textbf{\Large\GUIA}\\
+  {\large\PROFESOR}\\
+  \FECHACORTO
+\end{center}
+\vspace{5mm}
+
+%! Ejercicios
+\begin{enumerate}
+  \item Cambie el orden de integración en las siguientes integrales dobles.
+    \begin{enumerate}
+      \item $\displaystyle\int_0^1\int_0^y f(x,y)\,dx\,dy$
+      \item $\displaystyle\int_0^2\int_{x^2}^4 f(x,y)\,dy\,dx$
+      \item $\displaystyle\int_1^2\int_0^{\ln(y)} f(x,y)\,dx\,dy$
+    \end{enumerate}
+  \vspace{2mm}
+  \item Calcule las siguientes integrales dobles, en las regiones dadas.
+    \begin{enumerate}
+      \item $\displaystyle\iint_D x^2y\,dA$, donde $D=\set{(x,y)\in\Real^2:\ 0\leq x\leq 1\wedge 0\leq y\leq 1}$
+      \item $\displaystyle\iint_D e^{x+3y}\,dA$, donde $D=\set{(x,y)\in\Real^2:\ 0\leq x\leq 1\wedge 0\leq y\leq 3}$
+      \item $\displaystyle\iint_D x^3\,dA$, donde $D=\set{(x,y)\in\Real^2:\ 1\leq x\leq e\wedge 0\leq y\leq\ln(x)}$
+      \item $\displaystyle\iint_D xy\,dA$, donde $D=\set{(x,y)\in\Real^2:\ x^2\leq y\leq 2x}$
+      \item $\displaystyle\iint_D x^2y\,dA$, donde $D$ esta encerrado por $y=0$ y $y=\sqrt{1-x^2}$
+      \item $\displaystyle\iint_D 2xy\,dA$, donde $D$ es la región triangular con vértices $(0,0)$, $(1,2)$ y $(0,3)$
+    \end{enumerate}
+  \vspace{2mm}
+  \item Use un cambio de variables para evaluar las siguientes integrales dobles.
+    \begin{enumerate}
+      \item $\displaystyle\iint_D \sen(x^2+y^2)\,dA$, $D$ es la región del primer cuadrante entre las circunferencias con centro en el origen y radios $1$ y $3$.
+      \item $\displaystyle\iint_R (x+y)e^{x^2-y^2}\,dA$, $R$ es la región encerrada por las rectas $x-y=0$, $x-y=2$, $x+y=0$ y $x+y=3$.
+      \item $\displaystyle\int_0^2\int_0^{\sqrt{2x-x^2}}\sqrt{x^2+y^2}\,dy\,dx$
+    \end{enumerate}
+  % \vspace{2mm}
+  \newpage
+  \item Calcule las siguientes integrales triples.
+    \begin{enumerate}
+      \item $\displaystyle\iiint_E xy+z^2\,dV$, donde $E=\set{(x,y,z)\in\Real^3:0\leq x\leq2\wedge 0\leq y\leq 1\wedge 0\leq z\leq 3}$.
+      \item $\displaystyle\int_0^1\int_{x}^{2x}\int_0^y 2xyz\,dz\,dy\,dx$
+      \item $\displaystyle\iiint_E e^{z/y}\,dV$, donde $E=\set{(x,y,z)\in\Real^3:0\leq y\leq 1\wedge y\leq x\leq 1\wedge 0\leq z\leq xy}$.
+      \item $\displaystyle\iiint_E x\,dV$, donde $E$ es la region acotada por el paraboloide $x=4y^2+4z^2$ y el plano $x=4$.
+    \end{enumerate}
+\end{enumerate}
+\end{document}

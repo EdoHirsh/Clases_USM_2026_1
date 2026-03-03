@@ -1,0 +1,949 @@
+% !TEX root = ./3-Diferenciabilidad_Varias_Variables_Slides.tex
+
+%! Datos del curso
+\input{../Datos.tex}
+
+%! Datos presentación
+\newcommand{\NOMBREDOCUMENTO}{Diferenciabilidad en varias variables}
+\author{\PROFESOR}
+\title[\SIGLACURSO]{\SIGLACURSO\ - \NOMBRECURSO\\ \NOMBREDOCUMENTO}
+\date[\FECHACORTO]{\FECHA}
+\institute[]{}
+
+\begin{document}
+
+\only<article>{
+%! Encabezado
+\thispagestyle{empty}
+\vspace*{-4cm}
+\begin{center}
+  \includegraphics[scale=.75]{logo-dmat-vertical.pdf}
+\end{center}
+% \vspace{1mm}
+% \noindent\rule[0mm]{175mm}{0.1mm}
+
+%! Titulo
+\begin{center}
+  \textbf{\Large\SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \textbf{\Large\NOMBREDOCUMENTO}\\
+  {\large\PROFESOR}\\
+  \FECHACORTO
+\end{center}
+\vspace{5mm}
+}
+
+\only<presentation>{
+\begin{frame}
+  \begin{center}
+  \includegraphics[scale=.6]{Logo_USM_MAT.pdf}
+  \end{center}
+  \titlepage
+  % \begin{center}\includegraphics[scale=.20]{Logo_Depto.pdf}\end{center}
+  \vspace{2cm}
+\end{frame}
+}
+
+%! tabla de contenidos completa
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+%! sección
+\section{Diferenciabilidad}
+\begin{frame}
+\sectionpage
+\end{frame}
+
+\begin{frame}
+\tableofcontents[currentsection]
+\end{frame}
+
+%! subsección
+\subsection{Derivadas Parciales}
+\begin{frame}
+\subsectionpage
+\end{frame}
+
+% \begin{frame} 
+% \tableofcontents[currentsubsection]
+% \end{frame}
+
+\begin{frame}
+  \begin{defn}
+    Sea $f: U\subseteq\Real^n \to \Real$ una función. La derivada parcial de $f$ con respecto a la variable $x_i$ en el punto $a=(a_1, \ldots, a_n)$, denotada por $f_{x_i}(a)$, es
+      $$f_{x_i}(a) = \lim_{h \to 0} \frac{f(a_1, \ldots, a_i + h, \ldots, a_n) - f(a_1, \ldots, a_n)}{h}.$$
+  \end{defn}
+  \onslide<2->{
+    \begin{rem}
+      \begin{itemize}
+        \item La derivada parcial $f_{x_i}(x_1,\ldots,x_n)$ define una función con dominio en $\Real^n$ y recorrido en $\Real$.
+        \item Las derivadas parciales de una función $f:U\subseteq\Real^n \to \Real$ también se denotan por 
+          $$\frac{\partial f}{\partial x_i}(a),\ \frac{\partial }{\partial x_i}f(a),\ D_i(f)(a),\ f_{x_i},\ D_i(f),\ \frac{\partial}{\partial x_i}f$$
+      \end{itemize}
+    \end{rem}
+  }
+\end{frame}
+
+\begin{frame}
+  \begin{eg}
+    \begin{enumerate}[<+->]
+      \item Sea $f(x,y) = x^2 + y^2$. Calcular $f_x(1,2)$ y $f_y(1,2)$.\\[0.25cm]
+      \item Sea $f(x,y) = x^2\cos(x^2-y^2)$. Calcular $f_x(x,y)$, $f_y(x,y)$.\\[0.5cm]
+    \end{enumerate}
+  \end{eg}
+\end{frame}
+
+\begin{frame}
+  También podemos calcular derivadas parciales de orden superior. Por ejemplo las segundas derivadas parciales de una función $f$ de dos variables son.\\
+  $$f_{xy} = \frac{\partial}{\partial y}\left(\frac{\partial f}{\partial x}\right) = \frac{\partial^2 f}{\partial y\partial x}$$
+  $$f_{yx} = \frac{\partial}{\partial x}\left(\frac{\partial f}{\partial y}\right) = \frac{\partial^2 f}{\partial x\partial y}$$
+  $$f_{xx} = \frac{\partial}{\partial x}\left(\frac{\partial f}{\partial x}\right) = \frac{\partial^2 f}{\partial x^2}$$
+  $$f_{yy} = \frac{\partial}{\partial y}\left(\frac{\partial f}{\partial y}\right) = \frac{\partial^2 f}{\partial y^2}$$
+\end{frame}
+
+\begin{frame}
+  \begin{eg}
+    \begin{enumerate}[<+->]
+      \item Sea $f(x,y) = x^2 + y^2$. Calcular $f_{xy}(1,2)$ y $f_{yx}(1,2)$.\\[0.25cm]
+      \item Sea $f(x,y) = x^2\cos(x^2-y^2)$. Calcular $f_{xy}(x,y)$, $f_{yx}(x,y)$.\\[0.5cm]
+    \end{enumerate}
+  \end{eg}
+\end{frame}
+
+\begin{frame}
+  \begin{thm}
+    Si $f:U\subseteq\Real^2\To\Real$, $U$ abierto, y $f_{xy}$ y $f_{yx}$ son continuas en $U$, entonces
+    $$f_{xy}(a,b)=f_{yx}(a,b)$$
+    para $(a,b)\in U$.
+  \end{thm}
+\end{frame}
+
+%! subsección
+\subsection{Diferenciabilidad}
+\begin{frame}
+\subsectionpage
+\end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsubsection]
+% \end{frame}
+
+\begin{frame}
+  El concepto de diferenciabilidad está fuertemente relacionado con el de aproximación lineal, este en una función de una variable se expresa como la existencia de la recta tangente a la gráfica de la función en un punto, como en la imagen.\\
+  \vspace{-0.5cm}
+  \begin{center}
+    \includegraphics[scale=0.5]{./imagenes/Funcion_Recta_Tangente.png}
+  \end{center}
+  \vspace{-0.5cm}
+  que a su vez está directamente relacionado con la existencia de la derivada en dicho punto.
+\end{frame}
+
+\begin{frame}
+  En varias variables, la diferenciabilidad se expresa como la existencia de un plano tangente a la gráfica de la función en un punto, como en la imagen\\
+  \vspace{-1.25cm}
+  \begin{center}
+    \includegraphics[scale=0.5]{./imagenes/Superficie_con_Plano_Tangente.png}
+  \end{center}
+  \vspace{-0.5cm}
+  que a su vez está directamente relacionado con la existencia de las derivadas parciales en dicho punto, pero la existencia de las derivadas parciales no garantiza la existencia del plano tangente.
+\end{frame}
+
+\begin{frame}
+  La imagen siguiente muestra una superficie que no es diferenciable en el punto $(0,0,0)$, pero que tiene derivadas parciales en dicho punto.\\
+  \vspace{-0.5cm}
+  \begin{center}
+    \includegraphics[scale=0.5]{./imagenes/Funcion_no_Dif_con_Derivadas_Direccionales.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \begin{defn}
+    Sea $f:U\subseteq\Real^n\To\Real$ y $\vec{a}\in U$. Diremos que $f$ es \textbf{diferenciable en $\boldsymbol{\vec{a}}$} si se cumplen las siguientes condiciones
+    \begin{enumerate}[<+->]
+      \item Existen las derivadas parciales de $f$ en $\vec{a}$.\\
+      \item $\displaystyle\lim_{\vec{h}\to\vec{0}}\dfrac{\abs{f(\vec{a}+\vec{h})-f(\vec{a})-\nabla f(\vec{a})\cdot\vec{h}}}{\norm{\vec{h}}}=0$\\
+    \end{enumerate}
+    \onslide<3->{
+    donde $\nabla f(\vec{a})=(f_{x_1}(\vec{a}),f_{x_2}(\vec{a}),\ldots,f_{x_n}(\vec{a}))$, $\vec{h}=(h_1,h_2,\ldots,h_n)$ y 
+    $$\nabla f(\vec{a})\cdot\vec{h}=\sum_{i=1}^{n}f_{x_i}(\vec{a})h_i$$
+    }
+  \end{defn}
+\end{frame}
+
+\begin{frame}
+  \begin{rem}
+    El vector $\nabla f(\vec{x})$ se llama el \textbf{gradiente de $\boldsymbol{f}$ en $\boldsymbol{\vec{x}}$}, su versión matricial
+    $$Df(\vec{x})=\left[\begin{array}{rrrr}f_{x_1}(\vec{x}) & f_{x_2}(\vec{x}) & \cdots & f_{x_n}(\vec{x})\end{array}\right]$$
+    se le llama la \textbf{derivada de $\boldsymbol{f}$ en $\boldsymbol{\vec{x}}$}. %o \textbf{derivada matricial de $f$ en $\vec{x}$}.
+  \end{rem}
+\end{frame}
+
+\begin{frame}
+  En $\Real^2$ el límite de la diferenciabilidad de una función $f(x,y)$ en un punto $(a,b)$ se puede escribir como
+  $$\lim_{(x,y)\to(a,b)}\dfrac{\abs{f(x,y)-f(a,b)-f_x(a,b)h-f_y(a,b)k}}{\sqrt{h^2+k^2}}=0$$
+  donde $h=x-a$ y $k=y-b$.
+\end{frame}
+
+\begin{frame}
+  La función
+  $$L(x,y)=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)$$
+  se llama \textbf{aproximación lineal de $\boldsymbol{f}$ en $\boldsymbol{(a,b)}$} o \textbf{plano tangente a la gráfica de $\boldsymbol{f}$ en $\boldsymbol{(a,b)}$}, que también se puede escribir como
+  $$z=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)$$
+  o
+  $$f_x(a,b)(x-a)+f_y(a,b)(y-b)-z+f(a,b)=0$$
+\end{frame}
+
+\begin{frame}
+  \begin{eg}
+    El plano tangente a la gráfica de la función $f(x,y)=x^2+y^2$ en el punto $(2,2)$ es
+    \onslide<2->{
+    $$z=4(x-2)+4(y-2)+8$$
+    o
+    $$4x+4y-z-8=0$$
+    }
+  \end{eg}
+\end{frame}
+
+\begin{frame}
+  \begin{thm}
+    Sea $f:U\subseteq\Real^n\To\Real$ y $\vec{a}\in U$. Si $f$ es diferenciable en $\vec{a}$, entonces $f$ es continua en $\vec{a}$.
+  \end{thm}
+  \onslide<2->{
+    \begin{thm}
+      Sea $f:U\subseteq\Real^n\To\Real$, con $U$ abierto. Si sus derivadas parciales son continuas en $U$, entonces $f$ es diferenciable en todo punto de $U$.
+    \end{thm}
+  }
+\end{frame}
+
+%! subsección
+\subsection{Derivadas Direccionales}
+\begin{frame}
+\subsectionpage
+\end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsubsection]
+% \end{frame}
+
+\begin{frame}
+  \begin{defn}
+    Sea $f:U\subseteq\Real^n\To\Real$ y $\vec{a}\in U$. La \textbf{derivada direccional de $f$ en $\vec{a}$ en la dirección de $\vec{v}$}, $\vec{v}$ un vector unitario, es
+    $$D_{\vec{v}}f(\vec{a})=\lim_{h\to0}\dfrac{f(\vec{a}+h\vec{v})-f(\vec{a})}{h}$$
+  \end{defn}
+\end{frame}
+
+\begin{frame}
+  \begin{thm}
+    Sea $f:U\subseteq\Real^n\To\Real$ y $\vec{a}\in U$. Si $f$ es diferenciable en $\vec{a}$, entonces
+    $$D_{\vec{v}}f(\vec{a})=\nabla f(\vec{a})\cdot\vec{v}$$
+    donde $\vec{v}$ es un vector unitario.
+  \end{thm}
+  \onslide<2->{
+    \begin{rem}
+      No siempre se cumple que $\vec{v}$ sea un vector unitario, en cuyo caso se calcula el vector unitario en la dirección de $\vec{v}$ como
+      $$\hat{v}=\dfrac{\vec{v}}{\norm{v}}$$
+    \end{rem}
+  }
+\end{frame}
+
+\begin{frame}
+  \begin{eg}
+    La derivada direccional de la función $f(x,y)=x^2+y^2$ en el punto $(2,2)$ en la dirección del vector $\vec{v}=(1,1)$ es
+    \onslide<2->{
+    \begin{eqnarray*}
+      D_{\hat{v}}f(2,2) &=& \nabla f(2,2)\cdot\frac{\vec{v}}{\norm{v}}\\
+      \onslide<3->{
+      &=& (4,4)\cdot\frac{(1,1)}{\sqrt{2}}\\
+      % &=& \frac{8}{\sqrt{2}}\\
+      &=& 4\sqrt{2}
+      }
+    \end{eqnarray*}
+    }
+  \end{eg}
+\end{frame}
+
+\begin{frame}
+  \begin{thm}
+    Sea $f:U\subseteq\Real^n\To\Real$, $f$ diferenciable en $U$ y $\vec{a}\in U$. Si $\nabla f(\vec{a})\neq\vec{0}$, y $f(\vec{a})=c$, entonces $\nabla f(\vec{a})$ es ortogonal al conjunto de nivel $f(\vec{x})=c$ en $\vec{a}$.
+  \end{thm}
+\end{frame}
+
+\begin{frame}
+  \begin{eg}
+    Sea $f(x,y)=x^2y+xy\cos(y)$. La recta tangente a la curva de nivel $f(x,y)=0$ en el punto $(1,0)$ es
+    \onslide<2->{
+    \begin{eqnarray*}
+      \nabla f(1,0) \cdot(x-1,y-0) &=& 0\\
+      \onslide<3->{
+      (0,2)\cdot(x-1,y) &=& 0\\
+      0(x-1)+2(y) &=& 0\\
+      y &=& 0
+      }
+    \end{eqnarray*}
+    }
+  \end{eg}
+\end{frame}
+
+\begin{frame}
+  \begin{thm}
+    Sea $f:U\subseteq\Real^n\to\Real$ y $\vec{a}\in U$. Si $f$ es diferenciable en $\vec{a}$, entonces la dirección de máximo crecimiento de $f$ en $\vec{a}$ es $\nabla f(\vec{a})$ y el máximo valor de crecimiento es $\norm{\nabla f(\vec{a})}$.
+  \end{thm}
+\end{frame}
+
+\begin{frame}
+  \begin{eg}
+    Encuentre la dirección de máximo crecimiento de la función $f(x,y)=4-(x-1)^2+(y-1)^2$ en el punto $(0,0)$. 
+  \end{eg}
+\end{frame}
+
+%! subsección
+\subsection{Ejercicios}
+\begin{frame}
+\subsectionpage
+\end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsubsection]
+% \end{frame}
+
+\begin{frame}{Ejercicios}
+  \begin{enumerate}
+    \item Encuentre las derivadas parciales de las siguientes funciones\\[0.25cm]
+      \begin{enumerate}
+        \item $f(x,y)=x^2y^3+2xy^2-3x^3y$
+        \item $f(x,y)=\cos(x^2y^2)$
+        \item $f(x,y)=\dfrac{x^2y}{x^2+y^2}$
+        \item $f(x,y)=\sqrt{1-x^2-y^2}$
+      \end{enumerate}
+    \vspace{0.5cm}
+    \item Encuentre las segundas derivadas parciales de las siguientes funciones\\[0.25cm]
+      \begin{enumerate}
+        \item $f(x,y)=x\sen(x+2y)$
+        \item $f(x,y)=\ln(\sqrt{x^2+y^2})$
+      \end{enumerate}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Ejercicios}
+  \begin{enumerate}
+    \setcounter{enumi}{2}
+    \item Encuentre la ecuación del plano tangente a las superficies dadas en los puntos dados\\[0.25cm]
+      \begin{enumerate}
+        \item $f(x,y)=x^2+3xy+y$ en $(2,2)$
+        \item $f(x,y)=x^2\cos(x-y)$ en $(\pi,0)$
+      \end{enumerate}
+    \vspace{0.5cm}
+    \item Use la aproximación lineal encontrada en el item anterior para estimar el valor de las siguientes funciones en los puntos dados\\[0.25cm]
+      \begin{enumerate}
+        \item $f(x,y)=x^2+3xy+y$ en $(2.1\ ,\ 1.9)$
+        \item $f(x,y)=x^2\cos(x-y)$ en $(3,2\ ,\ 0.9)$
+      \end{enumerate}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Ejercicios}
+  \begin{enumerate}
+    \setcounter{enumi}{4}
+    \item Calcule las derivadas direccionales de las siguientes funciones en los puntos y direcciones dadas\\[0.25cm]
+      \begin{enumerate}
+        \item $f(x,y)=2-x^2-y^2$ en $(1,1)$ en la dirección de $(1,0)$
+        \item $f(x,y)=\ln(x^2+y^2)$ en $(2,1)$ en la dirección de $(-1,2)$
+      \end{enumerate}
+    \vspace{0.25cm}
+    \item Encuentre la ecuación de la recta tangente a las curvas de nivel de las funciones dadas en los puntos dados\\[0.25cm]
+      \begin{enumerate}
+        \item $f(x,y)=x^2+y^2$ en $(1,1)$ en la curva de nivel $f(x,y)=2$
+        \item $f(x,y)=x\cos(x+y)$ en $(\pi,0)$ en la curva de nivel $f(x,y)=-\pi$
+      \end{enumerate}
+    \vspace{0.25cm}
+    \item Encuentre la dirección de máximo crecimiento de las siguientes funciones en los puntos dados\\[0.25cm]
+      \begin{enumerate}
+        \item $f(x,y)=y^2x$ en $(2,1)$
+        \item $f(x,y)=x^2+y^2$ en $(1,1)$
+      \end{enumerate}
+  \end{enumerate}
+\end{frame}
+
+%! sección
+\section{Diferenciabilidad en Funciones Vectoriales}
+\begin{frame}
+\sectionpage
+\end{frame}
+
+\begin{frame}
+\tableofcontents[currentsection]
+\end{frame}
+
+%! subsección
+\subsection{Calculo Diferencial en Funciones Vectoriales}
+\begin{frame}
+\subsectionpage
+\end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsubsection]
+% \end{frame}
+
+\begin{frame}
+  \begin{defn}
+    Sea $U\subseteq\Real^n$ abierto, $F:U\To\Real^m$ y $\vec{a}\in\Real^n$ un punto de acumulación de $U$. Diremos que $\vec{L}\in\Real^m$ es el \textbf{límite de $F$ cuando $\vec{x}$ tiende a $\vec{a}$}, si y solo si
+    $$\forall\epsilon>0\ \exists\delta>0\ \forall\vec{x}\in U\ \norm{\vec{x}-\vec{a}}<\delta\Rightarrow\norm{F(\vec{x})-\vec{L}}<\epsilon$$
+    y lo denotaremos
+    $$\lim_{\vec{x}\to\vec{a}}F(\vec{x})=\vec{L}$$
+  \end{defn}
+\end{frame}
+
+\begin{frame}
+  \begin{thm}
+    Sea $U\subseteq\Real^n$ abierto, $F:U\To\Real^m$ y $\vec{a}\in\Real^n$ un punto de acumulación de $U$. Si $F=(f_1,f_2,\ldots,f_m)$, entonces
+    $$\lim_{\vec{x}\to\vec{a}}F(\vec{x})=\vec{L}\Longleftrightarrow\lim_{\vec{x}\to\vec{a}}f_i(\vec{x})=L_i,\ i=1,2,\ldots,m$$
+    donde $\vec{L}=(L_1,L_2,\ldots,L_m)$
+  \end{thm}
+\end{frame}
+
+\begin{frame}
+  \begin{defn}
+    Sea $F:U\subseteq\Real^n\To\Real^m$ y $\vec{a}\in U$. Diremos que $f$ es \textbf{continua en $\vec{a}$} si y solo si
+    $$\lim_{\vec{x}\to\vec{a}}F(\vec{x})=f(\vec{a})$$
+  \end{defn}
+  \onslide<2->{
+    \begin{thm}
+      Sea $F:U\subseteq\Real^n\To\Real^m$ y $\vec{a}\in U$, si $F=(f_1,f_2,\ldots,f_m)$, entonces $F$ es continua en $\vec{a}$ si y solo si $f_i$ es continua en $\vec{a}$, $i=1,2,\ldots,m$.
+    \end{thm}
+  }
+\end{frame}
+
+\begin{frame}
+  \begin{defn}
+    Sea $F:U\subseteq\Real^n\To\Real^m$ y $\vec{a}\in U$. Diremos que $F$ es \textbf{diferenciable en $\vec{a}$} si y solo si existe una matriz $A\in\mathcal{M}_{m\times n}(\Real)$ tal que
+    $$\lim_{\vec{h}\to\vec{0}}\dfrac{\norm{F(\vec{a}+\vec{h})-F(\vec{a})-A\vec{h}}}{\norm{\vec{h}}}=0$$
+    y denotaremos
+    $$D(F)(\vec{a})=A$$
+  \end{defn}
+  \onslide<2->{
+    \begin{thm}
+      Sea $F:U\subseteq\Real^n\To\Real^m$ y $\vec{a}\in U$. Si $F=(f_1,f_2,\ldots,f_m)$, entonces $F$ es diferenciable en $\vec{a}$ si y solo si $f_i$ es diferenciable en $\vec{a}$, $i=1,2,\ldots,m$.
+    \end{thm}
+  }
+\end{frame}
+
+\begin{frame}
+  \begin{rem}
+    Si $F:U\subseteq\Real^n\To\Real^m$ y $\vec{a}\in U$, entonces $D(F)(\vec{a})$ es la matriz jacobiana de $F$ en $\vec{a}$.
+    $$D(F)(\vec{a})=\begin{pmatrix}
+      \dfrac{\partial f_1}{\partial x_1}(\vec{a}) & \dfrac{\partial f_1}{\partial x_2}(\vec{a}) & \cdots & \dfrac{\partial f_1}{\partial x_n}(\vec{a})\\
+      \dfrac{\partial f_2}{\partial x_1}(\vec{a}) & \dfrac{\partial f_2}{\partial x_2}(\vec{a}) & \cdots & \dfrac{\partial f_2}{\partial x_n}(\vec{a})\\
+      \vdots & \vdots & \ddots & \vdots\\
+      \dfrac{\partial f_m}{\partial x_1}(\vec{a}) & \dfrac{\partial f_m}{\partial x_2}(\vec{a}) & \cdots & \dfrac{\partial f_m}{\partial x_n}(\vec{a})\end{pmatrix}=
+      \begin{pmatrix}
+        \nabla f_1(\vec{a})\\
+        \nabla f_2(\vec{a})\\
+        \vdots\\
+        \nabla f_m(\vec{a})
+      \end{pmatrix}
+    $$
+    que también se denota por
+    $$D(F)(\vec{a})=D_{\vec{x}}(F)(\vec{a})=D_{(x_1,x_2,\ldots,x_n)}(F)(\vec{a})$$
+  \end{rem}
+\end{frame}
+
+\begin{frame}
+  \begin{egs}
+    Calcule la matriz jacobiana de las siguientes funciones.
+    \begin{enumerate}[<+->]
+      \item $\displaystyle f(x,y)=\left(x^2+y^2,x^2-y^2,y^2-x^2\right)$\\[0.25cm]
+      \item $\displaystyle f(x,y,z)=\left(3x+y-2z,2x-3y+z\right)$\\[0.25cm]
+    \end{enumerate}
+  \end{egs}
+\end{frame}
+
+%! subsección
+\subsection{Regla de la Cadena}
+\begin{frame}
+\subsectionpage
+\end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsubsection]
+% \end{frame}
+
+\begin{frame}
+  \begin{thm}
+    Sean $f:U\subseteq\Real^2\To\Real$ y $g:V\subseteq\Real\To\Real^2$, funciones diferenciables, digamos $g(t)=(x(t),y(t))$, entonces
+    \begin{eqnarray*}
+      \dfrac{d}{dt}f(x(t),y(t)) &=& f_x(x(t),y(t))x'(t)+f_y(x(t),y(t))y'(t)
+    \end{eqnarray*}
+    \onslide<2->{
+    en notación de Leibniz
+    $$\dfrac{df}{dt}=\dfrac{\partial f}{\partial x}\dfrac{dx}{dt}+\dfrac{\partial f}{\partial y}\dfrac{dy}{dt}$$
+    }
+  \end{thm}
+\end{frame}
+
+\begin{frame}
+  \begin{egs}
+    \begin{enumerate}[<+->]
+      \item Sea $f(x,y)=x^2+y^2$ y $g(t)=(\cos(t),\sen(t))$. Calcule $\dfrac{df}{dt}$.\\[0.5cm]
+      \item Sea $f(x,y)=x^2\cos(x^2-y^2)$ y $g(t)=(t,t^2)$. Calcule $\dfrac{df}{dt}$.
+    \end{enumerate}
+  \end{egs}
+\end{frame}
+
+\begin{frame}
+  \begin{thm}
+    Sean $f:U\subseteq\Real^2\To\Real$ y $g:V\subseteq\Real^2\To\Real^2$, funciones diferenciables, digamos $g(u,v)=(x(u,v),y(u,v))$, entonces
+    \begin{eqnarray*}
+      \dfrac{\partial}{\partial u}f(x,y) &=& f_x(x,y)x_u(u,v)+f_y(x,y)y_u(u,v)\\
+      \dfrac{\partial}{\partial v}f(x,y) &=& f_x(x,y)x_v(u,v)+f_y(x,y)y_v(u,v)
+    \end{eqnarray*}
+    \onslide<2->{
+    en notación de Leibniz
+    \begin{eqnarray*}
+      \dfrac{\partial f}{\partial u} &=& \dfrac{\partial f}{\partial x}\dfrac{\partial x}{\partial u}+\dfrac{\partial f}{\partial y}\dfrac{\partial y}{\partial u}\\
+      \dfrac{\partial f}{\partial v} &=& \dfrac{\partial f}{\partial x}\dfrac{\partial x}{\partial v}+\dfrac{\partial f}{\partial y}\dfrac{\partial y}{\partial v}
+    \end{eqnarray*}
+    }
+  \end{thm}
+\end{frame}
+
+\begin{frame}
+  \begin{eg}
+    Sea $f(x,y)=x^2y^3$ y $g(u,v)=(v\cos(u),v\sen(u))$. Calcule $\dfrac{\partial f}{\partial u}$ y $\dfrac{\partial f}{\partial v}$.
+  \end{eg}
+\end{frame}
+
+\begin{frame}
+  \begin{thm}[Regla de la cadena]
+    Sea $F:U\subseteq\Real^n\To\Real^m$ y $G:V\subseteq\Real^m\To\Real^p$ tales que $F(U)\subseteq V$. Si $F$ es diferenciable en $\vec{a}\in U$ y $G$ es diferenciable en $F(\vec{a})$, entonces $G\circ F$ es diferenciable en $\vec{a}$ y
+    $$D(G\circ F)(\vec{a})=D(G)(F(\vec{a}))\cdot D(F)(\vec{a})$$
+  \end{thm}
+\end{frame}
+
+\begin{frame}
+  \begin{rem}
+    Si tenemos $F:\Real^2\To\Real^3$, digamos $F(u,v)=(f(u,v),g(u,v),h(u,v))$, entonces
+    $$D_{(u,v)}(F)=\begin{pmatrix}
+      f_u & f_v\\
+      g_u & g_v\\
+      h_u & h_v
+    \end{pmatrix}$$
+    si ademas tenemos $G:\Real^2\To\Real^2$, digamos $G(s,t)=(u(s,t),v(s,t))$, entonces
+    $$D(F\circ G)(s,t)=D_{(u,v)}(F)(G(s,t))\cdot D_{(s,t)}(G)(s,t)$$
+    matricialmente
+    \resizebox*{\textwidth}{!}{$\displaystyle D(F\circ G)(s,t)=\begin{pmatrix}
+      f_u & f_v\\
+      g_u & g_v\\
+      h_u & h_v
+    \end{pmatrix}\cdot\begin{pmatrix}
+      u_s & u_t\\
+      v_s & v_t
+    \end{pmatrix}=
+    \begin{pmatrix}
+      f_u u_s+f_v v_s & f_u u_t+f_v v_t\\
+      g_u u_s+g_v v_s & g_u u_t+g_v v_t\\
+      h_u u_s+h_v v_s & h_u u_t+h_v v_t
+    \end{pmatrix}
+    $}
+  \end{rem}
+\end{frame}
+
+\begin{frame}
+  \begin{eg}
+    Si $f(u,v,w)=(u^2+v^2+w^2,u^2+v^2-w^2)$ y $g(s,t)=(2s+3t,s-2t)$, calcule $D(g\circ f)(1,1,1)$.
+  \end{eg}
+\end{frame}
+
+%! subsección
+\subsection{Teorema de la Función Implícita}% e Inversa}
+\begin{frame}
+\subsectionpage
+\end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsubsection]
+% \end{frame}
+
+\begin{frame}
+  \begin{thm}
+    Sea $F:U\subseteq\Real^2\To\Real$ una función diferenciable en $U$ si la ecuación
+    $$F(x,y)=0$$
+    define implícitamente a $y$ como una función de $x$, entonces
+    $$\dfrac{dy}{dx}=-\dfrac{F_x(x,y)}{F_y(x,y)}$$
+  \end{thm}
+\end{frame}
+
+\begin{frame}
+  \begin{eg}
+    Determine $y'$ si $x^3+y^3=6xy$.
+  \end{eg}
+\end{frame}
+
+\begin{frame}
+  \begin{thm}
+    Sea $F:U\subseteq\Real^3\To\Real$ una función diferenciable en $U$ si la ecuación
+    $$F(x,y,z)=0$$
+    define implícitamente a $z$ como una función de $x$ y $y$, entonces
+    \begin{eqnarray*}
+      \dfrac{\partial z}{\partial x} &=& -\dfrac{F_x(x,y,z)}{F_z(x,y,z)}\\
+      \dfrac{\partial z}{\partial y} &=& -\dfrac{F_y(x,y,z)}{F_z(x,y,z)}
+    \end{eqnarray*}
+  \end{thm}
+\end{frame}
+
+\begin{frame}
+  \begin{eg}
+    Determine $\dfrac{\partial z}{\partial x}$ y $\dfrac{\partial z}{\partial y}$ si $x^3+y^3+z^3+6xyz=1$.
+  \end{eg}
+\end{frame}
+
+\begin{frame}
+  \begin{thm}[Teorema de la función implícita]
+    Sea $F:U\subseteq\Real^{n+m}\To\Real^m$ una función diferenciable en $U$ y $(\vec{a},\vec{b})\in U$ tal que $F(\vec{a},\vec{b})=\vec{0}$ y $\det(D_{\vec{y}}F(\vec{a},\vec{b}))\neq0$. Entonces existe un entorno $V$ de $\vec{a}$ en $\Real^n$, un entorno $W$ de $\vec{b}$ en $\Real^m$ y una única función diferenciable $g:V\To W$ tal que $g(\vec{a})=\vec{b}$ y
+    $$F(\vec{x},g(\vec{x}))=\vec{0},\ \forall \vec{x}\in V$$
+    además, para cada $\vec{x}\in V$
+    $$Dg(\vec{x})=-\left(D_{\vec{y}}F(\vec{x},g(\vec{x}))\right)^{-1}\cdot D_{\vec{x}}F(\vec{x},g(\vec{x}))$$
+  \end{thm}
+\end{frame}
+
+\begin{frame}
+  \begin{eg}
+    las ecuaciones
+      \begin{eqnarray*}
+        x^2+xy+y^2+z^2-2u^3+3uv-5 &=& 0\\
+        x^2+y^2+z^2-u^2-v^2-3 &=& 0
+      \end{eqnarray*}
+    definen implícitamente a $(u,v)$ como una función de $(x,y,z)$\\[2mm]
+    \onslide<2->{Tomando
+      $$F(x,y,z,u,v)=(x^2+xy+y^2+z^2-2u^3+3uv-5,x^2+y^2+z^2-u^2-v^2-3)$$
+      obtenemos
+      \resizebox*{\textwidth}{!}{
+        $\displaystyle D_{(x,y,z)}(F)=\begin{pmatrix}
+          2x+y & x+2y & 2z\\
+          2x & 2y & 2z
+        \end{pmatrix}
+        \ \text{ y }\ 
+        D_{(u,v)}(F)=\begin{pmatrix}
+          -6u+3v & 3u\\
+          -2u & -2v
+        \end{pmatrix}$
+      }\\
+      }
+    \onslide<3->{
+      por lo que
+      $$D_{(x,y,z)}(u,v)=-\begin{pmatrix}
+        -6u+3v & 3u\\
+        -2u & -2v
+      \end{pmatrix}^{-1}\cdot\begin{pmatrix}
+        2x+y & x+2y & 2z\\
+        2x & 2y & 2z
+      \end{pmatrix}$$
+      }    
+  \end{eg}
+\end{frame}
+
+\begin{frame}
+  \begin{eg}
+    Si en el ejemplo anterior calculamos la derivada implícita en el punto $(x,y,z,u,v)=(1,1,1,1,1)$, obtenemos
+    \begin{eqnarray*}
+      D_{(x,y,z)}(u,v) &=& -\left(\begin{array}{rr}
+        -3 &  3\\
+        -2 & -2
+      \end{array}\right)^{-1}\cdot\begin{pmatrix}
+        3 & 3 & 2\\
+        2 & 2 & 2
+      \end{pmatrix}\\[2mm]
+      &=& -\left(\begin{array}{rr}
+        -\frac{1}{2} & \frac{3}{4}\\[2mm]
+        -\frac{1}{4} & -\frac{3}{8}
+      \end{array}\right)\cdot\begin{pmatrix}
+        3 & 3 & 2\\
+        2 & 2 & 2
+      \end{pmatrix}\\[2mm]
+      &=& \begin{pmatrix}
+        \frac{3}{4} & \frac{3}{4} & \frac{1}{2}\\[2mm]
+        \frac{1}{8} & \frac{1}{8} & \frac{1}{4}
+      \end{pmatrix}
+    \end{eqnarray*}
+  \end{eg}
+\end{frame}
+
+% \begin{frame}%! Revisar y reescribir (si decido incluirlo)
+%   \begin{thm}[Teorema de la función inversa]
+%     Sea $F:U\subseteq\Real^n\To\Real^n$ una función diferenciable en $U$ y $\vec{a}\in U$ tal que $\det(D(F)(\vec{a}))\neq0$. Entonces existe un entorno $V$ de $\vec{a}$ en $\Real^n$, un entorno $W$ de $F(\vec{a})$ en $\Real^n$ y una única función diferenciable $G:W\To V$ tal que $G(F(\vec{a}))=\vec{a}$ y
+%     $$F(G(\vec{y}))=\vec{y},\ \forall \vec{y}\in W$$
+%     además, para cada $\vec{y}\in W$
+%     $$D(G)(\vec{y})=\left(D(F)(G(\vec{y}))\right)^{-1}$$
+%   \end{thm}
+% \end{frame}
+
+%! subsección
+\subsection{Ejercicios}
+\begin{frame}
+\subsectionpage
+\end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsubsection]
+% \end{frame}
+
+\begin{frame}{Ejercicios}
+  \vspace{-0.5cm}
+  \begin{enumerate}
+    \item Calcule usando la regla de la cadena\\[0.25cm]
+      \begin{enumerate}
+        \item $\frac{df}{dt}$ si $f(x,y)=\cos(x+4y)$ y $(x(t),y(t))=(5t^4,1/t)$.\\[0.25cm]
+        \item $\frac{df}{dt}$ si $f(x,y)=\sqrt{1+x^2+y^2}$ y $(x(t),y(t))=(\ln(t),\cos(t))$.\\[0.25cm]
+        \item $f_u$ y $f_v$, si $f(x,y)=\arcsen(x-y)$, $x(u,v)=u^2+v^2$ y $y(u,v)=1-2uv$.\\[0.25cm]
+        \item $f_u$ y $f_v$, si $f(r,\theta)=e^r\cos(\theta)$, $r(u,v)=uv$ y $\theta(u,v)=\sqrt{u^2+v^2}$.\\[0.25cm]
+      \end{enumerate}
+    \vspace{5mm}
+    \item Usando regla de la cadena, exprese matricialmente $D_{(s,t)}(u,v)$ donde para $x(s,t)=\cos(st)$, $y(s,t)=s\ln(t)$, $u(x,y)=x^2+xy-y^2$ y $v(x,y)= x^2y+y^3$. Evalúe en $s=\pi$ y $t=1$
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Ejercicios}
+  \vspace{-0.5cm}
+  \begin{enumerate}
+    \setcounter{enumi}{2}
+    \item Calcule usando derivación implícita.\\[0.25cm]
+      \begin{enumerate}
+        \item $y'$ si sabe que $y\cos(x)=x^2+y^2$.\\[0.25cm]
+        \item $z_x$ y $z_y$ si sabe que $yz+x\ln(y)=z^2$.\\[0.25cm]
+      \end{enumerate}
+    \vspace{5mm}
+    \item Usando derivación implícita, exprese matricialmente $D_{(x,y)}(u,v)$ donde $u$ y $v$ se definen implícitamente por las ecuaciones.
+    $$\begin{array}{rcl|}
+      x^2+y^2+u^2+v^2-15 & = & 0\\
+      x^2+y^2-u^2+v-13   & = & 0\\
+      \hline
+    \end{array}$$
+    y evalúe la $D_{(x,y)}(u,v)$ en el punto $(x,y,u,v)=(1,2,-1,3)$
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Ejercicios}
+  \vspace{-0.5cm}
+  \begin{enumerate}
+    \setcounter{enumi}{4}
+    \item si $f(x,y)$ es diferenciable, $x=u^2-v^2$ e $y=v^2-u^2$, demuestre que
+      $$v\dfrac{\partial f}{\partial u}+u\dfrac{\partial f}{\partial v}=0$$
+    \item Un fabricante ha modelado su producción anual como una función $P$ (el valor de toda la producción en millones de dólares) como una función de Cobb-Douglas
+      $$P(L,K)=A\cdot L^{\alpha}\cdot K^{\beta}$$
+      donde $L$ es el número de trabajadores empleados, $K$ es el capital invertido, $A$ es una constante, y $\alpha$ y $\beta$ son constantes positivas, con $\alpha+\beta$=1. Si el número de trabajadores empleados y el capital invertido están cambiando a una razón constante de $2$ por año, ¿cuál es la razón de cambio de la producción cuando $L=100$ y $K=100$?\\[0.25cm]
+  \end{enumerate}
+\end{frame}
+
+%! sección
+\section{Optimización}
+\begin{frame}
+\sectionpage
+\end{frame}
+
+\begin{frame}
+\tableofcontents[currentsection]
+\end{frame}
+
+%! subsección
+\subsection{Máximos y Mínimos Locales}
+\begin{frame}
+\subsectionpage
+\end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsubsection]
+% \end{frame}
+
+\begin{frame}
+  \begin{defn}
+    Sea $f:U\subseteq\Real^n\To\Real$ y $\vec{a}\in U$. 
+    \begin{itemize}[<+->]
+      \item Diremos que $f$ tiene un \textbf{máximo local o relativo en $\boldsymbol{\vec{a}}$} si existe un número $\varepsilon>0$ tal que
+        $$f(\vec{a})\geq f(\vec{x})$$
+        para todo $\vec{x}\in B(\vec{a},\varepsilon)$.\\[0.25cm]
+      \item Diremos que $f$ tiene un \textbf{mínimo local o relativo en $\boldsymbol{\vec{a}}$} si existe un número $\varepsilon>0$ tal que 
+        $$f(\vec{a})\leq f(\vec{x})$$
+        para todo $\vec{x}\in B(\vec{a},\varepsilon)$.
+    \end{itemize}
+  \end{defn}
+\end{frame}
+
+\begin{frame}
+  \begin{thm}
+    Sea $f:U\subseteq\Real^n\To\Real$ y $\vec{a}\in U$. Si $f$ tiene un máximo o mínimo relativo en $\vec{a}$ y $f$ es diferenciable en $\vec{a}$, entonces $\nabla f(\vec{a})=\vec{0}$.
+  \end{thm}
+  \onslide<2->{
+  \begin{rem}
+    \begin{itemize}
+      \item Si $\nabla f(\vec{a})=\vec{0}$, entonces $\vec{a}$ es un \textbf{punto crítico} de $f$.
+      \item No todos los puntos críticos son máximos o mínimos relativos.
+    \end{itemize}
+  \end{rem}
+  }
+\end{frame}
+
+\begin{frame}
+  \begin{eg}
+    Determine los puntos críticos de la función $f(x,y)=x^2+y^2-xy$.
+  \end{eg}
+\end{frame}
+
+\begin{frame}
+  \begin{thm}
+    Sea $f:U\subseteq\Real^2\To\Real$ con segundas derivadas parciales continuas en $U$, $\vec{a}\in U$, $\nabla f(\vec{a})=\vec{0}$ y
+      $$D(\vec{a})=f_{xx}(\vec{a})f_{yy}(\vec{a})-(f_{xy}(\vec{a}))^2$$
+    \begin{itemize}
+      \item<2-> Si $D(\vec{a})>0$ y $f_{xx}(\vec{a})>0$, entonces $f$ tiene un mínimo relativo en $\vec{a}$.
+      \item<3-> Si $D(\vec{a})>0$ y $f_{xx}(\vec{a})<0$, entonces $f$ tiene un máximo relativo en $\vec{a}$.
+      \item<4-> Si $D(\vec{a})<0$, entonces $f$ tiene un punto silla en $\vec{a}$.
+      \item<5-> Si $D(\vec{a})=0$, entonces no se puede determinar el tipo de punto crítico.
+    \end{itemize}
+  \end{thm}
+\end{frame}
+
+\begin{frame}
+  \begin{rem}
+    Matricialmente, podemos definir $H(f)(\vec{a})$ como
+    $$H(f)(\vec{a})=\left[\begin{array}{cc}f_{xx}(\vec{a}) & f_{xy}(\vec{a})\\ f_{yx}(\vec{a}) & f_{yy}(\vec{a})\end{array}\right]$$
+    a esta matriz se le llama \textbf{matriz hessiana} de $f$ en $\vec{a}$. En ese caso, 
+    $$D(\vec{a})=\det(H(f)(\vec{a}))$$
+  \end{rem}
+\end{frame}
+
+\begin{frame}
+  \begin{eg}
+    Determine los máximos y mínimos locales de la función $f(x,y)=x^4+y^4-xy+1$.
+  \end{eg}
+\end{frame}
+
+%! subsección
+\subsection{Máximos y Mínimos Globales}
+\begin{frame}
+\subsectionpage
+\end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsubsection]
+% \end{frame}
+
+\begin{frame}
+  \begin{defn}
+    Sea $f:U\subseteq\Real^n\To\Real$ y $\vec{a}\in U$.
+    \begin{itemize}
+      \item Diremos que $f$ tiene un \textbf{máximo global o absoluto} en $\vec{a}$ si
+        $$f(\vec{a})\geq f(\vec{x})$$
+        para todo $\vec{x}\in U$.\\[0.25cm]
+      \item Diremos que $f$ tiene un \textbf{mínimo global o absoluto} en $\vec{a}$ si
+        $$f(\vec{a})\leq f(\vec{x})$$
+        para todo $\vec{x}\in U$.
+    \end{itemize}
+  \end{defn}
+\end{frame}
+
+\begin{frame}
+  \begin{thm}[Weierstrass]
+    Sea $f:U\subseteq\Real^n\To\Real$, $U$ compacto, entonces $f$ alcanza un máximo y un mínimo absoluto en $U$.
+  \end{thm}
+\end{frame}
+
+\begin{frame}
+  \begin{eg}
+    Encuentre los máximos y mínimos absolutos de la función $f(x,y)=x^2-2xy+2y$ en la región $D=[0,3]\times[0,2]$.
+  \end{eg}
+\end{frame}
+
+%! subsección
+\subsection{Multiplicadores de Lagrange}
+\begin{frame}
+\subsectionpage
+\end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsubsection]
+% \end{frame}
+
+\begin{frame}
+  \begin{thm}
+    Sean $f:U\subseteq\Real^n\To\Real$ y $g:U\subseteq\Real^n\To\Real$, los puntos críticos de $f(\vec{x})$ restringida $g(\vec{x})=c$ son los puntos críticos de la función
+      $$L(\vec{x},\lambda)=f(\vec{x})-\lambda(g(\vec{x})-c)$$
+    donde $\lambda$ es una variable real, llamada \textnormal{\textbf{multiplicador de Lagrange}}.
+  \end{thm}
+\end{frame}
+
+\begin{frame}
+  \begin{thm}
+    Sean $f:U\subseteq\Real^n\To\Real$, $g:U\subseteq\Real^n\To\Real$ y $h:U\subseteq\Real^n\To\Real$, los puntos críticos de $f(\vec{x})$ restringida a $g(\vec{x})=0$ y $h(\vec{x})=0$ son los puntos críticos de la función
+      $$L(\vec{x},\lambda,\mu)=f(\vec{x})-\lambda g(\vec{x})-\mu h(\vec{x})$$
+      donde $\lambda$ y $\mu$ son variables reales.
+  \end{thm}
+\end{frame}
+
+\begin{frame}
+  \begin{egs}
+    \vspace{0.25cm}
+    \begin{enumerate}[<+->]
+      \item Determine los máximos y mínimos de la función $f(x,y)=x^2+2y^2$ sobre la circunferencia $x^2+y^2=1$.\\[0.25cm]
+      \item Determine el valor máximo de la función $f(x,y,z) = x+2y+3z$ sobre la curva de intersección del plano $x-y+z = 1$ y el cilindro $x^2+y^2 = 1$.
+    \end{enumerate}
+  \end{egs}
+\end{frame}
+
+\begin{frame}
+  \begin{eg}
+    Determine los máximos y mínimos de la función $f(x,y)=x^2+2y^2$ en el disco $x^2+y^2\leq 1$.
+  \end{eg}
+\end{frame}
+
+%! subsección
+\subsection{Ejercicios}
+\begin{frame}
+\subsectionpage
+\end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsubsection]
+% \end{frame}
+
+\begin{frame}{Ejercicios}
+  \vspace{-0.5cm}
+  \begin{enumerate}
+    \item Clasifique los puntos críticos de las siguientes funciones\\[0.25cm]
+      \begin{enumerate}
+        \item $f(x,y)=x^2+xy+y^2+y$
+        \item $f(x,y)=xe^{-2x^2-2y^2}$
+        \item $f(x,y)=y^2-x^2$
+        \item $f(x,y)=(x-y)(1-xy)$
+      \end{enumerate}
+    \vspace{0.25cm}
+    \item Encuentre los máximos globales de\\[0.25cm]
+      \begin{enumerate}
+        \item $f(x,y)=x^2+y^2-2x$ en la región triangular cerrada acotada por el triángulo de vertices $(0,-2)$, $(2,0)$ y $(0,2)$.
+        \item $f(x,y)=x^4+y^4-4xy+2$ con $(x,y)\in[0,3]\times[0,2]$\\[0.25cm]
+      \end{enumerate}
+    \item Usando multiplicadores de Lagrange, determine los máximos y mínimos de las siguientes funciones\\[0.25cm]
+      \begin{enumerate}
+        \item $f(x,y)=e^{xy}$ sujeta a la restricción $x^3+y^3 = 16$
+        \item $f(x,y)=x^2+y^2+z^2$ en la región $x^4+y^4+z^4 = 1$
+      \end{enumerate}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Ejercicios}
+  \begin{enumerate}
+    \setcounter{enumi}{3}
+    \item El plano $x+y+2z = 2$ al intersectar el paraboloide $z = x^2+y^2$ forma una elipse. Encuentre los puntos de la elipse que son los más cercanos y los más lejanos al origen.\\[0.25cm]
+    \item La base de un acuario de volumen $V$ está hecho de pizarra y los lados son de vidrio. Si la pizarra cuesta cinco veces más por unidad de área que el vidrio, determine las dimensiones del acuario que minimizan el costo de los materiales.\\[0.25cm]
+    \item Una caja de cartón sin tapa debe tener $32000\text{cm}^3$. Calcule las dimensiones que minimicen la cantidad de cartón utilizado.\\[0.25cm]
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Ejercicios}
+  \begin{enumerate}
+    \setcounter{enumi}{6}
+    \item La producción total $P$ de un cierto producto depende de la cantidad $L$ de mano de obra utilizada y de la cantidad $K$ de inversión de capital. El modelo de Cobb-Douglas dice que
+    $$P = AL^{\alpha}K^{1-\alpha}$$
+    bajo ciertos supuestos económicos, donde $A$ y $\alpha$ son constantes positivas y $\alpha<1$. Si el costo de una unidad de mano de obra es $m$ y el costo de una unidad de capital es $n$, y la compañía puede gastar sólo $p$ dólares como su presupuesto total. demuestre que los valores de $L$ y $K$ que maximizan de la producción $P$ sujeta a la restricción de presupuesto $mL+nK = p$ son
+    $$L = \dfrac{\alpha p}{m}\quad\text{y}\quad K = \dfrac{(1-\alpha)p}{n}$$
+  \end{enumerate}
+\end{frame}
+
+\end{document}

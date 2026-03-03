@@ -1,0 +1,150 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage{dsfont,amsfonts}
+\usepackage{fancyhdr,multicol,multirow}
+\usepackage{graphicx,pgf,tikz,accents,multimedia,tcolorbox}
+\usepackage[explicit]{titlesec}
+\usepackage[top=3cm,bottom=2cm,left=2cm,right=2cm,headheight=1cm,headsep=1cm,footskip=1cm]{geometry}
+\usepackage{pstricks-add}
+
+%! Configuración de las enumeración
+\usepackage[shortlabels]{enumitem}
+
+%! Archivo de comandos personalizados generales
+\input{../../Comandos.tex}
+
+%! Datos de la evaluación
+\input{../../Datos.tex}
+\newcommand{\EVALUACION}{Control 1 - 2do. semestre 2024}
+
+%! Encabezado de pagina
+\pagestyle{fancy}
+\fancyhead{}
+\setlength{\headheight}{56pt}
+\setlength{\headsep}{5mm}
+\setlength{\textheight}{22cm}
+\fancyhead[L]{
+  \textbf{\large Departamento de Matemática}\\[1mm]
+  \textbf{\large Universidad Técnica Federico Santa María}
+  \vspace{1mm}
+}
+\fancyhead[R]{
+  \begin{flushright}
+    \textbf{\large Pauta \EVALUACION}\\[1mm]
+    \textbf{\large \SIGLACURSO}
+    \vspace{-5mm}
+  \end{flushright}
+}
+
+\begin{document}
+
+%!Encabezado Portada
+\thispagestyle{plain}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=0.75]{logo-dmat-vertical.pdf}
+\end{center}
+\vspace{2mm}
+
+%!Titulo
+\begin{center}
+  \textbf{\Large \SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \textbf{\Large \EVALUACION}\\[2mm]
+  {\large\PROFESOR}\\
+\end{center}
+\vspace{5mm}
+
+%! Pregunta 1
+\vspace{5mm}
+\noindent\textbf{P1) } \textsf{[50 pts.]} Determine si las siguientes sucesiones convergen o divergen, y en caso de converger, encuentre su límite.
+\begin{enumerate}[a)]
+  \item $a_n = \dfrac{n^2-2}{\sqrt{n^2+1}}$
+  \item $b_n = \cos\left(\dfrac{\pi n^3+n^2}{4n^3 + 3}\right)$
+\end{enumerate}
+
+%! Pregunta 2
+\vspace{5mm}
+\noindent\textbf{P2) } \textsf{[50 pts.]} Determine si la siguiente serie es convergente o divergente, en caso de ser convergente encuentre su suma y en caso de ser divergente justifique.
+$$\sum_{n=1}^\infty \dfrac{3^{n-1}}{2\cdot5^n}$$
+
+%! Formulas
+\newpage
+\noindent\textsf{\large FORMULAS:}
+\vspace{3mm}
+
+Derivadas básicas:
+\begin{multicols}{2}
+  \begin{enumerate}
+    \item $(x^n)' = nx^{n-1}$
+    \item $(e^x)' = e^x$
+    \item $(\ln\abs{x})' = \frac{1}{x}$
+    \item $(\sen(x))' = \cos(x)$
+    \item $(\cos(x))' = -\sen(x)$
+    \item $(\tan(x))' = \sec^2(x)$
+    \item $(\cot(x))' = -\csc^2(x)$
+    \item $(\sec(x))' = \sec(x)\tan(x)$
+    \item $(\csc(x))' = -\csc(x)\cot(x)$
+    \item $(\arcsen(x))' = \frac{1}{\sqrt{1-x^2}}$
+    \item $(\arccos(x))' = -\frac{1}{\sqrt{1-x^2}}$
+    \item $(\arctan(x))' = \frac{1}{1+x^2}$
+  \end{enumerate}
+\end{multicols}
+
+% Integrales básicas:
+% \begin{multicols}{2}
+%   \begin{enumerate}
+%     \item $\displaystyle\int x^n dx = \frac{x^{n+1}}{n+1}+C$ (si $n\neq -1$).
+%     \item $\displaystyle\int \frac{1}{x}dx = \ln|x|+C$
+%     \item $\displaystyle\int e^x dx = e^x+C$
+%     \item $\displaystyle\int \ln(x) dx = x\ln(x)-x+C$
+%     \item $\displaystyle\int \sin(x) dx = -\cos x+C$
+%     \item $\displaystyle\int \cos(x) dx = \sin x+C$
+%     \item $\displaystyle\int \sec^2(x) dx = \tan x+C$
+%     \item $\displaystyle\int \csc^2(x) dx = -\cot x+C$
+%     \item $\displaystyle\int \frac{1}{1+x^2}dx = \arctan x+C$
+%     \item $\displaystyle\int \frac{1}{\sqrt{1-x^2}}dx = \arcsin x+C$
+%     \item $\displaystyle\int \sec(x) dx = \ln|\sec x+\tan x|+C$
+%     \item $\displaystyle\int \csc(x) dx = \ln|\csc x-\cot x|+C$
+%     \item $\displaystyle\int \tan(x) dx = -\ln|\cos x|+C$
+%     \item $\displaystyle\int \cot(x) dx = \ln|\sin x|+C$
+%     % \item $\displaystyle\int \cosh(x) dx = \sinh x+C$
+%     % \item $\displaystyle\int \sinh(x) dx = \cosh x+C$\\
+%   \end{enumerate}
+% \end{multicols}
+
+Identidades trigonométricas:
+\begin{multicols}{2}
+  \begin{enumerate}
+    \item $\cos^2(x)+\sen^2(x)=1$
+    \item $\tan^2(x)+1=\sec^2(x)$
+    \item $\sen(x\pm y)=\sen(x)\cos(y)\pm\cos(x)\sen(y)$
+    \item $\cos(x\pm y)=\cos(x)\cos(y)\mp\sen(x)\sen(y)$
+    \item $\sen(2x)=2\sen(x)\cos(x)$
+    \item $\cos(2x)=\cos^2(x)-\sen^2(x)$
+    \item $\cos^2(x)=\frac{1+\cos(2x)}{2}$
+    \item $\sen^2(x)=\frac{1-\cos(2x)}{2}$
+  \end{enumerate}
+\end{multicols}
+
+% Series de MacLaurin importantes:
+% $$\begin{array}{|cccc|}
+%   \hline
+%   \text{función } & & \text{serie} & \text{intervalo convergencia}\\
+%   \hline
+%   & & & \\
+%   \dfrac{1}{1-x} & & \displaystyle\sum_{n=0}^\infty x^n & (-1,1)\\
+%   & & & \\
+%   e^x & & \displaystyle\sum_{n=0}^\infty \frac{x^n}{n!} & \Real\\
+%   & & & \\
+%   \sen(x) & & \displaystyle\sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{(2n+1)!} & \Real\\
+%   & & & \\
+%   \cos(x) & & \displaystyle\sum_{n=0}^\infty (-1)^n\frac{x^{2n}}{(2n)!} & \Real\\
+%   & & & \\
+%   % \arctan x & & \displaystyle\sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{2n+1} & [-1,1]\\
+%   \hline
+% \end{array}$$
+
+\end{document}

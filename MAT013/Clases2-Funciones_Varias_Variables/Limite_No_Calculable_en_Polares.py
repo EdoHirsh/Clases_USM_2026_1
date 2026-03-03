@@ -1,0 +1,87 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+from skimage import measure
+from pathlib import Path
+
+def func_F(x,y,z):
+  return ((x**2)*y+y**3)-z*x
+
+
+def main():
+  # parametros de la figura
+  Texto_latex = True
+
+  # tamaaño de fuentes
+  tam_fuentes = 14
+
+  # configurar el texto en LaTeX
+  if Texto_latex:
+    plt.rcParams.update({
+      "text.usetex": True,
+      # "font.family": "Helvetica"
+      "font.size": tam_fuentes,
+    })
+
+  # Rango de valores para x,y,z
+  intervalo_x = [-5,5]
+  intervalo_y = [-5,5]
+  intervalo_z = [-5,5]
+
+  # Numero de subdivisiones en los ejes x, y, z
+  N=100
+
+  # puntos en los intervalos para el grafico
+  x_points = np.linspace(*intervalo_x,N)
+  y_points = np.linspace(*intervalo_y,N)
+  z_points = np.linspace(*intervalo_z,N)
+
+  # mallas para el grafico
+  x_mesh, y_mesh, z_mesh = np.meshgrid(x_points,y_points,z_points)
+
+  # Funcion para la superficie de nivel F(x,y,z)=0
+  F_Eval = func_F(x_mesh, y_mesh, z_mesh)
+  F_Level = 0
+
+  # delta para marching cubes
+  delta=[np.diff(x_points)[0],np.diff(y_points)[0],np.diff(z_points)[0]]
+
+  # Evaluacion de la superficie de nivel F(x,y,z)=0
+  verts, faces, _, _ = measure.marching_cubes(F_Eval,level=F_Level, spacing=delta)
+
+  # trasladar los vertices a los limites para que los ejes esten bien ubicados
+  verts += [intervalo_x[0],intervalo_y[0],intervalo_z[0]]
+
+  # Preparar grafico 3D
+  _ = plt.figure()
+  ax = plt.axes(projection='3d')
+
+  # Grafico 3D
+  ax.plot_trisurf(verts[:, 0], verts[:, 1], faces, verts[:, 2], cmap='gnuplot')#, lw=0)
+  # ax.set_aspect('equal')
+  ax.set_xlim(*intervalo_x)
+  ax.set_ylim(*intervalo_y)
+  ax.set_zlim(*intervalo_z)
+  ax.set_xlabel('$x$')
+  ax.set_ylabel('$y$')
+  ax.set_zlabel('$z$')
+
+  # Verificar si la carpeta imagenes existe, si no, crearla
+  carpeta = Path('./imagenes/')
+  if not carpeta.exists():
+    carpeta.mkdir()
+
+  # Obtener el nombre del archivo actual sin la extension
+  Nombre = Path(__file__).stem
+
+  # Nombre del archivo
+  archivo = f'{carpeta}/{Nombre}.png'
+
+  # Guardar la figura
+  plt.savefig(archivo, dpi=600, transparent=True)
+
+  # Mostrar la figura
+  plt.show()
+
+if __name__=='__main__':
+  main()

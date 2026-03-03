@@ -1,0 +1,200 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage{dsfont,amsfonts}
+\usepackage{fancyhdr,multicol,multirow}
+\usepackage{graphicx,pgf,tikz,accents,multimedia,tcolorbox}
+\usepackage[explicit]{titlesec}
+\usepackage[top=3cm,bottom=2cm,left=2cm,right=2cm,headheight=1cm,headsep=1cm,footskip=1cm]{geometry}
+\usepackage{pstricks-add}
+
+%! Configuración de las enumeración
+\usepackage[shortlabels]{enumitem}
+
+%! Archivo de comandos personalizados generales
+\input{../../Comandos.tex}
+
+%! Datos de la evaluación
+\input{../../Datos.tex}
+\newcommand{\EVALUACION}{Certamen 2 - 2do. semestre 2024}
+
+%! Encabezado de pagina
+\pagestyle{fancy}
+\fancyhead{}
+\setlength{\headheight}{56pt}
+\setlength{\headsep}{5mm}
+\setlength{\textheight}{22cm}
+\fancyhead[L]{
+  \textbf{\large Departamento de Matemática}\\[1mm]
+  \textbf{\large Universidad Técnica Federico Santa María}
+  \vspace{1mm}
+}
+\fancyhead[R]{
+  \begin{flushright}
+    \textbf{\large Pauta \EVALUACION}\\[1mm]
+    \textbf{\large \SIGLACURSO}
+    \vspace{-5mm}
+  \end{flushright}
+}
+
+\begin{document}
+
+%!Encabezado Portada
+\thispagestyle{plain}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=.75]{logo-dmat-vertical.pdf}
+\end{center}
+\vspace{2mm}
+
+%!Titulo
+\begin{center}
+  \textbf{\Large \SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \textbf{\Large Pauta \EVALUACION}\\[2mm]
+  {\large\PROFESOR}\\
+\end{center}
+\vspace{5mm}
+
+%! Pregunta 1
+\noindent\textbf{P1) } 
+\begin{enumerate}[a)]
+  \item Encuentre polinomio de Taylor de grado 4 centrado en $x=0$ de la función $f(x)=xe^{2x}$
+  \item Encuentre la matriz canónica de la transformación lineal $T:\Real^3\to\Real^3$ definida por
+    $$T(x,y,z) = (x+2y+z, 2x+3y+2z, 3x+4y+3z)$$
+\end{enumerate}
+
+\vspace{0.25cm}
+\noindent\textbf{Respuesta:} 
+\begin{enumerate}[a)]
+  \item Primero sabemos que la serie de Taylor de $e^x$ centrada en $x=0$ es
+    $$e^x = \sum_{n=0}^{\infty}\dfrac{x^n}{n!}$$
+    Ahora 
+    \begin{eqnarray*}
+      xe^{2x} &=& x\sum_{n=0}^{\infty}\dfrac{(2x)^n}{n!}\\
+        &=& x\sum_{n=0}^{\infty}\dfrac{2^nx^n}{n!}\\
+        &=& \sum_{n=0}^{\infty}\dfrac{2^nx^{n+1}}{n!}\\
+        &=& \dfrac{2^0x^1}{0!} + \dfrac{2^1x^2}{1!} + \dfrac{2^2x^3}{2!} + \dfrac{2^3x^4}{3!} + \dfrac{2^4x^5}{4!} +\cdots\\
+        &=& x + 2x^2 + 2x^3 + \dfrac{4}{3}x^4 + \dfrac{2}{3}x^5 + \cdots
+    \end{eqnarray*}
+    Por lo tanto el polinomio de Taylor de grado 4 centrado en $x=0$ de la función $f(x)=xe^{2x}$ es
+    $$T_4(x) = x + 2x^2 + 2x^3 + \dfrac{4}{3}x^4$$
+
+  \item Para encontrar la matriz canónica de la transformación lineal necesitamos calcular las imágenes de los vectores canónicos.
+    \begin{eqnarray*}
+      T(1,0,0) &=& (1,2,3)\\
+      T(0,1,0) &=& (2,3,4)\\
+      T(0,0,1) &=& (1,2,3)
+    \end{eqnarray*}
+    Por lo tanto la matriz canónica de la transformación lineal $T$ es
+    $$\begin{bmatrix}
+      1 & 2 & 1\\
+      2 & 3 & 2\\
+      3 & 4 & 3
+    \end{bmatrix}$$
+\end{enumerate}
+
+
+%! Pregunta 2
+\newpage
+\noindent\textbf{P2) } 
+\begin{enumerate}[a)]
+  \item grafique, usando al menos 2 curvas de nivel y un corte transversal, la función.
+  $$F(x,y)=4-x^2-y^2$$
+  \item Identifique y esboce el gráfico de la superficie de ecuación.
+  $$9x^2-y^2-4z^2-18x-8z = 31$$
+\end{enumerate}
+
+\vspace{0.25cm}
+\noindent\textbf{Respuesta:} 
+\begin{enumerate}[a)]
+  \item Primero vemos que las curvas de nivel para $z=k$ tienen la forma
+    $$4-x^2-y^2=k$$
+  reorganizando la ecuación tenemos
+    $$x^2+y^2=4-k$$
+  que son circunferencias de radio $\sqrt{4-k}$, por lo tanto las curvas de nivel para $k=0$ y $k=2$ son
+  \begin{center}
+    \includegraphics[scale=0.6]{imagenes/pregunta2a_Curvas_de_nivel.png}
+  \end{center}
+  ahora para el corte transversal, si $y=0$, entonces
+  $$f(x,0)=4-x^2$$
+  \newpage
+  gráficamente
+  \begin{center}
+    \includegraphics[scale=0.6]{imagenes/pregunta2a_Corte_Transversal.png}
+  \end{center}
+  finalmente el gráfico de la función es
+  \begin{center}
+    \includegraphics[scale=0.8]{imagenes/pregunta2a_Grefico_3D.png}
+  \end{center}
+
+  \item Para identificar la superficie reordenamos y completamos cuadrados
+    \begin{eqnarray*}
+      9x^2-y^2-4z^2-18x-8z &=& 31\\
+      9x^2-18x-y^2-4z^2-8z &=& 31\\
+      9(x^2-2x)-y^2-4(z^2+2z) &=& 31\\
+      9(x^2-2x+1)-9-y^2-4(z^2+2z+1)+4 &=& 31\\
+      9(x-1)^2-y^2-4(z+1)^2 &=& 36\\
+      \dfrac{(x-1)^2}{4}-\dfrac{y^2}{36}-\dfrac{(z+1)^2}{9} &=& 1
+    \end{eqnarray*}
+    que corresponde a una hiperboloide de dos hojas, cuyo gráfico es
+    \begin{center}
+      \includegraphics[scale=0.6]{imagenes/pregunta2b_cuadrica.png}
+    \end{center}
+\end{enumerate}
+
+
+%! Pregunta 3
+\newpage
+\noindent\textbf{P3) } Dada la función
+$$f(x,y) =\begin{cases}
+  \dfrac{x^2y}{x^2+y^2} & \text{si } x>y\\
+  x^2+xy-y^4 & \text{si } x\leq y
+\end{cases}$$
+Calcule.
+\begin{enumerate}[a)]
+  \item \textsf{[10 Pts.] } $\displaystyle\lim_{(x,y)\to(1,2)}f(x,y)$
+  \item \textsf{[10 Pts.] }$\displaystyle\lim_{(x,y)\to(2,1)}f(x,y)$
+  \item \textsf{[20 Pts.] }$\displaystyle\lim_{(x,y)\to(0,0)}f(x,y)$
+\end{enumerate}
+
+\vspace{0.25cm}
+\noindent\textbf{Respuesta:} 
+\begin{enumerate}[a)]
+  \item Como $(1,2)$ satisface $x<y$ entonces
+    \begin{eqnarray*}
+      \lim_{(x,y)\to(1,2)}f(x,y) &=& \lim_{(x,y)\to(1,2)} x^2+xy-y^4\\
+        &=& 1^2+1\cdot 2 - 2^4\\
+        &=& 1+2-16\\
+        &=& -13
+    \end{eqnarray*}
+  \item Como $(2,1)$ satisface $x>y$ entonces
+    \begin{eqnarray*}
+      \lim_{(x,y)\to(2,1)}f(x,y) &=& \lim_{(x,y)\to(2,1)} \dfrac{x^2y}{x^2+y^2}\\
+        &=& \dfrac{2^2\cdot 1}{2^2+1^2}\\
+        % &=& \dfrac{4}{4+1}\\
+        &=& \dfrac{4}{5}
+    \end{eqnarray*}
+  \item Como $(0,0)$ satisface $x=y$, entonces debemos separar en 2 casos
+    \begin{enumerate}[i)]
+      \item si $x>y$
+        \begin{eqnarray*}
+          \lim_{(x,y)\to(0,0)}f(x,y) &=& \lim_{(x,y)\to(0,0)} \dfrac{x^2y}{x^2+y^2}\\
+        \end{eqnarray*}
+        notemos que
+          $$0 \leq \abs{\dfrac{x^2y}{x^2+y^2}}\leq \abs{\dfrac{x^2y}{x^2}} = \abs{y}$$
+        luego como $\lim\limits_{(x,y)\to(0,0)}y=0$ por el teorema del sándwich
+          $$\lim_{(x,y)\to(0,0)}f(x,y) = 0$$
+      \item si $x\leq y$
+        \begin{eqnarray*}
+          \lim_{(x,y)\to(0,0)}f(x,y) &=& \lim_{(x,y)\to(0,0)} x^2+xy-y^4\\
+            &=& 0^2+0\cdot 0 - 0^4\\
+            &=& 0
+        \end{eqnarray*}
+    \end{enumerate}
+    Por lo tanto
+      $$\lim_{(x,y)\to(0,0)}f(x,y) = 0$$
+\end{enumerate}
+
+\end{document}

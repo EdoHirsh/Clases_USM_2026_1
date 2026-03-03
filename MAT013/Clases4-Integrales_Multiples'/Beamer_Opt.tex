@@ -1,0 +1,78 @@
+\mode<presentation>{
+
+%! block
+% block sin sombra
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+% block sin relleno
+\setbeamercolor{block title}{fg=structure, bg=white}
+
+%! frametitle
+% titulo de frame sin relleno
+\setbeamercolor{frametitle}{fg=structure, bg=white}
+
+%! barra de navegacion inferior
+% oculta barra inferior de navegación
+\setbeamertemplate{navigation symbols}{}
+
+%! title page
+\setbeamertemplate{title page}{%
+  \vbox{}
+  \vfill
+  % \vskip1cm
+  \begingroup
+    \centering
+    \begin{beamercolorbox}[rounded=true,shadow=true,sep=8pt,center]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%     
+    \end{beamercolorbox}%
+    \vskip1em\par
+    \vfill
+    \begin{beamercolorbox}[sep=2pt,center]{author}
+      \usebeamerfont{author}\insertauthor
+    \end{beamercolorbox}
+    \vfill
+    % \begin{beamercolorbox}[sep=8pt,center]{institute}
+    %   \usebeamerfont{institute}\insertinstitute
+    % \end{beamercolorbox}
+    % \vfill
+    \begin{beamercolorbox}[sep=3pt,center]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}%
+    \vskip0cm
+    {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+    \thispagestyle{empty}
+  \endgroup
+}
+
+%! logo al pie
+% \addtobeamertemplate{footline}{%
+%   \setlength\unitlength{1ex}%
+%   \begin{picture}(0,0)
+%     \put(140,2){\makebox(0,0)[bl]{
+%     \includegraphics[scale=.2]{Logo_Depto.pdf}
+%     }}
+%   \end{picture}%
+% }{}
+
+}
+
+%! Section title page
+% % section title page sin relleno
+% \setbeamercolor{section title}{fg=structure, bg=white}
+
+% % section title page customizada
+% \setbeamertemplate{section page}{%
+%   \vskip1em
+%   \begin{center}
+%     \Large\translate{Section} \insertsectionnumber\hspace{1em}%
+%   \end{center}
+%   \begin{beamercolorbox}[rounded=true,shadow=true,sep=12pt,center]{section title}
+%     \usebeamerfont{section title}\insertsectionhead\par
+%   \end{beamercolorbox}
+%   \vskip1em
+% }

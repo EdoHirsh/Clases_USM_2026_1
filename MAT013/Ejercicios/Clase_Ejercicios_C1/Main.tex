@@ -1,0 +1,148 @@
+% !TEX root = ./Clase_Ejercicios_C1_Slides.tex
+
+%! Carga de paquetes
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage{amsfonts,dsfont}
+\usepackage{fancyhdr,multicol,multirow}
+\usepackage{graphicx,pgf,tikz,accents,multimedia,tcolorbox}
+
+%! soluciona potencial problema de fuentes en math mode
+%\usefonttheme[onlymath]{serif}
+\usefonttheme{professionalfonts} 
+
+%! Personalización de colores
+%* colores necesarios en algunos documentos
+\newcommand{\red}[1]{{\color{red}{#1}}}
+\newcommand{\blue}[1]{{\color{blue}{#1}}}
+\definecolor{forestgreen}{rgb}{0.13, 0.55, 0.13}
+\newcommand{\green}[1]{{\color{forestgreen}{#1}}}
+\newcommand{\redbf}[1]{{\color{red}{\textbf{#1}}}}
+\newcommand{\violet}[1]{{\color{violet}{#1}}}
+%* Colores institucionales según documento oficial
+\definecolor{BlueUSM}{HTML}{004B85}
+\newcommand{\BlueUSM}[1]{{\color{BlueUSM}{#1}}}
+\definecolor{RedUSM}{HTML}{D60019}
+\newcommand{\RedUSM}[1]{{\color{RedUSM}{#1}}}
+\definecolor{GreenUSM}{HTML}{008452}
+\newcommand{\GreenUSM}[1]{{\color{GreenUSM}{#1}}}
+\definecolor{YellowUSM}{HTML}{F7AE00}
+\newcommand{\YellowUSM}[1]{{\color{YellowUSM}{#1}}}
+\definecolor{BlackUSM}{HTML}{000000}
+\newcommand{\BlackUSM}[1]{{\color{BlackUSM}{#1}}}
+\definecolor{LightBlackUSM}{cmyk}{0,0,0,0.7}
+\newcommand{\LightBlackUSM}[1]{{\color{LightBlackUSM}{#1}}}
+
+%! Beamer configuración básica
+\mode<article>{\usepackage{pgf,fancyhdr}}
+\mode<presentation> {
+\usetheme{Madrid}
+% Color del tema. (default es el azul tipo "puc")
+\usecolortheme[named=BlueUSM]{structure}
+%\setbeamercovered{transparent} % Transparencia.
+}
+%\setbeameroption{hide notes}
+%\setbeameroption{show notes}
+% left, bottom, or top. (default is right)
+%\setbeameroption{show notes on second screen=⟨location⟩}
+\newtranslation[to=spanish]{Section}{Secci\'on}
+\newtranslation[to=spanish]{Subsection}{Subsecci\'on}
+
+%! Beamer customizations
+\input{../../Beamer_Opt.tex}
+
+%! Archivo de comandos personalizados
+\input{../../Comandos.tex}
+
+%! Datos del curso
+\input{../../Datos.tex}
+
+%! Datos presentación
+\newcommand{\NOMBREDOCUMENTO}{Clase de Ejercicios Certamen 1}
+\author{\PROFESOR}
+\title[\SIGLACURSO]{\SIGLACURSO\ - \NOMBRECURSO\\ \NOMBREDOCUMENTO}
+\date[\FECHACORTO]{\FECHA}
+\institute[]{}
+
+%! Configuración de las enumeración
+% \usepackage[shortlabels]{enumitem} % facilita la personalización de listas funciona mejor en article
+\setbeamertemplate{enumerate items}{\arabic{enumi}.}
+\setbeamertemplate{enumerate subitem}{\alph{enumii})}
+\setbeamertemplate{enumerate subsubitem}{\roman{enumiii}.}
+
+\only<article>{
+  % limpia el pie de página en estilo fancy
+  \fancyfoot{}
+}
+
+%! Inicio del documento
+\begin{document}
+
+\only<article>{
+%! Encabezado
+\thispagestyle{empty}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=.75]{logo-dmat-vertical.pdf}
+\end{center}
+% \vspace{1mm}
+% \noindent\rule[0mm]{175mm}{0.1mm}
+%! Titulo
+\begin{center}
+  \Large\textbf{\SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \Large\textbf{\NOMBREDOCUMENTO}\\
+  {\large\PROFESOR}\\
+  \FECHACORTO
+\end{center}
+\vspace{5mm}
+}
+
+\only<presentation>{
+\begin{frame}
+  \begin{center}
+  \includegraphics[scale=.6]{Logo_USM_MAT.pdf}
+  \end{center}
+  \titlepage
+  \vspace{2cm}
+\end{frame}
+}
+
+\begin{frame}%{Parte 1}
+  \begin{enumerate}
+    \item Calcule.
+      \begin{enumerate}
+        \item $\lim\limits_{n\to\infty}\ln\left(\dfrac{2n^2+1}{n^3+n^2}\right)$
+        \item $\displaystyle\sum_{n=1}^{\infty}\dfrac{(-10)^{n+1}}{15^{n-1}}$
+      \end{enumerate}
+    \vspace{2mm}
+    \item Indique usando el criterio adecuado si las siguientes series convergen o divergen.
+      \begin{enumerate}
+        \item $\displaystyle\sum_{n=0}^{\infty}\dfrac{(-3)^n}{n!}$
+        \item $\displaystyle\sum_{n=1}^{\infty}\dfrac{2n+1}{\sqrt{n^4+2n}}$
+      \end{enumerate}
+    \vspace{2mm}
+    \item 
+      \begin{enumerate}
+        \item Encuentre el intervalo de convergencia de la serie 
+          $$\displaystyle\sum_{n=0}^{\infty}\dfrac{(3x)^n}{n^2+1}$$
+        \item Encuentre la serie de Maclaurin de la función $f(x)=x\cos(2x)$.
+        \item Use un polinomio de Taylor de grado 5 para aproximar el valor de $f(0.5)$.
+      \end{enumerate}
+  \end{enumerate}
+\end{frame}
+
+% \begin{frame}{Parte 2}
+%   \begin{enumerate}
+%     \setcounter{enumi}{2}
+%     \item 
+%     \vspace{5mm}
+%     \item 
+%     \begin{enumerate}
+%       \item 
+%       \item 
+%     \end{enumerate}
+%   \end{enumerate}
+% \end{frame}
+
+\end{document}

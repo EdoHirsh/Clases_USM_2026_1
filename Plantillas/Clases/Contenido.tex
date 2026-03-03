@@ -1,0 +1,107 @@
+% !TEX root = ./XXX.tex
+
+%! Datos del curso
+\input{../Datos.tex}
+
+%! Datos presentación
+\newcommand{\NOMBREDOCUMENTO}{Clase X}
+\author{\PROFESOR}
+\title[\SIGLACURSO]{\SIGLACURSO\ - \NOMBRECURSO\\ \NOMBREDOCUMENTO}
+\date[\FECHACORTO]{\FECHA}
+\institute[]{}
+
+%! Configuración de las enumeración
+% facilita la personalización de listas funciona mejor en article
+% \usepackage[shortlabels]{enumitem}
+\setbeamertemplate{enumerate items}{\arabic{enumi}.}
+\setbeamertemplate{enumerate subitem}{\alph{enumii})}
+\setbeamertemplate{enumerate subsubitem}{\roman{enumiii}.}
+
+%! Crea ambiente "mybox" para cajas de texto (en algunos documentos es necesario)
+\newtcolorbox{mybox}
+{
+  colframe = black!40,
+  colback  = black!3
+}
+\newtcolorbox{mybox2}
+{
+  colframe = black!40,
+  colback  = white
+}
+
+
+\begin{document}
+
+\only<article>{
+%! Encabezado
+\thispagestyle{empty}
+\vspace*{-4cm}
+\begin{center}
+  \includegraphics[scale=.75]{logo-dmat-vertical.pdf}
+\end{center}
+% \vspace{1mm}
+% \noindent\rule[0mm]{175mm}{0.1mm}
+
+%! Titulo
+\begin{center}
+  \textbf{\Large\SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \textbf{\Large\NOMBREDOCUMENTO}\\
+  {\large\PROFESOR}\\
+  \FECHACORTO
+\end{center}
+\vspace{5mm}
+}
+
+\only<presentation>{
+\begin{frame}
+  \begin{center}
+  \includegraphics[scale=.6]{Logo_USM_MAT.pdf}
+  \end{center}
+  \titlepage
+  % \begin{center}\includegraphics[scale=.20]{Logo_Depto.pdf}\end{center}
+  \vspace{2cm}
+\end{frame}
+}
+
+%! tabla de contenidos completa
+% \begin{frame}
+% \tableofcontents
+% \end{frame}
+
+%! sección
+\section{Inducción}
+% \begin{frame}
+% \sectionpage
+% \end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsection]
+% \end{frame}
+
+%! subsección
+% \subsection{}
+% \begin{frame}
+% \subsectionpage
+% \end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsubsection]
+% \end{frame}
+
+\begin{frame}{}
+\end{frame}
+
+%! subsección
+\subsection{ind}
+\begin{frame}
+\subsectionpage
+\end{frame}
+
+% \begin{frame}
+% \tableofcontents[currentsubsection]
+% \end{frame}
+
+\begin{frame}{}
+\end{frame}
+
+\end{document}

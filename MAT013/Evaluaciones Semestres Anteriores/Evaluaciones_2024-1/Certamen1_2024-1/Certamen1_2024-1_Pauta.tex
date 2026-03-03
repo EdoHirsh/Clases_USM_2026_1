@@ -1,0 +1,181 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage{dsfont,amsfonts}
+\usepackage{fancyhdr,multicol,multirow}
+\usepackage{graphicx,pgf,tikz,accents,multimedia,tcolorbox}
+\usepackage[explicit]{titlesec}
+\usepackage[top=3cm,bottom=2cm,left=2cm,right=2cm,headheight=1cm,headsep=1cm,footskip=1cm]{geometry}
+\usepackage{pstricks-add}
+
+%! Configuración de las enumeración
+\usepackage[shortlabels]{enumitem}
+
+%! Archivo de comandos personalizados generales
+\input{../../Comandos.tex}
+
+%! Datos de la evaluación
+\input{../../Datos.tex}
+\newcommand{\EVALUACION}{Certamen 1 - 1er. semestre 2024}
+
+%! Encabezado de pagina
+\pagestyle{fancy}
+\fancyhead{}
+\setlength{\headheight}{56pt}
+\setlength{\headsep}{5mm}
+\setlength{\textheight}{22cm}
+\fancyhead[L]{
+  \textbf{\large Departamento de Matemática}\\[1mm]
+  \textbf{\large Universidad Técnica Federico Santa María}
+  \vspace{1mm}
+}
+\fancyhead[R]{
+  \begin{flushright}
+    \textbf{\large Pauta \EVALUACION}\\[1mm]
+    \textbf{\large \SIGLACURSO}
+    \vspace{-5mm}
+  \end{flushright}
+}
+
+\begin{document}
+
+%!Encabezado Portada
+\thispagestyle{plain}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=.75]{logo-dmat-vertical.pdf}
+\end{center}
+\vspace{2mm}
+
+%!Titulo
+\begin{center}
+  \textbf{\Large \SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \textbf{\Large Pauta \EVALUACION}\\[2mm]
+  {\large\PROFESOR}\\
+\end{center}
+\vspace{5mm}
+
+%! Pregunta 1
+\noindent\textbf{P1) } Determine si las siguientes series convergen absolutamente, convergen condicionalmente o divergen.
+\begin{enumerate}[a)]
+  \item $\displaystyle\sum_{n=1}^{\infty}\dfrac{(-1)^{n-1}n}{n^2+9}$
+  \item $\displaystyle\sum_{n=1}^{\infty}\dfrac{\sen(n^2)}{n^2}$
+\end{enumerate}
+
+\vspace{2mm}
+\noindent\textbf{Respuesta:} 
+\begin{enumerate}[a)]
+  \item Primero analizaremos la convergencia absoluta, para esto debemos analizar la convergencia de
+  $$\sum_{n=1}^{\infty}\abs{\dfrac{(-1)^{n-1}n}{n^2+9}}=\sum_{n=1}^{\infty}\dfrac{n}{n^2+9}$$
+  Para esto utilizaremos el criterio de comparación en el límite con la serie
+  $$\sum_{n=1}^{\infty}\dfrac{1}{n}$$
+  calculando el límite
+  \begin{eqnarray*}
+    \lim_{n\to\infty}\dfrac{\dfrac{n}{n^2+9}}{\dfrac{1}{n}}&=&\lim_{n\to\infty}\dfrac{n^2}{n^2+9}\\
+    &=&\lim_{n\to\infty}\dfrac{1}{1+\dfrac{9}{n^2}}\\
+    &=&1
+  \end{eqnarray*}
+  luego ambas tienen el mismo comportamiento, y como sabemos que $\sum_{n=1}^{\infty}\frac{1}{n}$ diverge, luego $\sum_{n=1}^{\infty}\frac{(-1)^{n-1}n}{n^2+9}$ diverge, es decir, la serie original no converge absolutamente.\\
+  Ahora analizaremos la convergencia condicional, para esto analizaremos la convergencia de la serie usando el criterio de Leibniz, para esto debemos comprobar que el término general de la serie cumple con las condiciones del criterio, es decir, que sea decreciente y que tienda a cero.\\
+  Para analizar si decrece, calculamos la derivada del término general como función en $\Real$, es decir, con
+  $$f(x)=\dfrac{x}{x^2+9}$$
+  y calculamos la derivada
+  $$f'(x)=\dfrac{1(x^2+9)-x(2x)}{(x^2+9)^2}=\dfrac{9-x^2}{(x^2+9)^2}$$
+  y como $f'(x)<0$ para $x>3$, entonces la sucesión es decreciente para $n\geq 3$, además, como
+  \begin{eqnarray*}
+    \lim_{n\to\infty}\dfrac{n}{n^2+9}
+      &=& \lim_{n\to\infty}\dfrac{\frac{1}{n}}{1+\dfrac{9}{n^2}}\\
+      &=& 0
+  \end{eqnarray*}
+  entonces la serie cumple con las condiciones del criterio de Leibniz, por lo que la serie converge condicionalmente.\\
+
+  \item Para esta serie, primero también analizaremos la convergencia absoluta, para esto debemos analizar la convergencia de
+  $$\sum_{n=1}^{\infty}\abs{\dfrac{\sen(n^2)}{n^2}}$$
+  Para esto utilizaremos el criterio de comparación con la serie
+  $$\sum_{n=1}^{\infty}\dfrac{1}{n^2}$$
+  Ahora como
+  $$0\leq\abs{\dfrac{\sen(n^2)}{n^2}}\leq\dfrac{1}{n^2}$$
+  entonces por el criterio de comparación como la serie $\sum_{n=1}^{\infty}\frac{1}{n^2}$ converge, la serie $\sum_{n=1}^{\infty}\abs{\frac{\sen(n^2)}{n^2}}$ también converge, por lo que la serie.
+  $$\sum_{n=1}^{\infty}\dfrac{\sen(n^2)}{n^2}$$ 
+  converge absolutamente.
+\end{enumerate}
+
+
+%! Pregunta 2
+\newpage
+\noindent\textbf{P2) } Encuentre el intervalo de convergencia de las series de potencias.
+\begin{enumerate}[a)]
+  \item $\displaystyle\sum_{n=1}^{\infty}\dfrac{(-1)^n}{n^n}x^n$
+  \item $\displaystyle\sum_{n=1}^{\infty}\dfrac{(-3)^n}{n^2}x^n$
+\end{enumerate}
+
+\vspace{2mm}
+\noindent\textbf{Respuesta:} 
+\begin{enumerate}[a)]
+  \item Primero buscaremos el radio de convergencia de la serie, para esto usaremos el criterio de la raíz, es decir, calcularemos
+  \begin{eqnarray*}
+    \lim_{n\to\infty}\sqrt[n]{\abs{\dfrac{(-1)^n}{n^n}x^n}}
+      &=& \lim_{n\to\infty}\dfrac{1}{n}\abs{x}\\
+      &=& 0
+  \end{eqnarray*}
+  por lo que el radio de convergencia es $R=\infty$, es decir, la serie converge para todo $x\in\Real$.
+  \item Para esta serie, también buscaremos el radio de convergencia de la serie, para esto usaremos el criterio del cuociente, es decir, calcularemos
+  \begin{eqnarray*}
+    \lim_{n\to\infty}\abs{\dfrac{\frac{(-3)^{n+1}}{(n+1)^2}x^{n+1}}{\frac{(-3)^n}{n^2}x^n}}
+      &=& \lim_{n\to\infty}\abs{\dfrac{(-3)n^2}{(n+1)^2}x}\\
+      &=& \lim_{n\to\infty} 3\dfrac{n^2}{(n+1)^2}\abs{x}\\
+      &=& 3\abs{x}
+  \end{eqnarray*}
+  luego 
+  \begin{eqnarray*}
+    3\abs{x} &<& 1\\
+    \abs{x} &<& \dfrac{1}{3}
+  \end{eqnarray*}
+  por lo que el radio de convergencia es $R=\frac{1}{3}$, para identificar el intervalo de convergencia, debemos analizar los extremos, es decir, para $x=\frac{1}{3}$ y $x=-\frac{1}{3}$, 
+  \begin{itemize}
+    \item para $x=-\frac{1}{3}$ la serie es
+    \begin{eqnarray*}
+      \sum_{n=1}^{\infty}\dfrac{(-3)^n}{n^2}\left(-\dfrac{1}{3}\right)^n
+        &=& \sum_{n=1}^{\infty}\dfrac{1}{n^2}
+    \end{eqnarray*}
+    que es una serie convergente, por lo que $x=-\frac{1}{3}$ es un punto de convergencia.
+    \item para $x=\frac{1}{3}$ la serie es
+    \begin{eqnarray*}
+      \sum_{n=1}^{\infty}\dfrac{(-3)^n}{n^2}\left(\dfrac{1}{3}\right)^n
+        &=& \sum_{n=1}^{\infty}\dfrac{(-1)^n}{n^2}
+    \end{eqnarray*}
+    cuya serie del valor absoluto es la del item anterior, por lo que esta serie también es convergente, por lo que $x=\frac{1}{3}$ también es un punto de convergencia.
+  \end{itemize}
+  Por lo tanto el intervalo de convergencia es $$\intervaloCC{-\frac{1}{3},\frac{1}{3}}$$
+\end{enumerate}
+
+
+%! Pregunta 3
+\newpage
+\noindent\textbf{P3) } Encuentre una representación en serie de potencias para la función $$f(x)=\dfrac{x}{1+x}$$ alrededor de $x=0$.
+
+\vspace{2mm}
+\noindent\textbf{Respuesta:} Para encontrar la serie de potencias de la función, primero debemos encontrar la serie de potencias de la función $g(x)=\frac{1}{1+x}$, para esto, sabemos que la serie de potencias de la función $\frac{1}{1-x}$ es
+$$\sum_{n=0}^{\infty}x^n$$
+por lo que la serie de potencias de la función $\frac{1}{1+x}$ es
+\begin{eqnarray*}
+  \frac{1}{1+x}
+    &=& \frac{1}{1-(-x)}\\
+    &=& \sum_{n=0}^{\infty}(-x)^n\\
+    &=& \sum_{n=0}^{\infty}(-1)^nx
+\end{eqnarray*}
+con $\abs{-x}<1$, es decir, $\abs{x}<1$.
+Ahora, para encontrar la serie de potencias de la función $f(x)=\frac{x}{1+x}$, debemos multiplicar la serie de potencias anterior por $x$, es decir,
+\begin{eqnarray*}
+  f(x)
+    &=& x\sum_{n=0}^{\infty}(-1)^nx\\
+    &=& \sum_{n=0}^{\infty}(-1)^nx^{n+1}
+\end{eqnarray*}
+por lo que la serie de potencias de la función $f(x)=\frac{x}{1+x}$ alrededor de $x=0$ es
+$$\sum_{n=0}^{\infty}(-1)^nx^{n+1}$$
+para $\abs{x}<1$.
+
+
+\end{document}

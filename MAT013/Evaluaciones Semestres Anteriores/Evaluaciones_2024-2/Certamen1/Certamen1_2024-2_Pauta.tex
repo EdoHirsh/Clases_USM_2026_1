@@ -1,0 +1,188 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage{dsfont,amsfonts}
+\usepackage{fancyhdr,multicol,multirow}
+\usepackage{graphicx,pgf,tikz,accents,multimedia,tcolorbox}
+\usepackage[explicit]{titlesec}
+\usepackage[top=3cm,bottom=2cm,left=2cm,right=2cm,headheight=1cm,headsep=1cm,footskip=1cm]{geometry}
+\usepackage{pstricks-add}
+
+%! Configuración de las enumeración
+\usepackage[shortlabels]{enumitem}
+
+%! Archivo de comandos personalizados generales
+\input{../../Comandos.tex}
+
+%! Datos de la evaluación
+\input{../../Datos.tex}
+\newcommand{\EVALUACION}{Certamen 1 - 2do. semestre 2024}
+
+%! Encabezado de pagina
+\pagestyle{fancy}
+\fancyhead{}
+\setlength{\headheight}{56pt}
+\setlength{\headsep}{5mm}
+\setlength{\textheight}{22cm}
+\fancyhead[L]{
+  \textbf{\large Departamento de Matemática}\\[1mm]
+  \textbf{\large Universidad Técnica Federico Santa María}
+  \vspace{1mm}
+}
+\fancyhead[R]{
+  \begin{flushright}
+    \textbf{\large Pauta \EVALUACION}\\[1mm]
+    \textbf{\large \SIGLACURSO}
+    \vspace{-5mm}
+  \end{flushright}
+}
+
+\begin{document}
+
+%!Encabezado Portada
+\thispagestyle{plain}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=.75]{logo-dmat-vertical.pdf}
+\end{center}
+\vspace{2mm}
+
+%!Titulo
+\begin{center}
+  \textbf{\Large \SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \textbf{\Large Pauta \EVALUACION}\\[2mm]
+  {\large\PROFESOR}\\
+\end{center}
+\vspace{5mm}
+
+%! Pregunta 1
+\noindent\textbf{P1) } Calcule.
+\begin{enumerate}[a)]
+  \item $\lim\limits_{n\to\infty}\ln\left(\dfrac{2n^3-n^2+1}{n^3+2n^2+1}\right)$
+  \item $\displaystyle\sum_{n=1}^{\infty}\dfrac{(-6)^{n+1}}{10^{n-1}}$
+\end{enumerate}
+
+\vspace{0.25cm}
+\noindent\textbf{Respuesta:} 
+\begin{enumerate}[a)]
+  \item 
+    \begin{eqnarray*}
+      \lim_{n\to\infty}\ln\left(\dfrac{2n^3-n^2+1}{n^3+2n^2+1}\right) 
+        &=& \ln\left(\lim_{n\to\infty}\dfrac{2n^3-n^2+1}{n^3+2n^2+1}\right)\\
+        &=& \ln\left(\lim_{n\to\infty}\dfrac{2n^3-n^2+1}{n^3+2n^2+1}\cdot\dfrac{\frac{1}{n^3}}{\frac{1}{n^3}}\right)\\
+        &=& \ln\left(\lim_{n\to\infty}\dfrac{2-\frac{1}{n}+\frac{1}{n^3}}{1+\frac{2}{n}+\frac{1}{n^3}}\right)\\
+        &=& \ln\left(\dfrac{2-0+0}{1+0+0}\right)\\
+        &=& \ln(2)
+    \end{eqnarray*}
+
+  \item
+    \begin{eqnarray*}
+      \displaystyle\sum_{n=1}^{\infty}\dfrac{(-6)^{n+1}}{10^{n-1}} 
+        &=& \displaystyle\sum_{n=1}^{\infty}\dfrac{(-6)^2(-6)^{n-1}}{10^{n-1}}\\
+        &=& \displaystyle\sum_{n=1}^{\infty}\dfrac{36(-6)^{n-1}}{10^{n-1}}\\
+        &=& 36\displaystyle\sum_{n=1}^{\infty}\left(\dfrac{-6}{10}\right)^{n-1}\\
+        &=& 36\displaystyle\sum_{n=0}^{\infty}\left(\dfrac{-6}{10}\right)^{n}\\
+        &=& 36\displaystyle\sum_{n=0}^{\infty}\left(-\dfrac{3}{5}\right)^{n}\\
+        &=& 36\cdot\dfrac{1}{1+\frac{3}{5}}\\
+        &=& 36\cdot\dfrac{5}{8}\\
+        &=& \frac{45}{2}
+    \end{eqnarray*}
+\end{enumerate}
+
+
+%! Pregunta 2
+\newpage
+\noindent\textbf{P2) } Indique usando el criterio adecuado si las siguientes series convergen o divergen.
+\begin{enumerate}[a)]
+  \item $\displaystyle\sum_{n=1}^{\infty}\dfrac{n^2+1}{(-5)^n}$
+  \item $\displaystyle\sum_{n=1}^{\infty}\dfrac{2n-1}{\sqrt{n^4+n^3-2n}}$
+\end{enumerate}
+
+\vspace{0.25cm}
+\noindent\textbf{Respuesta:} 
+\begin{enumerate}[a)]
+  \item Usando el criterio del cuociente, necesitamos calcular
+    \begin{eqnarray*}
+      \lim_{n\to\infty}\abs{\dfrac{a_{n+1}}{a_n}} 
+        &=& \lim_{n\to\infty}\abs{\dfrac{\frac{(n+1)^2+1}{(-5)^{n+1}}}{\frac{n^2+1}{(-5)^n}}}\\
+        &=& \lim_{n\to\infty}\abs{\dfrac{(n+1)^2+1}{n^2+1}\cdot\dfrac{(-5)^n}{(-5)^{n+1}}}\\
+        &=& \lim_{n\to\infty}\abs{\dfrac{(n^2+2n+1+1)}{n^2+1}\cdot\dfrac{1}{-5}}\\
+        &=& \lim_{n\to\infty}\abs{\dfrac{n^2+2n+2}{n^2+1}\cdot\dfrac{1}{-5}}\\
+        &=& \abs{\dfrac{1}{-5}}\\
+        &=& \dfrac{1}{5}
+    \end{eqnarray*}
+    Luego como el límite es menor que 1, la serie $\displaystyle\sum_{n=1}^{\infty}\dfrac{n^2+1}{(-5)^n}$ es convergente.
+
+  \item Usando el criterio de comparación en el límite con la serie armónica $\sum\frac{1}{n}$, necesitamos calcular
+    \begin{eqnarray*}
+      \lim_{n\to\infty}\dfrac{\dfrac{2n-1}{\sqrt{n^4+n^3-2n}}}{\dfrac{1}{n}} 
+        &=& \lim_{n\to\infty}\dfrac{2n^2-n}{\sqrt{n^4+n^3-2n}}\\
+        &=& \lim_{n\to\infty}\dfrac{2-\frac{1}{n}}{\sqrt{1+\frac{1}{n}-\frac{2}{n^2}}}\\
+        &=& \dfrac{2}{\sqrt{1}}\\
+        &=& 2
+    \end{eqnarray*}
+    Por lo tanto ambas series tienen el mismo comportamiento, luego la serie $\displaystyle\sum_{n=1}^{\infty}\dfrac{2n-1}{\sqrt{n^4+n^3-2n}}$ diverge pues la serie armónica $\displaystyle\sum_{n=1}^{\infty}\dfrac{1}{n}$ es divergente.
+\end{enumerate}
+
+
+%! Pregunta 3
+\newpage
+\noindent\textbf{P3) }
+\begin{enumerate}[a)]
+  \item Encuentre el intervalo de convergencia de la serie 
+    $$\displaystyle\sum_{n=0}^{\infty}\dfrac{(3x)^n}{n^2+1}$$
+  \item Encuentre una representación en serie de potencias de la función 
+    $$f(x)=\dfrac{x}{1+2x}$$
+    en torno a $x=0$, indicando su radio de convergencia.
+\end{enumerate}
+
+\vspace{0.25cm}
+\noindent\textbf{Respuesta:} 
+\begin{enumerate}[a)]
+  \item Primero buscaremos el radio de convergencia de la serie $\displaystyle\sum_{n=0}^{\infty}\dfrac{(3x)^n}{n^2+1}$, para ello usaremos el criterio del cuociente. Necesitamos calcular
+    \begin{eqnarray*}
+      \lim_{n\to\infty}\abs{\dfrac{a_{n+1}}{a_n}} 
+        &=& \lim_{n\to\infty}\abs{\dfrac{\frac{(3x)^{n+1}}{(n+1)^2+1}}{\frac{(3x)^n}{n^2+1}}}\\
+        &=& \lim_{n\to\infty}\abs{\dfrac{(3x)^{n+1}}{(n+1)^2+1}\cdot\dfrac{n^2+1}{(3x)^n}}\\
+        &=& \lim_{n\to\infty}\abs{3x\dfrac{(n^2+1)}{(n+1)^2+1}}\\
+        &=& \lim_{n\to\infty}\abs{3x\dfrac{(n^2+1)}{n^2+2n+2}}\\
+        &=& \abs{3x}
+    \end{eqnarray*}
+    luego necesitamos que $\abs{3x}<1$, es decir, $\abs{x}<\frac{1}{3}$. Por lo que el radio de convergencia es $R=\frac{1}{3}$, ahora falta analizar los extremos del intervalo.\\
+    \begin{itemize}
+      \item Para $x=\frac{1}{3}$, la serie se convierte en
+        $$\displaystyle\sum_{n=0}^{\infty}\dfrac{1}{n^2+1}$$
+        como $\frac{1}{n^2+1}<\frac{1}{n^2}$, la serie es convergente por el criterio de comparación, pues la serie $\displaystyle\sum_{n=1}^{\infty}\frac{1}{n^2}$ es convergente.
+      \item Para $x=-\frac{1}{3}$, la serie se convierte en
+        $$\displaystyle\sum_{n=0}^{\infty}\dfrac{(-1)^n}{n^2+1}$$
+        que es absolutamente convergente por que
+        $$\sum_{n=0}^{\infty}\abs{\dfrac{(-1)^n}{n^2+1}}=\sum_{n=0}^{\infty}\dfrac{1}{n^2+1}$$
+        que ya sabemos que es convergente.
+    \end{itemize}
+    Por lo tanto el intervalo de convergencia de la serie $\displaystyle\sum_{n=0}^{\infty}\dfrac{(3x)^n}{n^2+1}$ es $\intervaloCC{-\frac{1}{3},\frac{1}{3}}$.
+
+  \item Para encontrar la serie de potencias de la función $f(x)=\frac{x}{1+2x}$ en torno a $x=0$, usaremos que sabemos que
+  $$\dfrac{1}{1-x}=\sum_{n=0}^{\infty}x^n$$
+  cuyo radio de convergencia es $R=1$. Luego
+  \begin{eqnarray*}
+    \frac{1}{1+2x} 
+      &=& \frac{1}{1-(-2x)}\\
+      &=& \sum_{n=0}^{\infty}(-2x)^n\\
+      &=& \sum_{n=0}^{\infty}(-1)^n2^nx^n
+  \end{eqnarray*}
+  donde $\abs{2x}<1$, es decir, $\abs{x}<\frac{1}{2}$. Ahora
+  \begin{eqnarray*}
+    \frac{x}{1+2x} 
+      &=& x\dfrac{1}{1-2x}\\
+      &=& x\sum_{n=0}^{\infty}(-1)^n2^nx^n\\
+      &=& \sum_{n=0}^{\infty}(-1)^n2^nx^{n+1}
+  \end{eqnarray*}
+  Por lo tanto la representación en serie de potencias es
+  $$f(x)=\sum_{n=0}^{\infty}(-1)^n2^nx^{n+1}$$
+  con radio de convergencia $R=\frac{1}{2}$.
+
+\end{enumerate}
+
+\end{document}

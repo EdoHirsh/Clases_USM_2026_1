@@ -1,0 +1,96 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage{dsfont,amsfonts}
+\usepackage{fancyhdr,multicol,multirow}
+\usepackage{graphicx,pgf,tikz,accents,multimedia,tcolorbox}
+\usepackage[top=3cm,bottom=2cm,left=2cm,right=2cm,headheight=1cm,headsep=1cm,footskip=1cm]{geometry}
+\usepackage[shortlabels]{enumitem}
+
+%! Archivo de comandos personalizados generales
+\input{../Comandos.tex}
+
+%! Configuración de las enumeración
+% \usepackage[shortlabels]{enumitem} % facilita la personalización de listas funciona mejor en article
+% \renewcommand{\labelenumii}{\theenumi.\alph{enumii})}
+\renewcommand{\labelenumii}{\alph{enumii})}
+\renewcommand{\theenumii}{\alph{enumii}}
+\makeatletter
+\renewcommand{\p@enumii}{\theenumi.}
+\makeatother
+
+%! Datos de la Guía
+\input{../Datos.tex}
+\newcommand{\GUIA}{Guía XXXXXXXXXXX}
+
+%! Encabezado de pagina
+\pagestyle{fancy}
+\fancyhead{}
+\setlength{\headheight}{56pt}
+\setlength{\headsep}{5mm}
+\setlength{\textheight}{22cm}
+\fancyhead[L]{
+  \textbf{\large Departamento de Matemática}\\[1mm]
+  \textbf{\large Universidad Técnica Federico Santa María}
+  \vspace{1mm}
+}
+\fancyhead[R]{
+  \begin{flushright}
+    \textbf{\large \GUIA}\\[1mm]
+    \textbf{\large \SIGLACURSO}
+    \vspace{-5mm}
+  \end{flushright}
+}
+
+%! Inicio del documento
+\begin{document}
+
+%! Encabezado
+\thispagestyle{empty}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=.75]{logo-dmat-vertical.pdf}
+\end{center}
+% \vspace{1mm}
+% \noindent\rule[0mm]{175mm}{0.1mm}
+
+%! Titulo
+\begin{center}
+  \textbf{\Large\SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \textbf{\Large\GUIA}\\
+  {\large\PROFESOR}\\
+  \FECHACORTO
+\end{center}
+\vspace{5mm}
+
+%! Ejercicios
+\begin{enumerate}
+  \item Calcule.
+  \vspace{2mm}
+    \begin{enumerate}
+      \item 
+      \item 
+      \item 
+      \item 
+    \end{enumerate}
+  \vspace{2mm}
+  \item Analice 
+    $$f(x,y)=\begin{cases}
+      & \text{si } (x,y)\neq(0,0)\\
+      & \text{si } (x,y)=(0,0)
+    \end{cases}$$
+  \vspace{2mm}
+
+  \newpage
+  \item 
+    \begin{enumerate}
+      \item 
+      \item 
+      \item 
+      \item 
+    \end{enumerate}
+  \vspace{2mm}
+\end{enumerate}
+\end{document}

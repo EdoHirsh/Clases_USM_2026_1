@@ -1,0 +1,227 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage{dsfont,amsfonts}
+\usepackage{fancyhdr,multicol,multirow}
+\usepackage{graphicx,pgf,tikz,accents,multimedia,tcolorbox}
+\usepackage[explicit]{titlesec}
+\usepackage[top=3cm,bottom=2cm,left=2cm,right=2cm,headheight=1cm,headsep=1cm,footskip=1cm]{geometry}
+\usepackage{pstricks-add}
+
+%! Configuración de las enumeración
+\usepackage[shortlabels]{enumitem}
+
+%! Archivo de comandos personalizados generales
+\input{../../Comandos.tex}
+
+%! Datos de la evaluación
+\input{../../Datos.tex}
+\newcommand{\EVALUACION}{Certamen 3 - 2do. semestre 2024}
+
+%! Encabezado de pagina
+\pagestyle{fancy}
+\fancyhead{}
+\setlength{\headheight}{56pt}
+\setlength{\headsep}{5mm}
+\setlength{\textheight}{22cm}
+\fancyhead[L]{
+  \textbf{\large Departamento de Matemática}\\[1mm]
+  \textbf{\large Universidad Técnica Federico Santa María}
+  \vspace{1mm}
+}
+\fancyhead[R]{
+  \begin{flushright}
+    \textbf{\large Pauta \EVALUACION}\\[1mm]
+    \textbf{\large \SIGLACURSO}
+    \vspace{-5mm}
+  \end{flushright}
+}
+
+\begin{document}
+
+%!Encabezado Portada
+\thispagestyle{plain}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=.75]{logo-dmat-vertical.pdf}
+\end{center}
+\vspace{2mm}
+
+%!Titulo
+\begin{center}
+  \textbf{\Large \SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \textbf{\Large Pauta \EVALUACION}\\[2mm]
+  {\large\PROFESOR}\\
+\end{center}
+\vspace{5mm}
+
+%! Pregunta 1
+\noindent\textbf{P1) } Dada la función 
+$$f(x,y)=-2x^3-2y^3-6x^2-6y^2+6xy+5$$
+\begin{enumerate}[a)]
+\item Calcule las derivadas parciales de $f$.
+\item Determine la dirección en la que $f$ crece más rápidamente en el punto $(1,1)$.
+\item Encuentre la ecuación de la recta tangente a la curva de nivel $f(x,y)=-5$ en el punto $(x,y)=(1,1)$.
+\end{enumerate}
+
+\vspace{0.25cm}
+\noindent\textbf{Respuesta:}
+\begin{enumerate}[a)]
+  \item Las derivadas parciales de $f$ son
+    \begin{eqnarray*}
+      f_x(x,y) &=& -6x^2-12x+6y,\\
+      f_y(x,y) &=& -6y^2-12y+6x.
+    \end{eqnarray*}
+  \item La dirección en la que $f$ crece más rápidamente en el punto $(1,1)$ está dada por el gradiente de $f$ en ese punto,
+    \begin{eqnarray*}
+      \nabla f(1,1) &=& \left(f_x(1,1),\ f_y(1,1)\right)\\
+      &=& \left(-12, -12\right).
+    \end{eqnarray*}
+  \item Primero vemos que el punto $(1,1)$ está en la superficie pues $f(1,1)=-5$. La curva de nivel en ese punto debe ser perpendicular al gradiente de $f$ en ese punto, es decir, perpendicular al vector $\nabla f(1,1) = (-12,-12)$. Por lo tanto, la recta tangente a la curva de nivel en el punto $(1,1,-5)$ es
+    \begin{eqnarray*}
+      \nabla f(1,1)\cdot\left(x-1,\ y-1\right) &=& 0\\
+      (-12,-12)\cdot\left(x-1,\ y-1\right) &=& 0\\
+      -12(x-1)-12(y-1) &=& 0\\
+      -12x+12-12y+12 &=& 0\\
+      -12x-12y+24 &=& 0\\
+      x+y-2 &=& 0.
+    \end{eqnarray*}
+\end{enumerate}
+
+%! Pregunta 2
+\newpage
+\noindent\textbf{P2) }
+\begin{enumerate}[a)]
+  \item Clasifique los puntos críticos de la función $f(x,y) = x^3-12xy+8y^3$
+  \item Encuentre el mínimo de la función
+    $$f(x,y)=3x+5y$$
+  sujeta a la restricción $x^2+y^2=9$.
+\end{enumerate}
+
+\vspace{0.25cm}
+\noindent\textbf{Respuesta:} 
+\begin{enumerate}[a)]
+  \item Para encontrar los puntos críticos de $f(x,y)$, primero calculamos las derivadas parciales de $f$.
+    \begin{eqnarray*}
+      f_x(x,y) &=& 3x^2-12y\\
+      f_y(x,y) &=& -12x+24y^2
+    \end{eqnarray*}
+  Luego, buscamos los puntos críticos resolviendo el sistema de ecuaciones
+    \begin{eqnarray*}
+      3x^2-12y &=& 0\\
+      -12x+24y^2 &=& 0
+    \end{eqnarray*}
+  Cuyas soluciones son $(0,0)$ y $(2,1)$.
+  Para clasificar los puntos críticos, necesitamos evaluar el discriminante
+    $$D = f_{xx}(x,y)f_{yy}(x,y)-f_{xy}(x,y)^2$$
+  Calculamos las segundas derivadas de $f$.
+    \begin{eqnarray*}
+      f_{xx}(x,y) &=& 6x\\
+      f_{yy}(x,y) &=& 48y\\
+      f_{xy}(x,y) &=& -12
+    \end{eqnarray*}
+  Luego
+    \begin{eqnarray*}
+      D(x,y) &=& f_{xx}(x,y)f_{yy}(x,y)-f_{xy}(x,y)^2\\
+      &=& 6x\cdot 48y - (-12)^2\\
+      &=& 288xy-144
+    \end{eqnarray*}
+  Evaluando en los puntos críticos, tenemos
+  \begin{enumerate}[i.]
+    \item En $(0,0)$, $D(0,0)=-144<0$, por lo que $(0,0)$ es un punto silla.
+    \item En $(2,1)$, $D(2,1)=288\cdot 2\cdot 1-144=432>0$ y $f_{xx}(2,1)=12>0$, por lo que $(2,1)$ es un mínimo local.
+  \end{enumerate}
+
+  \newpage
+  \item Para encontrar el mínimo de $f(x,y)=3x+4y$ sujeto a la restricción $x^2+y^2=9$, usamos el método de los multiplicadores de Lagrange. Definimos la función
+    \begin{eqnarray*}
+      L(x,y,\lambda) &=&= f(x,y) - \lambda(g(x,y)-9)\\
+      &=& 3x+4y-\lambda(x^2+y^2-9)
+    \end{eqnarray*}
+  Para encontrar los puntos críticos de $L$, calculamos las derivadas parciales de $L$.
+    \begin{eqnarray*}
+      L_x(x,y,\lambda) &=& 3-2\lambda x\\
+      L_y(x,y,\lambda) &=& 4-2\lambda y\\
+      L_\lambda(x,y,\lambda) &=& x^2+y^2-9
+    \end{eqnarray*}
+  Resolviendo el sistema de ecuaciones
+    $$\begin{array}{rcl|}
+      3-2\lambda x &=& 0\\
+      4-2\lambda y &=& 0\\
+      x^2+y^2 &=& 9\\
+      \hline
+    \end{array}$$
+  Obtenemos los puntos críticos $\left(\frac{9}{5},\frac{12}{5}\right)$ y $\left(-\frac{9}{5},-\frac{12}{5}\right)$. Evaluamos $f$ en estos puntos para encontrar el mínimo,
+    \begin{eqnarray*}
+      f\left(\frac{9}{5},\frac{12}{5}\right) &=& 3\cdot\frac{9}{5}+4\cdot\frac{12}{5}\\
+      &=& \frac{27}{5}+\frac{48}{5}\\
+      &=& \frac{75}{5}\\
+      &=& 15
+    \end{eqnarray*}
+  y
+    \begin{eqnarray*}
+      f\left(-\frac{9}{5},-\frac{12}{5}\right) &=& -15
+    \end{eqnarray*}
+  Por lo tanto, el mínimo de $f$ sujeto a la restricción $x^2+y^2=9$ es $f\left(-\frac{9}{5},-\frac{12}{5}\right)=-15$.
+\end{enumerate}
+
+%! Pregunta 3
+\newpage
+\noindent\textbf{P3) } Calcule las siguientes integrales:
+\begin{enumerate}[a)]
+  \item $\displaystyle\iint_D xy dA$, donde $D=\set{(x,y)\in\Real^2:\ x^2\leq y\leq 2x}$.
+  \item $\displaystyle\iint_D e^{x^2+y^2} dA$, donde $D$ corresponde a los puntos al interior de la circunferencia $x^2+y^2=4$ con $y\geq 0$.
+  \item $\displaystyle\iiint_D x^2z+yz^2 dV$, con $D=[0,1]\times[1,2]\times[-1,1]$.
+\end{enumerate}
+
+\vspace{0.25cm}
+\noindent\textbf{Respuesta:}
+\begin{enumerate}[a)]
+  \item Gráficamente la región a integrar es
+  \begin{center}
+    \includegraphics[scale=.6]{./imagenes/Certamen3-3a.png}
+  \end{center}
+  \vspace{-5mm}
+  encontramos los puntos de intersección de las curvas para identificar el rango de $x$, para esto resolvemos la ecuación
+    $$x^2=2x$$
+  cuyas soluciones son $x=0$ y $x=2$. Luego, la integral es
+    \begin{eqnarray*}
+      \int_0^2\int_{x^2}^{2x} xy\ dydx &=& \int_0^2\left.\frac{xy^2}{2}\right|_{x^2}^{2x}dx\\
+      &=& \int_0^2\frac{2x(2x)^2}{2}-\frac{x(x^2)^2}{2}dx\\
+      &=& \int_0^2 4x^3-\frac{x^5}{2}dx\\
+      &=& \left.x^4-\frac{x^6}{12}\right|_0^2\\
+      &=& 16-\frac{64}{12}\\
+      % &=& 16-\frac{16}{3}\\
+      % &=& \frac{48}{3}-\frac{16}{3}\\
+      &=& \frac{32}{3}.
+    \end{eqnarray*}
+
+  \vspace{5mm}
+  \item Como la región de integración corresponde al semicírculo
+    \begin{center}
+      \includegraphics[scale=.6]{./imagenes/Certamen3-3b.png}
+    \end{center}
+  podemos cambiar a coordenadas polares. Luego la integral es
+    \begin{eqnarray*}
+      \int_0^{\pi}\int_0^2 e^{r^2}r\ drd\theta &=& \int_0^{\pi}\left.\frac{e^{r^2}}{2}\right|_0^2d\theta\\
+      &=& \int_0^{\pi}\frac{e^4-1}{2}d\theta\\
+      % &=& \frac{e^4-1}{2}\int_0^{\pi}d\theta\\
+      % &=& \frac{e^4-1}{2}\left.\theta\right|_0^{\pi}\\
+      &=& \frac{e^4-1}{2}\pi.
+    \end{eqnarray*}
+  \item Como la región corresponde a un paralelepípedo rectangular, luego la integral es
+    \begin{eqnarray*}
+      \int_0^1\int_1^2\int_{-1}^1 x^2z+yz^2\ dz dy dx 
+      &=& \int_0^1\int_1^2\left.\left(\frac{x^2z^2}{2}+\frac{yz^3}{3}\right)\right|_{-1}^1dydx\\
+      &=& \int_0^1\int_1^2\left(\frac{x^2}{2}+\frac{y}{3}-\frac{x^2}{2}+\frac{y}{3}\right)dydx\\
+      &=& \int_0^1\int_1^2\frac{2y}{3}dydx\\
+      &=& \int_0^1\left.\frac{y^2}{3}\right|_1^2dx\\
+      &=& \int_0^1\frac{4}{3}-\frac{1}{3}dx\\
+      &=& \int_0^1 1 dx\\
+      &=& 1.
+    \end{eqnarray*}
+\end{enumerate}
+
+\end{document}

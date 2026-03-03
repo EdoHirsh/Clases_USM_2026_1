@@ -1,0 +1,77 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage{dsfont,amsfonts}
+\usepackage{fancyhdr,multicol,multirow}
+\usepackage{graphicx,pgf,tikz,accents,multimedia,tcolorbox}
+\usepackage[explicit]{titlesec}
+\usepackage[top=3cm,bottom=2cm,left=2cm,right=2cm,headheight=1cm,headsep=1cm,footskip=1cm]{geometry}
+\usepackage{pstricks-add}
+
+%! Configuración de las enumeración
+\usepackage[shortlabels]{enumitem}
+
+%! Archivo de comandos personalizados generales
+\input{../../Comandos.tex}
+
+%! Datos de la evaluación
+\input{../../Datos.tex}
+\newcommand{\EVALUACION}{Control 2 - 1er. semestre 2025}
+
+%! Encabezado de pagina
+\pagestyle{fancy}
+\fancyhead{}
+\setlength{\headheight}{56pt}
+\setlength{\headsep}{5mm}
+\setlength{\textheight}{22cm}
+\fancyhead[L]{
+  \textbf{\large Departamento de Matemática}\\[1mm]
+  \textbf{\large Universidad Técnica Federico Santa María}
+  \vspace{1mm}
+}
+\fancyhead[R]{
+  \begin{flushright}
+    \textbf{\large Pauta \EVALUACION}\\[1mm]
+    \textbf{\large \SIGLACURSO}
+    \vspace{-5mm}
+  \end{flushright}
+}
+
+\begin{document}
+
+%!Encabezado Portada
+\thispagestyle{plain}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=0.75]{logo-dmat-vertical.pdf}
+\end{center}
+\vspace{2mm}
+
+%!Titulo
+\begin{center}
+  \textbf{\Large \SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \textbf{\Large \EVALUACION}\\[2mm]
+  {\large\PROFESOR}\\
+\end{center}
+\vspace{5mm}
+
+%! Pregunta 1
+\noindent\textbf{P1) } \textsf{[50 pts.]} Determine si las siguientes funciones son transformaciones lineales.
+\begin{enumerate}[a)]
+  \item $T:\Real^2\to\Real^2$ tal que $T(x,y)=(2x+3y,x-2y)$.
+  \item $T:\Real^3\to\Real^3$ tal que $T(x,y,z)=(x+y+z,xy,xz)$.
+\end{enumerate}
+
+
+\vspace{5mm}
+%! Pregunta 2
+\noindent\textbf{P2) } \textsf{[50 pts.]} Determine si los siguientes conjuntos son abiertos, cerrados, compactos o conexos en $\Real^2$.
+\begin{enumerate}[a)]
+  \item $A=\set{(x,y)\in\Real^2:\ 4x^2+25y^2 \leq 100 \wedge x+y \leq 1}$.
+  \item $B=\set{(x,y)\in\Real^2:\ 4x^2+y^2<4 \wedge \abs{y} > 1}$.
+\end{enumerate}
+
+
+\end{document}

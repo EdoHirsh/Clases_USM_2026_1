@@ -1,0 +1,119 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage{dsfont,amsfonts}
+\usepackage{fancyhdr,multicol,multirow}
+\usepackage{graphicx,pgf,tikz,accents,multimedia,tcolorbox}
+\usepackage[explicit]{titlesec}
+\usepackage[top=3cm,bottom=2cm,left=2cm,right=2cm,headheight=1cm,headsep=1cm,footskip=1cm]{geometry}
+\usepackage{pstricks-add}
+
+%! Configuración de las enumeración
+\usepackage[shortlabels]{enumitem}
+
+%! Archivo de comandos personalizados generales
+\input{../../Comandos.tex}
+
+%! Datos de la evaluación
+\input{../../Datos.tex}
+\newcommand{\EVALUACION}{Control 1 - 2do. semestre 2025}
+
+%! Encabezado de pagina
+\pagestyle{fancy}
+\fancyhead{}
+\setlength{\headheight}{56pt}
+\setlength{\headsep}{5mm}
+\setlength{\textheight}{22cm}
+\fancyhead[L]{
+  \textbf{\large Departamento de Matemática}\\[1mm]
+  \textbf{\large Universidad Técnica Federico Santa María}
+  \vspace{1mm}
+}
+\fancyhead[R]{
+  \begin{flushright}
+    \textbf{\large Pauta \EVALUACION}\\[1mm]
+    \textbf{\large \SIGLACURSO}
+    \vspace{-5mm}
+  \end{flushright}
+}
+
+\begin{document}
+
+%!Encabezado Portada
+\thispagestyle{plain}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=0.75]{logo-dmat-vertical.pdf}
+\end{center}
+\vspace{2mm}
+
+%!Titulo
+\begin{center}
+  \textbf{\Large \SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \textbf{\Large Pauta \EVALUACION}\\[2mm]
+  {\large\PROFESOR}\\
+\end{center}
+\vspace{5mm}
+
+%! Pregunta 1
+\noindent\textbf{P1) } Calcule los siguientes límites.
+\begin{enumerate}[a)]
+  \item $\displaystyle\lim_{n\to\infty}\dfrac{\sqrt{4n^4+1}}{n^2+1}$
+  \item $\displaystyle\lim_{n\to\infty}\ln\left(\dfrac{2n^2+2n-1}{n^2-n+1}\right)$
+\end{enumerate}
+
+\vspace{5mm}
+\noindent\textbf{Respuesta:}
+\begin{enumerate}[a)]
+  \item 
+    \begin{eqnarray*}
+      \lim_{n\to\infty}\dfrac{\sqrt{4n^4+1}}{n^2+1}
+        &=& \lim_{n\to\infty}\dfrac{\sqrt{4n^4+1}}{n^2+1}\cdot\frac{\frac{1}{n^2}}{\frac{1}{n^2}}\\
+        &=& \lim_{n\to\infty}\dfrac{\sqrt{4+\frac{1}{n^4}}}{1+\frac{1}{n^2}}\\
+        &=& \dfrac{\sqrt{4}}{1}\\
+        &=& 2
+    \end{eqnarray*}
+  \item
+    \begin{eqnarray*}
+      \lim_{n\to\infty}\ln\left(\dfrac{2n^2+2n-1}{n^2-n+1}\right)
+        &=& \ln\left(\lim_{n\to\infty}\dfrac{2n^2+2n-1}{n^2-n+1}\right)\\
+        &=& \ln\left(\lim_{n\to\infty}\dfrac{2n^2+2n-1}{n^2-n+1}\cdot\frac{\frac{1}{n^2}}{\frac{1}{n^2}}\right)\\
+        &=& \ln\left(\lim_{n\to\infty}\dfrac{2+\frac{2}{n}-\frac{1}{n^2}}{1-\frac{1}{n}+\frac{1}{n^2}}\right)\\
+        &=& \ln(2)
+    \end{eqnarray*}
+\end{enumerate}
+
+
+\newpage
+%! Pregunta 2
+\noindent\textbf{P2) } Calcule el valor de la serie, si es posible, si no justifique.
+\begin{enumerate}[a)]
+  \item $\displaystyle\sum_{n=0}^{\infty}\dfrac{6}{3^{n+1}}$
+  \item $\displaystyle\sum_{n=1}^{\infty}\dfrac{n-1}{\sqrt{n^2+1}}$
+\end{enumerate}
+
+\vspace{5mm}
+\noindent\textbf{Respuesta:}
+\begin{enumerate}[a)]
+  \item 
+    \begin{eqnarray*}
+      \sum_{n=0}^{\infty}\dfrac{6}{3^{n+1}}
+        &=& 2\sum_{n=0}^{\infty}\left(\dfrac{3}{3^{n+1}}\right)\\
+        &=& 2\sum_{n=0}^{\infty}\left(\dfrac{1}{3^n}\right)\\
+        &=& 2\cdot\frac{1}{1-\frac{1}{3}}\\
+        &=& 2\cdot\frac{3}{2}\\
+        &=& 3
+    \end{eqnarray*}
+  \item la serie diverge, porque
+    \begin{eqnarray*}
+      \lim_{n\to\infty}\dfrac{n-1}{\sqrt{n^2+1}}
+        &=& \lim_{n\to\infty}\dfrac{n-1}{\sqrt{n^2+1}}\cdot\frac{\frac{1}{n}}{\frac{1}{n}}\\
+        &=& \lim_{n\to\infty}\dfrac{1-\frac{1}{n}}{\sqrt{1+\frac{1}{n^2}}}\\
+        &=& 1
+    \end{eqnarray*}
+    que es distinto de cero.
+\end{enumerate}
+
+\end{document}

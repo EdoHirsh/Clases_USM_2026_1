@@ -1,0 +1,108 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage{dsfont,amsfonts}
+\usepackage{fancyhdr,multicol,multirow}
+\usepackage{graphicx,pgf,tikz,accents,multimedia,tcolorbox}
+\usepackage[explicit]{titlesec}
+\usepackage[top=3cm,bottom=2cm,left=2cm,right=2cm,headheight=1cm,headsep=1cm,footskip=1cm]{geometry}
+\usepackage{pstricks-add}
+
+%! Configuración de las enumeración
+\usepackage[shortlabels]{enumitem}
+
+%! Archivo de comandos personalizados generales
+\input{../../Comandos.tex}
+
+%! Datos de la evaluación
+\input{../../Datos.tex}
+\newcommand{\EVALUACION}{Control 1 - 2do. semestre 2024}
+
+%! Encabezado de pagina
+\pagestyle{fancy}
+\fancyhead{}
+\setlength{\headheight}{56pt}
+\setlength{\headsep}{5mm}
+\setlength{\textheight}{22cm}
+\fancyhead[L]{
+  \textbf{\large Departamento de Matemática}\\[1mm]
+  \textbf{\large Universidad Técnica Federico Santa María}
+  \vspace{1mm}
+}
+\fancyhead[R]{
+  \begin{flushright}
+    \textbf{\large Pauta \EVALUACION}\\[1mm]
+    \textbf{\large \SIGLACURSO}
+    \vspace{-5mm}
+  \end{flushright}
+}
+
+\begin{document}
+
+%!Encabezado Portada
+\thispagestyle{plain}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=0.75]{logo-dmat-vertical.pdf}
+\end{center}
+\vspace{2mm}
+
+%!Titulo
+\begin{center}
+  \textbf{\Large \SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \textbf{\Large Pauta \EVALUACION}\\[2mm]
+  {\large\PROFESOR}\\
+\end{center}
+\vspace{5mm}
+
+%! Pregunta 1
+\noindent\textbf{P1) } Determine si las siguientes sucesiones convergen o divergen, y en caso de converger, encuentre su límite.
+\begin{enumerate}[a)]
+  \item $a_n = \dfrac{n^2-2}{\sqrt{n^2+1}}$
+  \item $b_n = \cos\left(\dfrac{\pi n^3+n^2}{4n^3 + 3}\right)$
+\end{enumerate}
+
+\noindent\textbf{Respuesta:} 
+\begin{enumerate}[a)]
+  \item 
+    \begin{eqnarray*}
+      \lim_{n\to\infty} a_n &=& \lim_{n\to\infty} \dfrac{n^2-2}{\sqrt{n^2+1}}\\
+      &=& \lim_{n\to\infty} \dfrac{n^2-2}{\sqrt{n^2+1}}\cdot\dfrac{1/n}{1/n}\\
+      &=& \lim_{n\to\infty} \dfrac{n-\frac{2}{n}}{\frac{\sqrt{n^2+1}}{n}}\\
+      &=& \lim_{n\to\infty} \dfrac{n-\frac{2}{n}}{\sqrt{1+\frac{1}{n^2}}}\\
+      &=& \infty
+    \end{eqnarray*}
+    Por lo tanto, la sucesión diverge a infinito.
+  \item
+    \begin{eqnarray*}
+      \lim_{n\to\infty} b_n &=& \lim_{n\to\infty} \cos\left(\dfrac{\pi n^3+n^2}{4n^3 + 3}\right)\\
+      &=& \cos\left(\lim_{n\to\infty}\dfrac{\pi n^3+n^2}{4n^3 + 3}\right)\\
+      &=& \cos\left(\lim_{n\to\infty}\dfrac{\pi n^3+n^2}{4n^3 + 3}\dfrac{1/n^3}{1/n^3}\right)\\
+      &=& \cos\left(\lim_{n\to\infty}\dfrac{\pi +\frac{1}{n}}{4 + \frac{3}{n^3}}\right)\\
+      &=& \cos\left(\dfrac{\pi}{4}\right)\\
+      &=& \dfrac{\sqrt{2}}{2}
+    \end{eqnarray*}
+    Por lo tanto, la sucesión converge a $\dfrac{\sqrt{2}}{2}$.
+\end{enumerate}
+
+%! Pregunta 2
+\newpage
+\noindent\textbf{P2) } Determine si la siguiente serie es convergente o divergente, en caso de ser convergente encuentre su suma y en caso de ser divergente justifique.
+$$\sum_{n=1}^\infty \dfrac{3^{n-1}}{2\cdot5^n}$$
+
+\noindent\textbf{Respuesta:} Reescribimos la serie como
+\begin{eqnarray*}
+  \sum_{n=1}^\infty \dfrac{3^{n-1}}{2\cdot5^n} &=& \sum_{n=1}^\infty \dfrac{3^{n-1}}{2\cdot5^n}\\
+  &=& \sum_{n=1}^\infty \frac{3^{n-1}}{10\cdot5^{n-1}}\\
+  &=& \sum_{n=1}^\infty \dfrac{1}{10}\left(\dfrac{3}{5}\right)^{n-1}\\
+  &=& \dfrac{1}{10}\sum_{n=1}^\infty \left(\dfrac{3}{5}\right)^{n-1}\\
+  &=& \dfrac{1}{10}\sum_{n=0}^\infty \left(\dfrac{3}{5}\right)^{n}\\
+  &=& \dfrac{1}{10}\dfrac{1}{1-\frac{3}{5}}\\
+  &=& \dfrac{1}{10}\dfrac{1}{\frac{2}{5}}\\
+  &=& \dfrac{1}{10}\cdot\dfrac{5}{2}\\
+  &=& \dfrac{1}{4}
+\end{eqnarray*}
+
+\end{document}

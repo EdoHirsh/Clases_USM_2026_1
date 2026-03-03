@@ -1,0 +1,37 @@
+%! Carga de paquetes
+\usepackage{amssymb,amsthm,amsmath,mathtools,dsfont}
+\usepackage{graphicx,multicol,tikz,accents,multimedia,tcolorbox}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+
+%! soluciona potencial problema de fuentes en math mode
+%\usefonttheme[onlymath]{serif}
+\usefonttheme{professionalfonts} 
+
+%! Personalización de colores
+%* Colores institucionales según documento oficial
+\definecolor{BlueUSM}{HTML}{004B85}
+\newcommand{\BlueUSM}[1]{{\color{BlueUSM}{#1}}}
+\definecolor{RedUSM}{HTML}{D60019}
+\newcommand{\RedUSM}[1]{{\color{RedUSM}{#1}}}
+\definecolor{GreenUSM}{HTML}{008452}
+\newcommand{\GreenUSM}[1]{{\color{GreenUSM}{#1}}}
+\definecolor{YellowUSM}{HTML}{F7AE00}
+\newcommand{\YellowUSM}[1]{{\color{YellowUSM}{#1}}}
+\definecolor{BlackUSM}{HTML}{000000}
+\newcommand{\BlackUSM}[1]{{\color{BlackUSM}{#1}}}
+\definecolor{LightBlackUSM}{cmyk}{0,0,0,0.7}
+\newcommand{\LightBlackUSM}[1]{{\color{LightBlackUSM}{#1}}}
+
+%! Beamer configuración básica
+\mode<article>{\usepackage{pgf,fancyhdr}}
+\mode<presentation> {
+\usetheme{JuanLesPins}
+% Color del tema. (default es el azul tipo "puc")
+\usecolortheme[named=BlueUSM]{structure}
+%\setbeamercovered{transparent} % Transparencia.
+}
+%\setbeameroption{hide notes}
+%\setbeameroption{show notes}
+% left, bottom, or top. (default is right)
+%\setbeameroption{show notes on second screen=⟨location⟩}

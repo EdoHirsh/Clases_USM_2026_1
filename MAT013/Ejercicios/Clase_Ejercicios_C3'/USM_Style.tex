@@ -1,0 +1,83 @@
+% !TEX root = ./Taller1.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer customizations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mode<presentation>{
+
+%\useinnertheme{rectangles}
+% block sin sombra
+\setbeamertemplate{blocks}[rounded][shadow=false]
+% block sin relleno     
+\setbeamercolor{block title}{fg=structure, bg=white}
+% titulo de frame sin relleno
+\setbeamercolor{frametitle}{fg=structure, bg=white}
+
+% oculta barra inferior de navegación
+\setbeamertemplate{navigation symbols}{}
+
+% title page
+\setbeamertemplate{title page}{%
+  \vbox{}
+  \vfill
+  \vskip2cm
+  \begingroup
+    \centering
+    \begin{beamercolorbox}[sep=8pt,center]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%     
+    \end{beamercolorbox}%
+    \vskip1em\par
+    \vfill
+    \begin{beamercolorbox}[sep=2pt,center]{author}
+      \usebeamerfont{author}\insertauthor
+    \end{beamercolorbox}
+    \vfill
+    \begin{beamercolorbox}[sep=8pt,center]{institute}
+      \usebeamerfont{institute}\insertinstitute
+    \end{beamercolorbox}
+    \vfill
+    \begin{beamercolorbox}[sep=3pt,center]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}%
+    \vskip0cm
+    {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+    \thispagestyle{empty}
+  \endgroup
+}
+
+% logo al pie
+\addtobeamertemplate{footline}{%
+%! asistencia
+  % \begin{tabular}{clc}
+  %   \begin{minipage}{1cm}
+  %   $\ $  
+  %   \end{minipage}&
+  %   \begin{minipage}{1.1cm}
+  %     \includegraphics[scale=0.04]{QR.png}
+  %     \vspace{0.2cm}
+  %   \end{minipage}&
+  %   \begin{minipage}{8cm}
+  %     %\begin{center}
+  %       Asistencia\\
+  %       \url{https://forms.office.com/r/FLfkJ2bbwJ}
+  %     %\end{center}
+  %   \end{minipage}
+  % \end{tabular}
+
+  % \setlength\unitlength{1ex}%
+  % \begin{picture}(0,0)
+  %   \put(140,2){\makebox(0,0)[bl]{
+  %   \includegraphics[scale=.2]{Logo_Depto.pdf}
+  %   }}
+  % \end{picture}%
+}{}
+
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%fin Beamer customizations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

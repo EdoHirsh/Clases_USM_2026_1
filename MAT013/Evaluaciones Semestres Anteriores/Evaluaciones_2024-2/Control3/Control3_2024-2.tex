@@ -1,0 +1,182 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage{dsfont,amsfonts}
+\usepackage{fancyhdr,multicol,multirow}
+\usepackage{graphicx,pgf,tikz,accents,multimedia,tcolorbox}
+\usepackage[explicit]{titlesec}
+\usepackage[top=3cm,bottom=2cm,left=2cm,right=2cm,headheight=1cm,headsep=1cm,footskip=1cm]{geometry}
+\usepackage{pstricks-add}
+
+%! Configuración de las enumeración
+\usepackage[shortlabels]{enumitem}
+
+%! Archivo de comandos personalizados generales
+\input{../../Comandos.tex}
+
+%! Datos de la evaluación
+\input{../../Datos.tex}
+\newcommand{\EVALUACION}{Control 3 - 2do. semestre 2024}
+
+%! Encabezado de pagina
+\pagestyle{fancy}
+\fancyhead{}
+\setlength{\headheight}{56pt}
+\setlength{\headsep}{5mm}
+\setlength{\textheight}{22cm}
+\fancyhead[L]{
+  \textbf{\large Departamento de Matemática}\\[1mm]
+  \textbf{\large Universidad Técnica Federico Santa María}
+  \vspace{1mm}
+}
+\fancyhead[R]{
+  \begin{flushright}
+    \textbf{\large Pauta \EVALUACION}\\[1mm]
+    \textbf{\large \SIGLACURSO}
+    \vspace{-5mm}
+  \end{flushright}
+}
+
+\begin{document}
+
+%!Encabezado Portada
+\thispagestyle{plain}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=0.75]{logo-dmat-vertical.pdf}
+\end{center}
+\vspace{2mm}
+
+%!Titulo
+\begin{center}
+  \textbf{\Large \SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \textbf{\Large \EVALUACION}\\[2mm]
+  {\large\PROFESOR}\\
+\end{center}
+\vspace{5mm}
+
+%! Pregunta 1
+\noindent\textbf{P1) } \textsf{[50 pts.]} Dada la función
+$$f(x,y)= \frac{x}{x+y}$$
+\begin{enumerate}[a)]
+\item Calcule las primeras derivadas parciales de la función
+\item Determine la ecuación del plano tangente a la gráfica de $f$ en $(2,1)$.
+\end{enumerate}
+
+\vspace{5mm}
+%! Pregunta 2
+\noindent\textbf{P2) } \textsf{[50 pts.]} En el conjunto dado por $x^2+2y^2+2z^2\leq4$ se define la función.
+$$T(x,y,z)=-(x^2+2y^2+2z^2)$$
+\begin{enumerate}[a)]
+\item Si está en el punto $(1,1,0)$, determine la dirección en la que la función $T$ crece más rápidamente.
+\item Encuentre la ecuación del plano tangente a la superficie de nivel $T(x,y,z)=-3$ en el punto $(1,1,0)$.
+\end{enumerate}
+
+%! Formulas
+\newpage
+\noindent\textsf{\large FORMULAS:}
+\vspace{3mm}
+
+Derivadas básicas:
+\begin{multicols}{2}
+  \begin{enumerate}
+    \item $(x^n)' = nx^{n-1}$
+    \item $(e^x)' = e^x$
+    \item $(\ln\abs{x})' = \frac{1}{x}$
+    \item $(\sen(x))' = \cos(x)$
+    \item $(\cos(x))' = -\sen(x)$
+    \item $(\tan(x))' = \sec^2(x)$
+    \item $(\cot(x))' = -\csc^2(x)$
+    \item $(\sec(x))' = \sec(x)\tan(x)$
+    \item $(\csc(x))' = -\csc(x)\cot(x)$
+    \item $(\arcsen(x))' = \frac{1}{\sqrt{1-x^2}}$
+    \item $(\arccos(x))' = -\frac{1}{\sqrt{1-x^2}}$
+    \item $(\arctan(x))' = \frac{1}{1+x^2}$
+  \end{enumerate}
+\end{multicols}
+\vspace{2mm}
+
+% Series de MacLaurin importantes:
+% $$\begin{array}{|cccc|}
+%   \hline
+%   \text{función } & & \text{serie} & \text{intervalo convergencia}\\
+%   \hline
+%   & & & \\
+%   \dfrac{1}{1-x} & & \displaystyle\sum_{n=0}^\infty x^n & (-1,1)\\
+%   & & & \\
+%   e^x & & \displaystyle\sum_{n=0}^\infty \frac{x^n}{n!} & \Real\\
+%   & & & \\
+%   \sen(x) & & \displaystyle\sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{(2n+1)!} & \Real\\
+%   & & & \\
+%   \cos(x) & & \displaystyle\sum_{n=0}^\infty (-1)^n\frac{x^{2n}}{(2n)!} & \Real\\
+%   & & & \\
+%   % \arctan x & & \displaystyle\sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{2n+1} & [-1,1]\\
+%   \hline
+% \end{array}$$
+% \vspace{2mm}
+
+% Integrales básicas:
+% \begin{multicols}{3}
+%   \begin{enumerate}
+%     \item $\displaystyle\int x^n dx = \frac{x^{n+1}}{n+1}+C$ (si $n\neq -1$).
+%     \item $\displaystyle\int \frac{1}{x}dx = \ln|x|+C$
+%     \item $\displaystyle\int e^x dx = e^x+C$
+%     \item $\displaystyle\int \ln(x) dx = x\ln(x)-x+C$
+%     \item $\displaystyle\int \sin(x) dx = -\cos x+C$
+%     \item $\displaystyle\int \cos(x) dx = \sin x+C$
+%     \item $\displaystyle\int \sec^2(x) dx = \tan x+C$
+%     \item $\displaystyle\int \csc^2(x) dx = -\cot x+C$
+%     \item $\displaystyle\int \frac{1}{1+x^2}dx = \arctan x+C$
+%     \item $\displaystyle\int \frac{1}{\sqrt{1-x^2}}dx = \arcsin x+C$
+%     \item $\displaystyle\int \sec(x) dx = \ln|\sec x+\tan x|+C$
+%     \item $\displaystyle\int \csc(x) dx = \ln|\csc x-\cot x|+C$
+%     \item $\displaystyle\int \tan(x) dx = -\ln|\cos x|+C$
+%     \item $\displaystyle\int \cot(x) dx = \ln|\sin x|+C$
+%     % \item $\displaystyle\int \cosh(x) dx = \sinh x+C$
+%     % \item $\displaystyle\int \sinh(x) dx = \cosh x+C$\\
+%   \end{enumerate}
+% \end{multicols}
+% \vspace{2mm}
+
+% Identidades trigonométricas:
+% \begin{multicols}{3}
+%   \begin{enumerate}
+%     \item $\cos^2(x)+\sen^2(x)=1$
+%     \item $\tan^2(x)+1=\sec^2(x)$
+%     \item $\sen(x\pm y)=\sen(x)\cos(y)\pm\cos(x)\sen(y)$
+%     \item $\cos(x\pm y)=\cos(x)\cos(y)\mp\sen(x)\sen(y)$
+%     \item $\sen(2x)=2\sen(x)\cos(x)$
+%     \item $\cos(2x)=\cos^2(x)-\sen^2(x)$
+%     \item $\cos^2(x)=\frac{1+\cos(2x)}{2}$
+%     \item $\sen^2(x)=\frac{1-\cos(2x)}{2}$
+%   \end{enumerate}
+% \end{multicols}
+% \vspace{2mm}
+
+% Tabla funciones trigonométricas de ángulos notables:
+% \begin{center}
+%   \begin{tabular}{|c||c|c|c|c|c|}
+%     \hline
+%     % \hline
+%     \multirow{2}{*}{$\theta$} & \multirow{2}{*}{$0$} & \multirow{2}{*}{$\dfrac{\pi}{6}$} & \multirow{2}{*}{$\dfrac{\pi}{4}$} & \multirow{2}{*}{$\dfrac{\pi}{3}$} & \multirow{2}{*}{$\dfrac{\pi}{2}$}\\
+%     & & & & & \\
+%     \hline
+%     \hline
+%     \multirow{3}{*}{$\sen(\theta)$} & \multirow{3}{*}{$0$} & \multirow{3}{*}{$\dfrac{1}{2}$} & \multirow{3}{*}{$\dfrac{\sqrt{2}}{2}$} & \multirow{3}{*}{$\dfrac{\sqrt{3}}{2}$} & \multirow{3}{*}{$1$}\\
+%     & & & & & \\
+%     & & & & & \\
+%     \hline
+%     \multirow{3}{*}{$\cos(\theta)$} & \multirow{3}{*}{$1$} & \multirow{3}{*}{$\dfrac{\sqrt{3}}{2}$} & \multirow{3}{*}{$\dfrac{\sqrt{2}}{2}$} & \multirow{3}{*}{$\dfrac{1}{2}$} & \multirow{3}{*}{$0$}\\
+%     & & & & & \\
+%     & & & & & \\
+%     \hline
+%     \multirow{3}{*}{$\tan(\theta)$} & \multirow{3}{*}{$0$} & \multirow{3}{*}{$\dfrac{\sqrt{3}}{3}$} & \multirow{3}{*}{$1$} & \multirow{3}{*}{$\sqrt{3}$} & \multirow{3}{*}{Ind.}\\
+%     & & & & & \\
+%     & & & & & \\
+%     \hline
+%   \end{tabular}
+% \end{center}
+
+\end{document}

@@ -1,0 +1,138 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage{dsfont,amsfonts}
+\usepackage{fancyhdr,multicol,multirow}
+\usepackage{graphicx,pgf,tikz,accents,multimedia,tcolorbox}
+\usepackage[explicit]{titlesec}
+\usepackage[top=3cm,bottom=2cm,left=2cm,right=2cm,headheight=1cm,headsep=1cm,footskip=1cm]{geometry}
+\usepackage{pstricks-add}
+
+%! Configuración de las enumeración
+\usepackage[shortlabels]{enumitem}
+
+%! Archivo de comandos personalizados generales
+\input{../../Comandos.tex}
+
+%! Datos de la evaluación
+\input{../../Datos.tex}
+\newcommand{\EVALUACION}{Control 3 - 2do. semestre 2024}
+
+%! Encabezado de pagina
+\pagestyle{fancy}
+\fancyhead{}
+\setlength{\headheight}{56pt}
+\setlength{\headsep}{5mm}
+\setlength{\textheight}{22cm}
+\fancyhead[L]{
+  \textbf{\large Departamento de Matemática}\\[1mm]
+  \textbf{\large Universidad Técnica Federico Santa María}
+  \vspace{1mm}
+}
+\fancyhead[R]{
+  \begin{flushright}
+    \textbf{\large Pauta \EVALUACION}\\[1mm]
+    \textbf{\large \SIGLACURSO}
+    \vspace{-5mm}
+  \end{flushright}
+}
+
+\begin{document}
+
+%!Encabezado Portada
+\thispagestyle{plain}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=0.75]{logo-dmat-vertical.pdf}
+\end{center}
+\vspace{2mm}
+
+%!Titulo
+\begin{center}
+  \textbf{\Large \SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \textbf{\Large Pauta \EVALUACION}\\[2mm]
+  {\large\PROFESOR}\\
+\end{center}
+\vspace{5mm}
+
+%! Pregunta 1
+\noindent\textbf{P1) } Dada la función
+$$f(x,y)= \frac{x}{x+y}$$
+\begin{enumerate}[a)]
+\item Calcule las primeras derivadas parciales de la función
+\item Determine la ecuación del plano tangente a la gráfica de $f$ en $(2,1)$.
+\end{enumerate}
+
+\vspace{5mm}
+\noindent\textbf{Respuesta:}
+\begin{enumerate}[a)]
+  \item La derivada parcial de $f$ con respecto a $x$ es
+  \begin{eqnarray*}
+    f_x(x,y) &=& \frac{1\cdot(x+y)-x\cdot1}{(x+y)^2}\\
+    &=& \frac{x+y-x}{(x+y)^2}\\
+    &=& \frac{y}{(x+y)^2}
+  \end{eqnarray*}
+  y la derivada parcial de $f$ con respecto a $y$ es
+  \begin{eqnarray*}
+    f_y(x,y) &=& \frac{-x}{(x+y)^2}\\
+  \end{eqnarray*}
+  \item Para encontrar la ecuación del plano tangente a la gráfica de $f$ en $(2,1)$, primero calculamos el valor de $f(2,1)$
+  $$f(2,1)=\frac{2}{3}$$
+  y luego calculamos las derivadas parciales en $(2,1)$
+  \begin{eqnarray*}
+    f_x(2,1) &=& \frac{1}{9}\\
+    f_y(2,1) &=& -\frac{2}{9} 
+  \end{eqnarray*}
+  Luego la ecuación del plano tangente es
+  $$z=\frac{2}{3}+\frac{1}{9}(x-2)-\frac{2}{9}(y-1)$$
+  simplificando
+  $$z=\frac{1}{9}x-\frac{2}{9}y+\frac{2}{3}$$
+  reordenando
+  $$x-2y-9z+6=0$$
+\end{enumerate}
+
+\newpage
+%! Pregunta 2
+\noindent\textbf{P2) } En el conjunto dado por $x^2+2y^2+2z^2\leq4$ se define la función.
+$$T(x,y,z)=-(x^2+2y^2+2z^2)$$
+\begin{enumerate}[a)]
+\item Si está en el punto $(1,1,0)$, determine la dirección en la que la función $T$ crece más rápidamente.
+\item Encuentre la ecuación del plano tangente a la superficie de nivel $T(x,y,z)=-3$ en el punto $(1,1,0)$.
+\end{enumerate}
+
+\vspace{5mm}
+\noindent\textbf{Respuesta:}
+\begin{enumerate}[a)]
+  \item Para encontrar la dirección en la que la función $T$ crece más rápidamente en el punto $(1,1,0)$, calculamos el gradiente de $T$ en $(1,1,0)$
+  \begin{eqnarray*}
+    \nabla T(x,y,z) &=& (-2x,-4y,-4z)\\
+  \end{eqnarray*}
+  Evaluando en $(1,1,0)$
+  \begin{eqnarray*}
+    \nabla T(1,1,0) &=& \left(-2x,-4y,-4z\right)\\
+    &=& (-2,-4,0)
+  \end{eqnarray*}
+  Luego la dirección en la que $T$ crece más rápidamente es $(-2,-4,0)$.
+  \item Para encontrar la ecuación del plano tangente a la superficie de nivel $T(x,y,z)=-3$ en el punto $(1,1,0)$, primero verificamos que $T(1,1,0)=-3$
+  \begin{eqnarray*}
+    T(1,1,0) &=& -(1^2+2\cdot1^2+2\cdot0^2)\\
+    &=& -3
+  \end{eqnarray*}
+  calculamos el gradiente de $T$ en $(1,1,0)$
+  \begin{eqnarray*}
+    \nabla T(1,1,0) &=& (-2,-4,0)
+  \end{eqnarray*}
+  entonces el vector normal al plano tangente es $(-2,-4,0)$, y luego el plano tangente es normal a este vector y pasa por $(1,1,0)$, por lo que la ecuación del plano tangente es
+  \begin{eqnarray*}
+    (-2,-4,0)\cdot(x-1,y-1,z-0) &=& 0\\
+    -2(x-1)-4(y-1)+0(z-0) &=& 0\\
+    -2x+2-4y+4 &=& 0\\
+    -2x-4y+6 &=& 0\\
+    2x+4y-6 &=& 0
+  \end{eqnarray*}
+\end{enumerate}
+
+
+\end{document}

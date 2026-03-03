@@ -1,0 +1,18 @@
+%! documento sin pausas, para imprimir en papel o publicar en PDF
+\documentclass[trans,10pt]{beamer}
+\usepackage{pgfpages}
+% El modo 2 en 1 tiene problemas con el paquete hyperref
+% si se quiere usar para imprimir en papel no hay problema
+% \pgfpagesuselayout{2 on 1}[letterpaper,border shrink=5mm]
+
+%! Encabezado con configuraciones básicas y carga de paquetes
+\input{../Encabezado.tex} 
+
+%! Beamer personalización específica compleja
+\input{../Beamer_Opt.tex}
+
+%! Archivo de comandos personalizados generales
+\input{../Comandos.tex}
+
+%! Contenido de la presentación y personalización especifica
+\input{Contenido.tex}

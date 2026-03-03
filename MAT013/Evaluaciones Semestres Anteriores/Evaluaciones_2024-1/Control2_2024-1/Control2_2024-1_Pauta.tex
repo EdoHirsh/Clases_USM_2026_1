@@ -1,0 +1,131 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage{dsfont,amsfonts}
+\usepackage{fancyhdr,multicol,multirow}
+\usepackage{graphicx,pgf,tikz,accents,multimedia,tcolorbox}
+\usepackage[explicit]{titlesec}
+\usepackage[top=3cm,bottom=2cm,left=2cm,right=2cm,headheight=1cm,headsep=1cm,footskip=1cm]{geometry}
+\usepackage{pstricks-add}
+
+%! Configuración de las enumeración
+\usepackage[shortlabels]{enumitem}
+
+%! Archivo de comandos personalizados generales
+\input{../../Comandos.tex}
+
+%! Datos de la evaluación
+\input{../../Datos.tex}
+\newcommand{\EVALUACION}{Control 2 - 1er. semestre 2024}
+
+%! Encabezado de pagina
+\pagestyle{fancy}
+\fancyhead{}
+\setlength{\headheight}{56pt}
+\setlength{\headsep}{5mm}
+\setlength{\textheight}{22cm}
+\fancyhead[L]{
+  \textbf{\large Departamento de Matemática}\\[1mm]
+  \textbf{\large Universidad Técnica Federico Santa María}
+  \vspace{1mm}
+}
+\fancyhead[R]{
+  \begin{flushright}
+    \textbf{\large Pauta \EVALUACION}\\[1mm]
+    \textbf{\large \SIGLACURSO}
+    \vspace{-5mm}
+  \end{flushright}
+}
+
+\begin{document}
+
+%!Encabezado Portada
+\thispagestyle{plain}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=0.75]{logo-dmat-vertical.pdf}
+\end{center}
+\vspace{2mm}
+
+%!Titulo
+\begin{center}
+  \textbf{\Large \SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \textbf{\Large Pauta \EVALUACION}\\[2mm]
+  {\large\PROFESOR}\\
+\end{center}
+\vspace{5mm}
+
+%! Pregunta 1
+\noindent\textbf{P1) } Encuentre la serie de MacLaurin de
+\begin{enumerate}[a)]
+  \item $xe^x$
+  \item $\sen(2x)$
+\end{enumerate}
+\vspace{0.5cm}
+
+\vspace{5mm}
+\noindent\textbf{Respuesta:} 
+\begin{enumerate}[a)]
+  \item Sabemos que la serie de MacLaurin de $e^x$ es
+    $$e^x=\sum_{n=0}^\infty\frac{x^n}{n!}.$$
+    Por lo tanto, la serie de MacLaurin de $xe^x$ es
+    $$xe^x=\sum_{n=0}^\infty\frac{x^{n+1}}{n!}.$$
+  \vspace{0.5cm}
+  \item Sabemos que la serie de MacLaurin de $\sen(x)$ es
+    $$\sen(x)=\sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{(2n+1)!}.$$
+    Por lo tanto, la serie de MacLaurin de $\sen(2x)$ es
+    $$\sen(2x)=\sum_{n=0}^\infty (-1)^n\frac{(2x)^{2n+1}}{(2n+1)!}.$$
+    Simplificando, obtenemos
+    $$\sen(2x)=\sum_{n=0}^\infty (-1)^n\frac{2^{2n+1}x^{2n+1}}{(2n+1)!}.$$
+\end{enumerate}
+
+
+\newpage
+%! Pregunta 2
+\noindent\textbf{P2) } 
+\begin{enumerate}[a)]
+  \item Muestre $T:\Real^2\to\Real^2$ definida por
+    $$T(x,y)=(x^2-y^2,2xy).$$
+    no es una transformación lineal.
+  \item Sea $T:\Real^2\to\Real^2$ una transformación lineal definida por
+    $$T(x,y)=(2x-y,x+5y)$$
+    encuentre su matriz canónica.
+\end{enumerate}
+\vspace{0.5cm}
+
+\vspace{5mm}
+\noindent\textbf{Respuesta:}
+\begin{enumerate}[a)]
+  \item Para mostrar que $T$ no es una transformación lineal, basta con encontrar un contraejemplo. Tomemos $u=(1,0)$ y $v=(0,1)$, entonces
+    \begin{eqnarray*}
+      T(u) &=& (1,0)\\
+      T(v) &=& (-1,0)
+    \end{eqnarray*}
+    y
+    \begin{eqnarray*}
+      T(u+v) &=& T(1,1)\\
+        &=& (1^2-1^2,2\cdot1\cdot1)\\
+        &=& (0,2)
+    \end{eqnarray*}
+    pero
+    \begin{eqnarray*}
+      T(u)+T(v) &=& (1,0)+(-1,0)\\
+        &=& (0,0).
+    \end{eqnarray*}
+    luego $T(u+v)\neq T(u)+T(v)$, por lo tanto $T$ no es una transformación lineal.\\
+  \vspace{0.5cm}
+  \item Para identificar las columnas de la matriz canónica de $T$, basta con calcular $T(e_1)$ y $T(e_2)$, donde $e_1=(1,0)$ y $e_2=(0,1)$. Así,
+    \begin{eqnarray*}
+      T(e_1) &=& (2\cdot1-0,1+5\cdot0)\\
+        &=& (2,1)\\
+      T(e_2) &=& (2\cdot0-1,0+5\cdot1)\\
+        &=& (-1,5).
+    \end{eqnarray*}
+    Por lo tanto, la matriz canónica de $T$ es
+    $$\begin{pmatrix}2 & -1\\1 & 5\end{pmatrix}.$$
+\end{enumerate}
+
+
+\end{document}

@@ -1,0 +1,139 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage{dsfont,amsfonts}
+\usepackage{fancyhdr,multicol,multirow}
+\usepackage{graphicx,pgf,tikz,accents,multimedia,tcolorbox}
+\usepackage[explicit]{titlesec}
+\usepackage[top=3cm,bottom=2cm,left=2cm,right=2cm,headheight=1cm,headsep=1cm,footskip=1cm]{geometry}
+\usepackage{pstricks-add}
+
+%! Configuración de las enumeración
+\usepackage[shortlabels]{enumitem}
+
+%! Archivo de comandos personalizados generales
+\input{../../Comandos.tex}
+
+%! Datos de la evaluación
+\input{../../Datos.tex}
+\newcommand{\EVALUACION}{Control 3 - 1er. semestre 2024}
+
+%! Encabezado de pagina
+\pagestyle{fancy}
+\fancyhead{}
+\setlength{\headheight}{56pt}
+\setlength{\headsep}{5mm}
+\setlength{\textheight}{22cm}
+\fancyhead[L]{
+  \textbf{\large Departamento de Matemática}\\[1mm]
+  \textbf{\large Universidad Técnica Federico Santa María}
+  \vspace{1mm}
+}
+\fancyhead[R]{
+  \begin{flushright}
+    \textbf{\large Pauta \EVALUACION}\\[1mm]
+    \textbf{\large \SIGLACURSO}
+    \vspace{-5mm}
+  \end{flushright}
+}
+
+\begin{document}
+
+%!Encabezado Portada
+\thispagestyle{plain}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=0.75]{logo-dmat-vertical.pdf}
+\end{center}
+\vspace{2mm}
+
+%!Titulo
+\begin{center}
+  \textbf{\Large \SIGLACURSO\ - \NOMBRECURSO}\\[1mm]
+  \textbf{\Large Pauta \EVALUACION}\\[2mm]
+  {\large\PROFESOR}\\
+\end{center}
+\vspace{5mm}
+
+%! Pregunta 1
+\noindent\textbf{P1) } \textsf{[50 pts.]} Dada la función
+  $$f(x,y)= x^2ye^{x^2-y^2}$$
+\begin{enumerate}[a)]
+  \item \textsf{[25 pts.]} Calcule las primeras derivadas parciales de la función
+  \item \textsf{[25 pts.]} Justifique que la función es diferenciable en $(x,y)=(1,1)$, determine la ecuación del plano tangente a la gráfica de $f$ en dicho punto.
+\end{enumerate}
+
+\vspace{5mm}
+\noindent\textbf{Respuesta:}
+\begin{enumerate}[a)]
+  \item primero vemos que
+  \begin{eqnarray*}
+    f_x(x,y) &=& 2xye^{x^2-y^2}+x^2ye^{x^2-y^2}(2x)\\
+    &=& 2xye^{x^2-y^2}+2x^3ye^{x^2-y^2}\\
+    &=& 2xy(1+x^2)e^{x^2-y^2}
+  \end{eqnarray*}
+  y
+  \begin{eqnarray*}
+    f_y(x,y) &=& x^2e^{x^2-y^2}+x^2ye^{x^2-y^2}(-2y)\\
+    &=& x^2e^{x^2-y^2}-2x^2y^2e^{x^2-y^2}\\
+    &=& x^2(1-2y^2)e^{x^2-y^2}
+  \end{eqnarray*}
+
+  \vspace{0.5cm}
+  \item Como las derivadas parciales son continuas en $(1,1)$, la función es diferenciable en dicho punto. Para encontrar la ecuación del plano tangente, usaremos la formula.
+  $$f_x(1,1)(x-1)+f_y(1,1)(y-1)-z+f(1,1)=0$$
+  evaluaremos en $(1,1)$ las derivadas parciales y la función.
+  \begin{eqnarray*}
+    f_x(1,1) &=& 2(1)(1)(1+1^2)e^{1^2-1^2}=4e^0=4\\
+    f_y(1,1) &=& 1^2(1-2(1)^2)e^{1^2-1^2}=1(1-2)e^0=-1\\
+    f(1,1) &=& 1^2(1)e^{1^2-1^2}=1e^0=1
+  \end{eqnarray*}
+  luego la ecuación del plano tangente es
+  $$4(x-1)-1(y-1)-z+1=0$$
+  simplificando
+  $$4x-y-z-2=0$$
+\end{enumerate}
+
+
+
+\newpage
+%! Pregunta 2
+\noindent\textbf{P2) } \textsf{[50 pts.]} En el conjunto dado por $x^2+y^2+z^2\leq4$ se define la función.
+  $$T(x,y,z)=e^{-(x^2+y^2+z^2)}$$
+\begin{enumerate}[a)]
+  \item \textsf{[25 pts.]} Si está en el punto $(1,1,0)$, determine la dirección en la que la función $T$ crece más rápidamente.
+  \item \textsf{[25 pts.]} Encuentre la ecuación del plano tangente a la superficie de nivel $T(x,y,z)=e^{-2}$ en el punto $(1,1,0)$.
+\end{enumerate}
+
+\vspace{5mm}
+\noindent\textbf{Respuesta:} 
+\begin{enumerate}[a)]
+  \item La dirección en la que la función crece más rápidamente es la dirección del gradiente de la función. Para encontrar el gradiente de la función, primero encontramos las derivadas parciales de la función.
+  \begin{eqnarray*}
+    T_x(x,y,z) &=& -2xe^{-(x^2+y^2+z^2)}\\
+    T_y(x,y,z) &=& -2ye^{-(x^2+y^2+z^2)}\\
+    T_z(x,y,z) &=& -2ze^{-(x^2+y^2+z^2)}
+  \end{eqnarray*}
+  evaluando en $(1,1,0)$, tenemos
+  \begin{eqnarray*}
+    T_x(1,1,0) &=& -2(1)e^{-2}=-2e^{-2}\\
+    T_y(1,1,0) &=& -2(1)e^{-2}=-2e^{-2}\\
+    T_z(1,1,0) &=& -2(0)e^{-2}=0
+  \end{eqnarray*}
+  por lo tanto la dirección en la que la función crece más rápidamente es
+  $$\left(-2e^{-2},-2e^{-2},0\right)$$
+
+  \vspace{0.5cm}
+  \item Para encontrar la ecuación del plano tangente a la superficie de nivel $T(x,y,z)=e^{-2}$ en el punto $(1,1,0)$, usaremos la formula.
+  $$\nabla T(1,1,0)\cdot(x-1,y-1,z-0)=0$$
+  en el item anterior encontramos $\nabla T(1,1,0)=\left(-2e^{-2},-2e^{-2},0\right)$, luego la ecuación del plano tangente es
+  $$-2e^{-2}(x-1)-2e^{-2}(y-1)=0$$
+  simplificando
+  $$x+y-2=0$$
+\end{enumerate}
+
+
+
+\end{document}

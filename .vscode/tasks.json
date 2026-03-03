@@ -1,0 +1,47 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build pdf",
+            "type": "shell",
+            "command": "latexmk -f -pdf *_Article.tex *_Imprimible.tex *_Slides.tex",
+            "group": "build",
+        },
+        {
+            "label": "clean latex",
+            "type": "shell",
+            "command": "latexmk -c",
+            "group": "build",
+        },
+        {
+            "label": "render all",
+            "type": "shell",
+            "command": "manim -a ${file}",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${fileDirname}"
+            }
+        },
+        {
+            "label": "render thumbnails",
+            "type": "shell",
+            "command": "manim -a -s ${file}",
+            "problemMatcher": [],
+            "group": "build",
+            "options": {
+                "cwd": "${fileDirname}"
+            }
+        },
+        {
+            "label": "render",
+            "type": "shell",
+            "command": "manim ${file}",
+            "problemMatcher": [],
+            "group": "build"
+        }
+    ]
+}
