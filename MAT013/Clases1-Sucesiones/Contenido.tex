@@ -92,27 +92,29 @@
   Una sucesión se puede representar gráficamente como una secuencia de puntos en la recta real, por ejemplo la sucesión $\set{\frac{1}{n}}_{n=1}^{\infty}$ se puede representar como
   \vspace{-5mm}
   \begin{center}
-    \hspace*{-10mm}\includegraphics[scale=0.4]{./imagenes/Sucesion_1D.png}
+    \hspace*{-10mm}\href{https://graficosucesiones1d.streamlit.app/}{\includegraphics[scale=0.4]{./imagenes/Sucesion_1D.png}}
   \end{center}
   \onslide<2->{
     \vspace{-2mm}
     También se puede representar como una secuencia de puntos en el plano como
     \vspace{-5mm}
     \begin{center}
-      \includegraphics[scale=0.4]{./imagenes/Sucesion_2D.png}
+      \href{https://graficosucesiones2d.streamlit.app/}{\includegraphics[scale=0.4]{./imagenes/Sucesion_2D.png}}
     \end{center}
   }
 \end{frame}
 
-\begin{frame}{Ejemplos}
-  Algunos ejemplos de sucesiones son:\\[0.5cm]
-  \begin{enumerate}[<+->]
-    \item La sucesión constante $a_n=c$.\\[0.25cm]
-    \item La sucesión aritmética $a_n=a_0+nd$.\\[0.25cm]
-    \item La sucesión geométrica $a_n=a_0\cdot r^n$.\\[0.25cm]
-    \item La sucesión armónica $a_n=\dfrac{1}{n}$.\\[0.25cm]
-    \item La sucesión de Fibonacci $a_n=a_{n-1}+a_{n-2}$ y $a_0=a_1=1$.\\[0.25cm]
-  \end{enumerate}
+\begin{frame}
+  \begin{egs}
+    Algunos ejemplos de sucesiones son:\\[0.5cm]
+    \begin{enumerate}[<+->]
+      \item La sucesión constante $a_n=c$.\\[0.25cm]
+      \item La sucesión aritmética $a_n=a_0+nd$.\\[0.25cm]
+      \item La sucesión geométrica $a_n=a_0\cdot r^n$.\\[0.25cm]
+      \item La sucesión armónica $a_n=\dfrac{1}{n}$.\\[0.25cm]
+      \item La sucesión de Fibonacci $a_n=a_{n-1}+a_{n-2}$ y $a_0=a_1=1$.\\[0.25cm]
+    \end{enumerate}
+  \end{egs}
 \end{frame}
 
 \begin{frame}
@@ -181,15 +183,17 @@
   }
 \end{frame}
 
-\begin{frame}{propiedades}
-  Sean $\set{a_n}$ y $\set{b_n}$ sucesiones que convergen a $L$ y $M$ respectivamente, y $c\in\Real$ una constante, entonces se cumplen las siguientes propiedades:\\[0.5cm]
-  \begin{enumerate}
-    \item<2-> $\lim\limits_{n\to\infty}(a_n+b_n)=L+M$.\\[0.25cm]
-    \item<3-> $\lim\limits_{n\to\infty}(a_n-b_n)=L-M$.\\[0.25cm]
-    \item<4-> $\lim\limits_{n\to\infty}c\cdot a_n=c\cdot L$.\\[0.25cm]
-    \item<5-> $\lim\limits_{n\to\infty}(a_n\cdot b_n)=L\cdot M$.\\[0.25cm]
-    \item<6-> $\lim\limits_{n\to\infty}\dfrac{a_n}{b_n}=\dfrac{L}{M}$, si $M\neq 0$.\\[0.25cm]
-  \end{enumerate}
+\begin{frame}
+  \begin{prop}
+    Sean $\set{a_n}$ y $\set{b_n}$ sucesiones que convergen a $L$ y $M$ respectivamente, y $c\in\Real$ una constante, entonces se cumplen las siguientes propiedades:\\[0.5cm]
+    \begin{enumerate}
+      \item<2-> $\lim\limits_{n\to\infty}(a_n+b_n)=L+M$.\\[0.25cm]
+      \item<3-> $\lim\limits_{n\to\infty}(a_n-b_n)=L-M$.\\[0.25cm]
+      \item<4-> $\lim\limits_{n\to\infty}c\cdot a_n=c\cdot L$.\\[0.25cm]
+      \item<5-> $\lim\limits_{n\to\infty}(a_n\cdot b_n)=L\cdot M$.\\[0.25cm]
+      \item<6-> $\lim\limits_{n\to\infty}\dfrac{a_n}{b_n}=\dfrac{L}{M}$, si $M\neq 0$.\\[0.25cm]
+    \end{enumerate}
+  \end{prop}
 \end{frame}
 
 \begin{frame}
@@ -197,16 +201,22 @@
     Si $a_n\leq b_n\leq c_n$ y $\lim_{n\to\infty}a_n=\lim_{n\to\infty}c_n=L$, entonces $\lim_{n\to\infty}b_n=L$
   \end{thm}
   \onslide<2->{
-    \begin{thm}
-      Son equivalentes las siguientes afirmaciones:
-      \begin{enumerate}
-        \item $\lim\limits_{n\to\infty}a_n=L$.
-        \item $\lim\limits_{n\to\infty}\abs{a_n-L}=0$.
-        \item $\lim\limits_{n\to\infty}(a_n-L)=0$.
-      \end{enumerate}
-    \end{thm}
+    \begin{center}
+      \href{https://sucesionesteoremasandwich.streamlit.app/}{\includegraphics[scale=0.4]{./imagenes/Teorema_Sandwich.png}}
+    \end{center}
   }
-  \onslide<3->{
+\end{frame}
+
+\begin{frame}
+  \begin{thm}
+    Son equivalentes las siguientes afirmaciones:
+    \begin{enumerate}
+      \item $\lim\limits_{n\to\infty}a_n=L$.
+      \item $\lim\limits_{n\to\infty}\abs{a_n-L}=0$.
+      \item $\lim\limits_{n\to\infty}(a_n-L)=0$.
+    \end{enumerate}
+  \end{thm}
+  \onslide<2->{
     \begin{thm}
       Si $\lim\limits_{n\to\infty}a_n=L$ y $f:\Real\to\Real$ es una función continua en $L$, entonces 
       $$\lim\limits_{n\to\infty}f(a_n)=f(L)$$
@@ -258,13 +268,26 @@
   }
 \end{frame}
 
-\begin{frame}{Ejemplos}
-  Calcule los siguientes límites.\\[0.25cm]
-  \begin{enumerate}[<+->]
-    \item $\displaystyle\lim_{n\to\infty}\dfrac{2n+5}{3n+1}$\\
-    \item $\displaystyle\lim_{n\to\infty}\dfrac{3n+2}{n^2+1}$\\
-    \item $\displaystyle\lim_{n\to\infty}\frac{\sqrt{n^2+n}}{n+1}$
-  \end{enumerate}
+\begin{frame}
+  \begin{eg}
+    La sucesión dada por $a_n=1-\frac{1}{n}$ es creciente y acotada superiormente por $1$, entonces $\set{a_n}$ es convergente. Gráficamente.
+    \vspace{-3mm}
+    \begin{center}
+      \href{https://sucesionesmonotonaacotada.streamlit.app/}{\includegraphics[scale=0.4]{./imagenes/Sucesion_Creciente_Acotada.png}}
+    \end{center}
+  \end{eg}
+\end{frame}
+
+\begin{frame}
+  \begin{egs}
+    \vspace{2mm}
+    Calcule los siguientes límites.\\[0.25cm]
+    \begin{enumerate}[<+->]
+      \item $\displaystyle\lim_{n\to\infty}\dfrac{2n+5}{3n+1}$\\[3mm]
+      \item $\displaystyle\lim_{n\to\infty}\dfrac{3n+2}{n^2+1}$\\[3mm]
+      \item $\displaystyle\lim_{n\to\infty}\frac{\sqrt{n^2+n}}{n+1}$
+    \end{enumerate}
+  \end{egs}
 \end{frame}
 
 %! subsección
@@ -334,12 +357,15 @@
   }
 \end{frame}
 
-\begin{frame}{Ejemplos}
-  \begin{itemize}[<+->]
-    \item $\displaystyle\sum_{n=1}^{\infty}\frac{1}{2^n}=1$\\[0.5cm]
-    \item $\displaystyle\sum_{n=1}^{\infty}(-1)^n$ diverge\\[0.5cm]
-    \item $\displaystyle\sum_{n=1}^{\infty}\frac{1}{n}$ diverge\\[0.5cm]
-  \end{itemize}    
+\begin{frame}
+  \begin{egs}
+    \vspace{3mm}
+    \begin{itemize}[<+->]
+      \item $\displaystyle\sum_{n=1}^{\infty}\frac{1}{2^n}=1$\\[0.5cm]
+      \item $\displaystyle\sum_{n=1}^{\infty}(-1)^n$ diverge\\[0.5cm]
+      \item $\displaystyle\sum_{n=1}^{\infty}\frac{1}{n}$ diverge\\[0.5cm]
+    \end{itemize}
+  \end{egs}
 \end{frame}
 
 \begin{frame}
@@ -355,16 +381,18 @@
   }
 \end{frame}
 
-\begin{frame}{Propiedades}
-  Sean $\sum_{n=1}^{\infty}a_n$ y $\sum_{n=1}^{\infty}b_n$ series convergentes, y $c\in\Real$ una constante, entonces se cumplen las siguientes propiedades:\\[0.5cm]
-  \begin{enumerate}
-    \item<2-> $\sum_{n=1}^{\infty}(a_n+b_n)=\sum_{n=1}^{\infty}a_n+\sum_{n=1}^{\infty}b_n$.\\[0.25cm]
-    \item<3-> $\sum_{n=1}^{\infty}c\cdot a_n=c\cdot\sum_{n=1}^{\infty}a_n$.\\[0.25cm]
-    \item<4-> $\sum_{n=1}^{\infty}(a_n-b_n)=\sum_{n=1}^{\infty}a_n-\sum_{n=1}^{\infty}b_n$.\\[0.25cm]
-    % \item<5-> $\sum_{n=1}^{\infty}a_n\cdot b_n=\left(\sum_{n=1}^{\infty}a_n\right)\cdot\left(\sum_{n=1}^{\infty}b_n\right)$.\\[0.25cm]
-    % \item<6-> $\sum_{n=1}^{\infty}a_n\cdot c=\left(\sum_{n=1}^{\infty}a_n\right)\cdot c$.\\[0.25cm]
-    % \item<7-> $\sum_{n=1}^{\infty}c=\infty$ si $c\neq 0$.
-  \end{enumerate}
+\begin{frame}
+  \begin{prop}
+    Sean $\sum_{n=1}^{\infty}a_n$ y $\sum_{n=1}^{\infty}b_n$ series convergentes, y $c\in\Real$ una constante, entonces se cumplen las siguientes propiedades:\\[0.5cm]
+    \begin{enumerate}
+      \item<2-> $\sum_{n=1}^{\infty}(a_n+b_n)=\sum_{n=1}^{\infty}a_n+\sum_{n=1}^{\infty}b_n$.\\[0.25cm]
+      \item<3-> $\sum_{n=1}^{\infty}c\cdot a_n=c\cdot\sum_{n=1}^{\infty}a_n$.\\[0.25cm]
+      \item<4-> $\sum_{n=1}^{\infty}(a_n-b_n)=\sum_{n=1}^{\infty}a_n-\sum_{n=1}^{\infty}b_n$.\\[0.25cm]
+      % \item<5-> $\sum_{n=1}^{\infty}a_n\cdot b_n=\left(\sum_{n=1}^{\infty}a_n\right)\cdot\left(\sum_{n=1}^{\infty}b_n\right)$.\\[0.25cm]
+      % \item<6-> $\sum_{n=1}^{\infty}a_n\cdot c=\left(\sum_{n=1}^{\infty}a_n\right)\cdot c$.\\[0.25cm]
+      % \item<7-> $\sum_{n=1}^{\infty}c=\infty$ si $c\neq 0$.
+    \end{enumerate}
+  \end{prop}
 \end{frame}
 
 \begin{frame}
@@ -378,16 +406,18 @@
   }
 \end{frame}
 
-\begin{frame}{Ejemplos}
-  Determine si las siguientes series convergen y en el caso que converjan calcule.
-  \begin{itemize}[<+->]
-    \item $\displaystyle\sum_{n=1}^{\infty}\dfrac{e^n}{3^{n-1}}$
-    \item $\displaystyle\sum_{n=1}^{\infty}\dfrac{(n+1)^2}{n(n+2)}$
-    %\item $\displaystyle\sum_{n=1}^{\infty}\ln\left(\frac{n}{2n+5}\right)$
-    %\item $\displaystyle\sum_{n=1}^{\infty}(cos(1))^n$
-    \item $\displaystyle\sum_{n=1}^{\infty}\frac{1}{n(n+1)}+\frac{12}{5^n}$\\
-    \item $\displaystyle\sum_{n=1}^{\infty}\frac{1}{2^n}+\frac{1}{n}$\\
-  \end{itemize}
+\begin{frame}
+  \begin{egs}
+    Determine si las siguientes series convergen y en el caso que converjan calcule.
+    \begin{itemize}[<+->]
+      \item $\displaystyle\sum_{n=1}^{\infty}\dfrac{e^n}{3^{n-1}}$
+      \item $\displaystyle\sum_{n=1}^{\infty}\dfrac{(n+1)^2}{n(n+2)}$
+      %\item $\displaystyle\sum_{n=1}^{\infty}\ln\left(\frac{n}{2n+5}\right)$
+      %\item $\displaystyle\sum_{n=1}^{\infty}(cos(1))^n$
+      \item $\displaystyle\sum_{n=1}^{\infty}\frac{1}{n(n+1)}+\frac{12}{5^n}$\\
+      \item $\displaystyle\sum_{n=1}^{\infty}\frac{1}{2^n}+\frac{1}{n}$\\
+    \end{itemize}
+  \end{egs}
 \end{frame}
 
 %! subsección
@@ -414,15 +444,17 @@
   }
 \end{frame}
 
-\begin{frame}{Ejemplos}
-\begin{itemize}[<+->]
-\item ¿Para que valores de $p$ la serie $\displaystyle\sum_{n=1}^{\infty}\dfrac{1}{n^p}$ converge?\\[0.5cm]
-\item Determine si las siguientes series convergen o divergen.\\[0.5cm]
-\begin{enumerate}
-\item $\displaystyle\sum_{n=2}^{\infty}\dfrac{1}{n\ln(n)}$\\[0.25cm]
-\item $\displaystyle\sum_{n=1}^{\infty}\dfrac{\ln{n}}{n^2}$\\[0.25cm]
-\end{enumerate}
-\end{itemize}
+\begin{frame}
+  \begin{egs}
+    \begin{itemize}[<+->]
+      \item ¿Para que valores de $p$ la serie $\displaystyle\sum_{n=1}^{\infty}\dfrac{1}{n^p}$ converge?\\[0.5cm]
+      \item Determine si las siguientes series convergen o divergen.\\[0.5cm]
+      \begin{enumerate}
+        \item $\displaystyle\sum_{n=2}^{\infty}\dfrac{1}{n\ln(n)}$\\[0.25cm]
+        \item $\displaystyle\sum_{n=1}^{\infty}\dfrac{\ln{n}}{n^2}$\\[0.25cm]
+      \end{enumerate}
+    \end{itemize}
+  \end{egs}
 \end{frame}
 
 \begin{frame}
@@ -435,12 +467,14 @@
   \end{thm}
 \end{frame}
 
-\begin{frame}{Ejemplos}
-  \begin{itemize}[<+->]
-    \item la serie $\displaystyle\sum\frac{1}{n^2+1}$ converge.
-    \vspace{0.5cm}
-    \item la serie $\displaystyle\sum\frac{n+1}{n^2}$ diverge.
-  \end{itemize}
+\begin{frame}
+  \begin{egs}
+    \begin{itemize}[<+->]
+      \item la serie $\displaystyle\sum\frac{1}{n^2+1}$ converge.
+      \vspace{0.5cm}
+      \item la serie $\displaystyle\sum\frac{n+1}{n^2}$ diverge.
+    \end{itemize}
+  \end{egs}
 \end{frame}
 
 \begin{frame}
@@ -500,15 +534,17 @@
   }
 \end{frame}
 
-\begin{frame}{Ejemplos}
-  Analice la convergencia de las series\\[0.5cm]
-  \begin{enumerate}[<+->]
-    \item $\displaystyle\sum_{n=1}^{\infty} (-1)^{n}\dfrac{2n}{4n^2+1}$\\[0.25cm]
-    \item $\displaystyle\sum_{n=1}^{\infty} (-1)^{n}\dfrac{\ln(n)}{n}$\\[0.25cm]
-    \item $\displaystyle\sum_{n=1}^{\infty} (-1)^{n}\sen\left(\dfrac{\pi}{n}\right)$\\[0.25cm]
-    % \item $\displaystyle\sum_{n=1}^{\infty} (-1)^{n}\cos\left(\dfrac{\pi}{n}\right)$
-    % \item $\displaystyle\sum_{n=1}^{\infty} \dfrac{\sen\left(n\frac{\pi}{2}\right)}{n!}$
-  \end{enumerate}
+\begin{frame}
+  \begin{egs}
+    Analice la convergencia de las series\\[0.5cm]
+    \begin{enumerate}[<+->]
+      \item $\displaystyle\sum_{n=1}^{\infty} (-1)^{n}\dfrac{2n}{4n^2+1}$\\[0.25cm]
+      \item $\displaystyle\sum_{n=1}^{\infty} (-1)^{n}\dfrac{\ln(n)}{n}$\\[0.25cm]
+      \item $\displaystyle\sum_{n=1}^{\infty} (-1)^{n}\sen\left(\dfrac{\pi}{n}\right)$\\[0.25cm]
+      % \item $\displaystyle\sum_{n=1}^{\infty} (-1)^{n}\cos\left(\dfrac{\pi}{n}\right)$
+      % \item $\displaystyle\sum_{n=1}^{\infty} \dfrac{\sen\left(n\frac{\pi}{2}\right)}{n!}$
+    \end{enumerate}
+  \end{egs}
 \end{frame}
 
 %! subsección
@@ -537,14 +573,16 @@
   }
 \end{frame}
 
-\begin{frame}{Ejemplos}
-  \begin{itemize}[<+->]
-    \item $\displaystyle\sum_{n=1}^{\infty}\dfrac{(-1)^{n-1}}{n}$ Converge condicionalmente\\
-    \vspace{0.5cm}
-    \item $\displaystyle\sum_{n=1}^{\infty}(-2)^{1-n}$ Converge absolutamente.\\
-    \vspace{0.5cm}
-    \item $\displaystyle\sum_{n=1}^{\infty}\dfrac{(-1)^{n-1}}{n^p}$ Converge absolutamente si $p>1$
-  \end{itemize}
+\begin{frame}
+  \begin{egs}
+    \begin{itemize}[<+->]
+      \item $\displaystyle\sum_{n=1}^{\infty}\dfrac{(-1)^{n-1}}{n}$ Converge condicionalmente\\
+      \vspace{0.5cm}
+      \item $\displaystyle\sum_{n=1}^{\infty}(-2)^{1-n}$ Converge absolutamente.\\
+      \vspace{0.5cm}
+      \item $\displaystyle\sum_{n=1}^{\infty}\dfrac{(-1)^{n-1}}{n^p}$ Converge absolutamente si $p>1$
+    \end{itemize}
+  \end{egs}
 \end{frame}
 
 \begin{frame}
@@ -559,13 +597,15 @@
   \end{thm}
 \end{frame}
 
-\begin{frame}{Ejemplos}
-  Analice la convergencia de las siguientes series.
-  \begin{itemize}[<+->]
-    \item $\displaystyle \sum_{n=1}^{\infty}\dfrac{n^2}{(-5)^n}$\\
-    \vspace{0.5cm}
-    \item $\displaystyle \sum_{n=1}^{\infty}\dfrac{n^n}{n!}$\\
-  \end{itemize}
+\begin{frame}
+  \begin{egs}
+    Analice la convergencia de las siguientes series.
+    \begin{itemize}[<+->]
+      \item $\displaystyle \sum_{n=1}^{\infty}\dfrac{n^2}{(-5)^n}$\\
+      \vspace{0.5cm}
+      \item $\displaystyle \sum_{n=1}^{\infty}\dfrac{n^n}{n!}$\\
+    \end{itemize}
+  \end{egs}
 \end{frame}
 
 \begin{frame}
@@ -580,13 +620,15 @@
   \end{thm}
 \end{frame}
 
-\begin{frame}{Ejemplos}
-  Analice la convergencia de las siguientes series.\\[0.5cm]
-  \begin{itemize}[<+->]
-    \item $\displaystyle \sum_{n=1}^{\infty}\left(\dfrac{3n+2}{7n+5}\right)^n$\\
-    \vspace{0.25cm}
-    \item $\displaystyle \sum_{n=1}^{\infty}\left(\dfrac{2n^3+2n-1}{n^3+2n^2-n}\right)^n$\\
-  \end{itemize}
+\begin{frame}
+  \begin{egs}
+    Analice la convergencia de las siguientes series.\\[0.5cm]
+    \begin{itemize}[<+->]
+      \item $\displaystyle \sum_{n=1}^{\infty}\left(\dfrac{3n+2}{7n+5}\right)^n$\\
+      \vspace{0.25cm}
+      \item $\displaystyle \sum_{n=1}^{\infty}\left(\dfrac{2n^3+2n-1}{n^3+2n^2-n}\right)^n$\\
+    \end{itemize}
+  \end{egs}
 \end{frame}
 
 \begin{frame}{Ejercicios}
@@ -716,14 +758,16 @@
   \end{defn}
 \end{frame}
 
-\begin{frame}{Ejemplos}
-  \begin{enumerate}[<+->]
-    \item $\displaystyle\sum_{n=0}^{\infty} x^n$
-    \vspace{0.25cm}
-    \item $\displaystyle\sum_{n=1}^{\infty} \dfrac{x^n}{n}$
-    \vspace{0.25cm}
-    \item $\displaystyle\sum_{n=0}^{\infty} \dfrac{(x-2)^n}{n!}$
-  \end{enumerate}
+\begin{frame}
+  \begin{egs}
+    \begin{enumerate}[<+->]
+      \item $\displaystyle\sum_{n=0}^{\infty} x^n$
+      \vspace{0.25cm}
+      \item $\displaystyle\sum_{n=1}^{\infty} \dfrac{x^n}{n}$
+      \vspace{0.25cm}
+      \item $\displaystyle\sum_{n=0}^{\infty} \dfrac{(x-2)^n}{n!}$
+    \end{enumerate}
+  \end{egs}
 \end{frame}
 
 \begin{frame}
@@ -752,14 +796,16 @@
   }
 \end{frame}
 
-\begin{frame}{Ejemplos}
-  Encuentre el radio de convergencia de las siguiente series de potencia\\[0.5cm]
-  \begin{enumerate}[<+->]
-    \item $\displaystyle\sum_{n=0}^{\infty} x^n$\\[0.25cm]
-    % \item $\displaystyle\sum_{n=0}^{\infty} \dfrac{x^n}{n}$\\[0.25cm]
-    \item $\displaystyle\sum_{n=0}^{\infty} \dfrac{(x-2)^n}{n!}$\\[0.25cm]
-    \item $\displaystyle\sum_{n=0}^{\infty} (-1)^n\dfrac{x^{2n}}{(2n)!}$\\[0.25cm]
-  \end{enumerate}
+\begin{frame}
+  \begin{egs}
+    Encuentre el radio de convergencia de las siguiente series de potencia\\[0.5cm]
+    \begin{enumerate}[<+->]
+      \item $\displaystyle\sum_{n=0}^{\infty} x^n$\\[0.25cm]
+      % \item $\displaystyle\sum_{n=0}^{\infty} \dfrac{x^n}{n}$\\[0.25cm]
+      \item $\displaystyle\sum_{n=0}^{\infty} \dfrac{(x-2)^n}{n!}$\\[0.25cm]
+      \item $\displaystyle\sum_{n=0}^{\infty} (-1)^n\dfrac{x^{2n}}{(2n)!}$\\[0.25cm]
+    \end{enumerate}
+  \end{egs}
 \end{frame}
 
 %! subsección
@@ -794,15 +840,17 @@
   \end{thm}
 \end{frame}
 
-\begin{frame}{Ejemplos}
-  Encuentre representación en series de potencias para.\\[0.5cm]
-  \begin{itemize}[<+->]
-    \item $\dfrac{1}{(1-x)^2}$\\
-    \vspace{0.25cm}
-    \item $\ln(1-x)$\\
-    \vspace{0.25cm}
-    \item $\arctan(x)$.
-  \end{itemize}
+\begin{frame}
+  \begin{egs}
+    Encuentre representación en series de potencias para.\\[0.5cm]
+    \begin{itemize}[<+->]
+      \item $\dfrac{1}{(1-x)^2}$\\
+      \vspace{0.25cm}
+      \item $\ln(1-x)$\\
+      \vspace{0.25cm}
+      \item $\arctan(x)$.
+    \end{itemize}
+  \end{egs}
 \end{frame}
 
 %! subsección
@@ -865,15 +913,17 @@
   \end{center}
 \end{frame}
 
-\begin{frame}{Ejemplos}
-Encuentre la serie de Taylor de las siguientes funciones\\[0.5cm]
-\begin{itemize}[<+->]
-\item $e^x$\\[0.25cm]
-\item $\cos(x)$\\[0.25cm]
-\item $\sen(x)$\\[0.25cm]
-\item $\dfrac{1}{1+x^2}$\\[0.25cm]
-\item $\arctan(x)$\\[0.25cm]
-\end{itemize}
+\begin{frame}
+  \begin{egs}
+    Encuentre la serie de Taylor de las siguientes funciones\\[0.5cm]
+    \begin{itemize}[<+->]
+      \item $e^x$\\[0.25cm]
+      \item $\cos(x)$\\[0.25cm]
+      \item $\sen(x)$\\[0.25cm]
+      \item $\dfrac{1}{1+x^2}$\\[0.25cm]
+      \item $\arctan(x)$\\[0.25cm]
+    \end{itemize}
+  \end{egs}
 \end{frame}
 
 \begin{frame}{Series de Taylor de funciones importantes}
