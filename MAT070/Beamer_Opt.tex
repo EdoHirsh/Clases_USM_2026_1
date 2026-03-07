@@ -15,6 +15,9 @@
 % oculta barra inferior de navegación
 \setbeamertemplate{navigation symbols}{}
 
+%! title page title background color
+\setbeamercolor{title}{fg=structure, bg=white}
+
 %! title page
 \setbeamertemplate{title page}{%
   \vbox{}
@@ -22,8 +25,8 @@
   % \vskip1cm
   \begingroup
     \centering
-    \begin{beamercolorbox}[rounded=true,shadow=true,sep=8pt,center]{title}
-      \usebeamerfont{title}\inserttitle\par%
+    \begin{beamercolorbox}[rounded=true,shadow=false,sep=8pt,center]{title}
+      \bf\usebeamerfont{title}\inserttitle\par%
       \ifx\insertsubtitle\@empty%
       \else%
         \vskip0.25em%
@@ -33,7 +36,7 @@
     \vskip1em\par
     \vfill
     \begin{beamercolorbox}[sep=2pt,center]{author}
-      \usebeamerfont{author}\insertauthor
+      \bf\usebeamerfont{author}\insertauthor
     \end{beamercolorbox}
     \vfill
     % \begin{beamercolorbox}[sep=8pt,center]{institute}
