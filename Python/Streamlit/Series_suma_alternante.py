@@ -4,22 +4,22 @@ import streamlit as st
 
 #! Ejecutar con: streamlit run Series_suma_alternante.py
 
-tam_fuentes=12
-
 #* Etiqueta LaTeX de la serie
 latex_tag = r'$\displaystyle s_n=\sum_{k=1}^{n} \frac{(-1)^{k+1}}{k}$'
 
+#* Función que define la sucesión a_n
 def func_a(x: int):
     return (-1)**(x+1)*(1/x)
 
+#* Función que calcula la suma parcial de la sucesión a_n
 @np.vectorize
 def sum_a(x: int):
     ind = np.arange(1,x+1)
     suc =func_a(ind)
     return np.sum(suc)
 
-
-def Draw_Sucesion_1D(n , intervalo_x = [-0.05,1.05], intervalo_y = [-0.125,0.125],solo_ultimo = False, Plot_dark = True, ocultar_etiquetas = False):
+#! Función para dibujar la serie alternante y sus sumas parciales
+def Draw_Serie_Alternante(n , intervalo_x = [-0.05,1.05], intervalo_y = [-0.125,0.125],solo_ultimo = False, Plot_dark = True, ocultar_etiquetas = False, tam_fuentes = 12):
     indices_suc= np.arange(1,n+1)
 
     #! iniciar figura
@@ -35,7 +35,7 @@ def Draw_Sucesion_1D(n , intervalo_x = [-0.05,1.05], intervalo_y = [-0.125,0.125
     ax.spines[["left", "top", "right"]].set_visible(False)
     ax.plot(1, 0, ">", transform=ax.get_yaxis_transform(), clip_on=False, color = 'white' if Plot_dark else 'black')
 
-    # Graficar la función
+    #* Graficar la función
     if solo_ultimo:
         sucesion = sum_a(n)
     else:
@@ -43,7 +43,7 @@ def Draw_Sucesion_1D(n , intervalo_x = [-0.05,1.05], intervalo_y = [-0.125,0.125
 
     ax.scatter(sucesion,np.zeros_like(sucesion) , color='cyan' if Plot_dark else 'blue', s=30)
 
-    # etiquetas de los puntos
+    #* etiquetas de los puntos
     if not ocultar_etiquetas:
         if solo_ultimo:
             ax.text(sucesion, 0.025 , f'$s_{{{n}}}$', fontsize=tam_fuentes, ha='center', va='bottom')
@@ -53,21 +53,22 @@ def Draw_Sucesion_1D(n , intervalo_x = [-0.05,1.05], intervalo_y = [-0.125,0.125
             for i in range(n):
                 ax.text(sucesion[i], 0.025 , f'$s_{{{i+1}}}$', fontsize=tam_fuentes, ha='center', va='bottom')
 
-    # etiquetas de los valores en los ejes
+    #* etiquetas de los valores en los ejes
     etiquetas_x = np.arange(aux1, aux2+0.1*(aux2-aux1), 0.1*(aux2-aux1))
     ax.set_xticks(etiquetas_x)
     ax.set_yticks([])
 
-    # tamaño de fuentes en los ejes
+    #* tamaño de fuentes en los ejes
     ax.tick_params(axis='both', which='major', labelsize=tam_fuentes)
 
-    return ax , fig
-
+    return fig , ax
 
 def main():
     #! parametros para grafico
     Full_Latex = True
     Plot_dark = True
+
+    tam_fuentes=12
 
     #* intervalos x e y
     intervalo_x = [0.5,1]
@@ -91,7 +92,7 @@ def main():
     n = st.sidebar.number_input('indique el valor de $n$', min_value=2, value=n, step=1)
     ocultar_etiquetas = st.sidebar.toggle('Ocultar etiquetas sucesión', value=False)
     ocultar_valor_serie = st.sidebar.toggle('Ocultar valor de la serie', value=False)
-    Plot_dark = st.sidebar.toggle(label='Gráfico modo oscuro', value=True, key='toggle_dark_mode')
+    Plot_dark = st.sidebar.toggle(label='Gráfico modo oscuro', value=True)
     if Plot_dark:
         plt.style.use('dark_background')
         if Full_Latex:
@@ -112,7 +113,7 @@ def main():
     latex_suma_serie = r'$\displaystyle s=\sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k} = \ln(2) \approx 0,6931471806$'
     #! Generar gráfico con spinner
     with st.spinner('Generando gráfico...'):
-        ax , fig = Draw_Sucesion_1D(n , intervalo_x, solo_ultimo=False, Plot_dark=Plot_dark, ocultar_etiquetas=ocultar_etiquetas)
+        fig , ax = Draw_Serie_Alternante(n , intervalo_x, solo_ultimo=False, Plot_dark=Plot_dark, ocultar_etiquetas=ocultar_etiquetas, tam_fuentes=tam_fuentes)
         if not ocultar_valor_serie:
             ax.scatter(np.log(2),0, color='red', s=30)
         st.pyplot(fig)

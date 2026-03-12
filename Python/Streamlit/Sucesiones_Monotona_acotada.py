@@ -1,23 +1,20 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
-#from pathlib import Path
 
 #! Ejecutar con: streamlit run Sucesiones_Monotona_acotada.py
-
-tam_fuentes=12
 
 #* Etiqueta de la sucesión en formato LaTeX para mostrar en el gráfico
 latex_tag_funcion=r'$a_n = 1-\dfrac{1}{n}$'
 
-#* Función que define la sucesión a representar
-def func_f(x: float):
+#* Función que define la sucesión a_n
+def func_a(x: float):
     return 1-1/x
 
-#* Función para dibujar la sucesión
-def Draw_Sucesion_2D(n , intervalo_x = [0,6], intervalo_y = [0,1], Plot_dark = True, ocultar_numeros = False, ocultar_etiquetas = False, ocultar_funciones = False, ocultar_cota = False):
+#* Función para dibujar la sucesión, la función continua y su cota
+def Draw_Sucesion_Monotona(n , intervalo_x = [0,6], intervalo_y = [0,1], Plot_dark = True, ocultar_numeros = False, ocultar_etiquetas = False, ocultar_funciones = False, ocultar_cota = False, tam_fuentes = 12):
     indices_suc= np.arange(1,n+1)
-    sucesion = func_f(indices_suc)
+    sucesion = func_a(indices_suc)
     min_suc = np.min(sucesion)
     max_suc = np.max(sucesion)
 
@@ -48,7 +45,7 @@ def Draw_Sucesion_2D(n , intervalo_x = [0,6], intervalo_y = [0,1], Plot_dark = T
     #* Graficar la función continua
     if not ocultar_funciones:
         x_continuo = np.linspace(1, n, 1000)
-        ax.plot(x_continuo, func_f(x_continuo), color='cyan' if Plot_dark else 'blue', linestyle=':')
+        ax.plot(x_continuo, func_a(x_continuo), color='cyan' if Plot_dark else 'blue', linestyle=':')
 
     #* líneas horizontales para mostrar acotación
     if not ocultar_cota:
@@ -70,14 +67,14 @@ def Draw_Sucesion_2D(n , intervalo_x = [0,6], intervalo_y = [0,1], Plot_dark = T
     #* tamaño de fuentes en los ejes
     ax.tick_params(axis='both', which='major', labelsize=tam_fuentes)
 
-    return fig
-
+    return fig , ax
 
 def main():
     #! parametros para grafico
     Full_Latex = True
     Plot_dark = False
-    #Fondo_transparente = False
+
+    tam_fuentes=12
 
     #* intervalos x e y
     intervalo_x = [0,10]
@@ -104,7 +101,7 @@ def main():
     ocultar_numeros = st.sidebar.toggle('Ocultar etiquetas eje $x$', value=False)
     ocultar_funciones = st.sidebar.toggle('Ocultar funciones continuas', value=False)
     ocultar_cota = st.sidebar.toggle('Ocultar cota', value=False)
-    Plot_dark = st.sidebar.toggle(label='Gráfico modo oscuro', value=Plot_dark)
+    Plot_dark = st.sidebar.toggle('Gráfico modo oscuro', value=Plot_dark)
     if Plot_dark:
         plt.style.use('dark_background')
         if Full_Latex:
@@ -122,7 +119,7 @@ def main():
 
     #! Generar gráfico con spinner
     with st.spinner('Generando gráfico...'):
-        fig = Draw_Sucesion_2D(n , intervalo_x, intervalo_y, Plot_dark=Plot_dark, ocultar_numeros=ocultar_numeros, ocultar_etiquetas=ocultar_etiquetas, ocultar_funciones=ocultar_funciones, ocultar_cota=ocultar_cota)
+        fig , _ = Draw_Sucesion_Monotona(n , intervalo_x, intervalo_y, Plot_dark=Plot_dark, ocultar_numeros=ocultar_numeros, ocultar_etiquetas=ocultar_etiquetas, ocultar_funciones=ocultar_funciones, ocultar_cota=ocultar_cota, tam_fuentes=tam_fuentes)
         st.pyplot(fig)
         st.markdown(f'Gráfico sucesión: {latex_tag_funcion}')
 

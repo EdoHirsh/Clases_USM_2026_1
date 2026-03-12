@@ -4,121 +4,123 @@ import streamlit as st
 
 #! Ejecutar con: streamlit run Series_Criterio_Integral.py
 
-Tam_fuentes=16
+#* Función que define la sucesión a_n
+def func_a(x: float):
+    return 1/x
 
-def func_f(x: float):
-  return 1/x
+#* Función para dibujar la comparación de la sucesiones a_n y compararla con la integral de f(x) en el intervalo
+def Draw_Criterio_Integral(n ,N, PuntosSubintervalos, intervalo_x_vent = [-0.5,10.5], intervalo_y_vent = [-0.075,1.075], intervalo_x_graf = [0,10.5], Mostrar_ejes = True, Ejes_clasicos = True, SumaSuperior = True, SumaInferior = True, mostrar_funcion = True, Mostrar_integral = False, Dark_mode = False, Tam_fuentes = 16):
+    #! iniciar figura
+    fig , ax = plt.subplots(figsize=(20,10))
+    ax.set_xlim(*intervalo_x_vent)
+    ax.set_ylim(*intervalo_y_vent)
 
-def Draw_Criterio(n ,N, PuntosSubintervalos, intervalo_x_vent = [-0.5,10.5], intervalo_y_vent = [-0.075,1.075], intervalo_x_graf = [0,10.5], Mostrar_ejes = True, Ejes_clasicos = True, SumaSuperior = True, SumaInferior = True, mostrar_funcion = True, Mostrar_integral = False, Dark_mode = False):
-  #! iniciar figura
-  fig , ax = plt.subplots(figsize=(20,10))
-  ax.set_xlim(*intervalo_x_vent)
-  ax.set_ylim(*intervalo_y_vent)
+    #* Elegir las etiquetas de los ejes
+    ax.set_yticks([])
+    ax.set_yticklabels([])
+    ax.set_xticks(PuntosSubintervalos)
+    ax.set_xticklabels(PuntosSubintervalos)
 
-  #* Elegir las etiquetas de los ejes
-  ax.set_yticks([])
-  ax.set_yticklabels([])
-  ax.set_xticks(PuntosSubintervalos)
-  ax.set_xticklabels(PuntosSubintervalos)
+    #* dibujar ejes coordenados
+    if Mostrar_ejes & Ejes_clasicos:
+        ax.spines[["left", "bottom"]].set_position(("data", 0))
+        ax.spines[["top", "right"]].set_visible(False)
+        ax.plot(1, 0, ">", transform=ax.get_yaxis_transform(), clip_on=False, color='white' if Dark_mode else 'black')
+        ax.plot(0, 1, "^", transform=ax.get_xaxis_transform(), clip_on=False, color='white' if Dark_mode else 'black')
+    elif not Mostrar_ejes:
+        ax.set_axis_off()
 
-  #* dibujar ejes coordenados
-  if Mostrar_ejes & Ejes_clasicos:
-    ax.spines[["left", "bottom"]].set_position(("data", 0))
-    ax.spines[["top", "right"]].set_visible(False)
-    ax.plot(1, 0, ">", transform=ax.get_yaxis_transform(), clip_on=False, color='white' if Dark_mode else 'black')
-    ax.plot(0, 1, "^", transform=ax.get_xaxis_transform(), clip_on=False, color='white' if Dark_mode else 'black')
-  elif not Mostrar_ejes:
-    ax.set_axis_off()
+    #* Graficar la función
+    x = np.linspace(intervalo_x_graf[0],intervalo_x_graf[1], N)
+    y = func_a(x)
+    if mostrar_funcion:
+        ax.plot(x, y, color='white' if Dark_mode else 'black', label=r'$f(x)$')
+        ax.text(intervalo_x_graf[1],func_a(intervalo_x_graf[1]),r'$f(x)$', fontsize=Tam_fuentes, color='white' if Dark_mode else 'black', verticalalignment='top', horizontalalignment='right')
 
-  #* Graficar la función
-  x = np.linspace(intervalo_x_graf[0],intervalo_x_graf[1], N)
-  y = func_f(x)
-  if mostrar_funcion:
-    ax.plot(x, y, color='white' if Dark_mode else 'black', label=r'$f(x)$')
-    ax.text(intervalo_x_graf[1],func_f(intervalo_x_graf[1]),r'$f(x)$', fontsize=Tam_fuentes, color='white' if Dark_mode else 'black', verticalalignment='top', horizontalalignment='right')
+    #* Graficar los rectangulos izquierda
+    if SumaSuperior:
+        for i in range(n-1):
+            ax.plot([PuntosSubintervalos[i],PuntosSubintervalos[i+1],PuntosSubintervalos[i+1],PuntosSubintervalos[i],PuntosSubintervalos[i]],[0,0,func_a(PuntosSubintervalos[i]),func_a(PuntosSubintervalos[i]),0],color='blue')
+            ax.fill_between([PuntosSubintervalos[i],PuntosSubintervalos[i+1]],[func_a(PuntosSubintervalos[i]),func_a(PuntosSubintervalos[i])],color='lightblue')
+            ax.text(PuntosSubintervalos[i]+0.1,func_a(PuntosSubintervalos[i])+0.02,r'$a_{'+str(i+1)+'}$', fontsize=Tam_fuentes, color='cyan' if Dark_mode else 'blue', verticalalignment='center', horizontalalignment='center')
 
-  #* Graficar los rectangulos izquierda
-  if SumaSuperior:
-    for i in range(n-1):
-      ax.plot([PuntosSubintervalos[i],PuntosSubintervalos[i+1],PuntosSubintervalos[i+1],PuntosSubintervalos[i],PuntosSubintervalos[i]],[0,0,func_f(PuntosSubintervalos[i]),func_f(PuntosSubintervalos[i]),0],color='blue')
-      ax.fill_between([PuntosSubintervalos[i],PuntosSubintervalos[i+1]],[func_f(PuntosSubintervalos[i]),func_f(PuntosSubintervalos[i])],color='lightblue')
-      ax.text(PuntosSubintervalos[i]+0.1,func_f(PuntosSubintervalos[i])+0.02,r'$a_{'+str(i+1)+'}$', fontsize=Tam_fuentes, color='cyan' if Dark_mode else 'blue', verticalalignment='center', horizontalalignment='center')
+    #* Graficar la integral
+    if Mostrar_integral:
+        x_integral = np.linspace(PuntosSubintervalos[0], PuntosSubintervalos[-1], N)
+        ax.fill_between(x_integral, func_a(x_integral), color='gray', alpha=0.5, label=r'$\int_{1}^{10} f(x) dx$', edgecolor='black')
+        ax.text(intervalo_x_graf[1],func_a(intervalo_x_graf[1])+0.05,r'$\int_{1}^{10} f(x) dx$', fontsize=Tam_fuentes, color='white' if Dark_mode else 'black', verticalalignment='bottom', horizontalalignment='right')
 
-  #* Graficar la integral
-  if Mostrar_integral:
-    x_integral = np.linspace(PuntosSubintervalos[0], PuntosSubintervalos[-1], N)
-    ax.fill_between(x_integral, func_f(x_integral), color='gray', alpha=0.5, label=r'$\int_{1}^{10} f(x) dx$', edgecolor='black')
-    ax.text(intervalo_x_graf[1],func_f(intervalo_x_graf[1])+0.05,r'$\int_{1}^{10} f(x) dx$', fontsize=Tam_fuentes, color='white' if Dark_mode else 'black', verticalalignment='bottom', horizontalalignment='right')
+    #* Graficar los rectangulos derecha
+    if SumaInferior:
+        for i in range(n-1):
+            ax.plot([PuntosSubintervalos[i],PuntosSubintervalos[i+1],PuntosSubintervalos[i+1],PuntosSubintervalos[i],PuntosSubintervalos[i]],[0,0,func_a(PuntosSubintervalos[i+1]),func_a(PuntosSubintervalos[i+1]),0],color='brown')
+            ax.fill_between([PuntosSubintervalos[i],PuntosSubintervalos[i+1]],[func_a(PuntosSubintervalos[i+1]),func_a(PuntosSubintervalos[i+1])],color='orange')
+            ax.text(PuntosSubintervalos[i+1]-0.1,func_a(PuntosSubintervalos[i+1])-0.02,r'$a_{'+str(i+2)+'}$', fontsize=Tam_fuentes, color='brown', verticalalignment='center', horizontalalignment='center')
 
-  #* Graficar los rectangulos derecha
-  if SumaInferior:
-    for i in range(n-1):
-      ax.plot([PuntosSubintervalos[i],PuntosSubintervalos[i+1],PuntosSubintervalos[i+1],PuntosSubintervalos[i],PuntosSubintervalos[i]],[0,0,func_f(PuntosSubintervalos[i+1]),func_f(PuntosSubintervalos[i+1]),0],color='brown')
-      ax.fill_between([PuntosSubintervalos[i],PuntosSubintervalos[i+1]],[func_f(PuntosSubintervalos[i+1]),func_f(PuntosSubintervalos[i+1])],color='orange')
-      ax.text(PuntosSubintervalos[i+1]-0.1,func_f(PuntosSubintervalos[i+1])-0.02,r'$a_{'+str(i+2)+'}$', fontsize=Tam_fuentes, color='brown', verticalalignment='center', horizontalalignment='center')
-
-  return fig
+    return fig , ax
 
 
 def main():
-  #! parametros para grafico
-  Full_Latex = True
-  Plot_dark = True
-  Mostrar_ejes = True
-  Ejes_clasicos = True
+    #! parametros para grafico
+    Full_Latex = True
+    Plot_dark = True
+    Mostrar_ejes = True
+    Ejes_clasicos = True
 
-  #* intervalos x e y
-  intervalo_x_vent = [-0.5,10.5]
-  intervalo_y_vent = [-0.075,1.075]
-  intervalo_x_graf = [0.01,10.5]
+    Tam_fuentes=16
 
-  #* cantidad numero de elementos de la sucesion
-  n=10
+    #* intervalos x e y
+    intervalo_x_vent = [-0.5,10.5]
+    intervalo_y_vent = [-0.075,1.075]
+    intervalo_x_graf = [0.01,10.5]
 
-  #* puntos en el dominio para la sucesion
-  PuntosSubintervalos=np.arange(1,n+1,1)
+    #* cantidad numero de elementos de la sucesion
+    n=10
 
-  #* cantidad de puntos en el intervalo del grafico para la función
-  N=100
+    #* puntos en el dominio para la sucesion
+    PuntosSubintervalos=np.arange(1,n+1,1)
 
-  if Full_Latex:
-    plt.rcParams.update({
-      "text.usetex": True,
-      "font.size": Tam_fuentes
-    })
+    #* cantidad de puntos en el intervalo del grafico para la función
+    N=100
 
-  #! Configuración de la página de Streamlit
-  st.set_page_config(page_title="Criterio de la integral", layout="wide", initial_sidebar_state='expanded', page_icon=':material/line_axis:')
-
-  #! Titulo
-  st.title('Visualización criterio de la integral')
-
-  #! Checkboxes para opciones de visualización
-  mostrar_funcion = st.sidebar.checkbox('Mostrar función', value=True)
-  SumaSuperior = st.sidebar.checkbox(r'Mostrar $\{a_{n}\}_{n=1}^{9}$', value=True)
-  SumaInferior = st.sidebar.checkbox(r'Mostrar $\{a_{n}\}_{n=2}^{10}$', value=True)
-  Integral = st.sidebar.checkbox('Mostrar integral', value=False)
-  Plot_dark = st.sidebar.checkbox('Tema oscuro en el gráfico', value=Plot_dark)
-  if Plot_dark:
-    plt.style.use('dark_background')
     if Full_Latex:
-      plt.rcParams.update({
-        "text.usetex": True,
-        "font.size": Tam_fuentes
-      })
-  else:
-    plt.style.use('default')
-    if Full_Latex:
-      plt.rcParams.update({
-        "text.usetex": True,
-        "font.size": Tam_fuentes
-      })
+        plt.rcParams.update({
+            "text.usetex": True,
+            "font.size": Tam_fuentes
+        })
 
-  #! Generar gráfico con spinner
-  with st.spinner('Generando gráfico...'):
-    fig = Draw_Criterio(n ,N, PuntosSubintervalos, intervalo_x_vent, intervalo_y_vent,intervalo_x_graf, Mostrar_ejes, Ejes_clasicos, SumaSuperior, SumaInferior, mostrar_funcion, Mostrar_integral=Integral, Dark_mode=Plot_dark)
-    st.pyplot(fig)
-    st.markdown(r'$a_{n}=f(n)$')
+    #! Configuración de la página de Streamlit
+    st.set_page_config(page_title="Criterio de la integral", layout="wide", initial_sidebar_state='expanded', page_icon=':material/line_axis:')
+
+    #! Titulo
+    st.title('Visualización criterio de la integral')
+
+    #! Checkboxes para opciones de visualización
+    mostrar_funcion = st.sidebar.toggle('Mostrar función', value=True)
+    SumaSuperior = st.sidebar.toggle(r'Mostrar $\{a_{n}\}_{n=1}^{9}$', value=True)
+    SumaInferior = st.sidebar.toggle(r'Mostrar $\{a_{n}\}_{n=2}^{10}$', value=True)
+    Integral = st.sidebar.toggle('Mostrar integral', value=False)
+    Plot_dark = st.sidebar.toggle('Tema oscuro en el gráfico', value=Plot_dark)
+    if Plot_dark:
+        plt.style.use('dark_background')
+        if Full_Latex:
+            plt.rcParams.update({
+                "text.usetex": True,
+                "font.size": Tam_fuentes
+            })
+    else:
+        plt.style.use('default')
+        if Full_Latex:
+            plt.rcParams.update({
+                "text.usetex": True,
+                "font.size": Tam_fuentes
+            })
+
+    #! Generar gráfico con spinner
+    with st.spinner('Generando gráfico...'):
+        fig , _ = Draw_Criterio_Integral(n ,N, PuntosSubintervalos, intervalo_x_vent, intervalo_y_vent,intervalo_x_graf, Mostrar_ejes, Ejes_clasicos, SumaSuperior, SumaInferior, mostrar_funcion, Mostrar_integral=Integral, Dark_mode=Plot_dark, Tam_fuentes=Tam_fuentes)
+        st.pyplot(fig)
+        st.markdown(r'$a_{n}=f(n)$')
 
 if __name__ == "__main__":
-  main()
+    main()

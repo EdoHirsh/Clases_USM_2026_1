@@ -1,11 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
-# from pathlib import Path
 
 #! Ejecutar con: streamlit run Sucesiones_Representacion_1D.py
-
-tam_fuentes=12
 
 #* Etiqueta de la sucesión en formato LaTeX para mostrar en el gráfico
 latex_tag_funcion=r'$a_n = (-1)^n\left(0.1+\dfrac{1}{n}\right)$'
@@ -13,16 +10,10 @@ latex_tag_funcion=r'$a_n = (-1)^n\left(0.1+\dfrac{1}{n}\right)$'
 #* Función que define la sucesión a representar
 @np.vectorize
 def func_a(x: int):
-    # return (func_a(x-1) + func_a(x-2)) if x > 2 else 17
-    # return ((-1)**x)*(1/x)
     return ((-1)**x)*(0.1+1/x)
-    # return (np.cos(x))^2/x
-    # ind = np.arange(1,x+1)
-    # suc =((-1)**ind)*(1/ind)
-    # return np.sum(suc)
 
 #* Función para dibujar la sucesión
-def Draw_Sucesion_1D(n , intervalo_x = [0,1], intervalo_y = [-1,1],solo_ultimo = False, Plot_dark = True, ocultar_etiquetas = False):
+def Draw_Sucesion_1D(n , intervalo_x = [0,1], intervalo_y = [-1,1],solo_ultimo = False, Plot_dark = True, ocultar_etiquetas = False, tam_fuentes = 12):
     indices_suc= np.arange(1,n+1)
     if solo_ultimo:
         sucesion = func_a(n)
@@ -62,13 +53,14 @@ def Draw_Sucesion_1D(n , intervalo_x = [0,1], intervalo_y = [-1,1],solo_ultimo =
     #* tamaño de fuentes en los ejes
     ax.tick_params(axis='both', which='major', labelsize=tam_fuentes)
 
-    return fig
+    return fig ,ax
 
 def main():
     #! parametros para grafico
     Full_Latex = True
     Plot_dark = True
-    # Fondo_transparente = False
+
+    tam_fuentes=12
 
     #* intervalos x e y
     intervalo_x = [-1.5, 1.5]
@@ -110,7 +102,7 @@ def main():
 
     #! Generar gráfico con spinner
     with st.spinner('Generando gráfico...'):
-        fig = Draw_Sucesion_1D(n , intervalo_x, solo_ultimo=solo_ultimo, Plot_dark=Plot_dark, ocultar_etiquetas=ocultar_etiquetas)
+        fig , _ = Draw_Sucesion_1D(n , intervalo_x, solo_ultimo=solo_ultimo, Plot_dark=Plot_dark, ocultar_etiquetas=ocultar_etiquetas, tam_fuentes=tam_fuentes)
         st.pyplot(fig)
         st.markdown(f'Gráfico sucesión: {latex_tag_funcion}')
 

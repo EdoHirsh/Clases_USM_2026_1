@@ -1,21 +1,18 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
-#from pathlib import Path
 
 #! Ejecutar con: streamlit run Sucesiones_Representacion_2D.py
-
-tam_fuentes=12
 
 #* Etiqueta de la sucesión en formato LaTeX para mostrar en el gráfico
 latex_tag_funcion=r'$a_n = \dfrac{(\cos(n))^2}{n}$'
 
-#* Función que define la sucesión a representar
+#* Función que define la sucesión a_n
 def func_a(x: float):
     return ((np.cos(x))**2)/x
 
 #* Función para dibujar la sucesión
-def Draw_Sucesion_2D(n , intervalo_x = [0,6], intervalo_y = [0,1], Plot_dark = True, ocultar_numeros = False, ocultar_etiquetas = False, ocultar_funciones = False):
+def Draw_Sucesion_2D(n , intervalo_x = [0,6], intervalo_y = [0,1], Plot_dark = True, ocultar_numeros = False, ocultar_etiquetas = False, ocultar_funciones = False, tam_fuentes = 12):
     indices_suc= np.arange(1,n+1)
     sucesion = func_a(indices_suc)
     min_suc = np.min(sucesion)
@@ -66,14 +63,13 @@ def Draw_Sucesion_2D(n , intervalo_x = [0,6], intervalo_y = [0,1], Plot_dark = T
     #* tamaño de fuentes en los ejes
     ax.tick_params(axis='both', which='major', labelsize=tam_fuentes)
 
-    return fig
-
+    return fig , ax
 
 def main():
     #! parametros para grafico
     Full_Latex = True
-    Plot_dark = False
-    #Fondo_transparente = False
+
+    tam_fuentes=12
 
     #* intervalos x e y
     intervalo_x = [0,6]
@@ -117,7 +113,7 @@ def main():
 
     #! Generar gráfico con spinner
     with st.spinner('Generando gráfico...'):
-        fig = Draw_Sucesion_2D(n , intervalo_x, intervalo_y, Plot_dark=Plot_dark, ocultar_numeros=ocultar_numeros, ocultar_etiquetas=ocultar_etiquetas, ocultar_funciones=ocultar_funciones)
+        fig, _ = Draw_Sucesion_2D(n , intervalo_x, intervalo_y, Plot_dark=Plot_dark, ocultar_numeros=ocultar_numeros, ocultar_etiquetas=ocultar_etiquetas, ocultar_funciones=ocultar_funciones, tam_fuentes=tam_fuentes)
         st.pyplot(fig)
         st.markdown(f'Gráfico sucesión: {latex_tag_funcion}')
 
