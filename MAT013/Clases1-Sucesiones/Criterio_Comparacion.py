@@ -1,11 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import streamlit as st
-#from pathlib import Path
 
-#! Ejecutar con: streamlit run Series_Criterio_comparacion.py
-
-tam_fuentes=12
+from pathlib import Path
 
 #* Etiquetas de las sucesiones en formato LaTeX para mostrar en el gráfico
 texto_sucesion_a = r'$a_n = \dfrac{(\cos(n))^2}{n^2}$'
@@ -30,7 +26,7 @@ def func_sum_b(x: float):
     suc = 1/(ind**2)
     return np.sum(suc)
 
-def Draw_Sucesion_2D(n , intervalo_x = [0,6], intervalo_y = [0,1], Plot_dark = True, ocultar_numeros = False, ocultar_etiquetas = False, ocultar_a = False, ocultar_b = False, ocultar_sumas = True, ocultar_funciones = True):
+def Draw_Criterio_Comparacion(n , intervalo_x = [0,6], intervalo_y = [0,1], Plot_dark = True, ocultar_numeros = False, ocultar_etiquetas = False, ocultar_a = False, ocultar_b = False, ocultar_sumas = True, ocultar_funciones = True, tam_fuentes = 12):
     indices_suc= np.arange(1,n+1)
     sucesion_f = func_a(indices_suc)
     suma_sucesion_f = func_sum_a(indices_suc)
@@ -100,70 +96,67 @@ def Draw_Sucesion_2D(n , intervalo_x = [0,6], intervalo_y = [0,1], Plot_dark = T
         ax.set_xticks([])
     else:
         ax.set_xticks(indices_suc)
-    ax.set_yticks(np.arange(aux1_y, aux2_y+0.1*(aux2_y-aux1_y), 0.1*(aux2_y-aux1_y)))
+    ax.set_yticks(np.arange(aux1_y, aux2_y+0.2*(aux2_y-aux1_y), 0.2*(aux2_y-aux1_y)))
 
     #* tamaño de fuentes en los ejes
     ax.tick_params(axis='both', which='major', labelsize=tam_fuentes)
 
-    return fig
+    return ax, fig
 
 
 def main():
     #! parametros para grafico
     Full_Latex = True
-    Plot_dark = False
+    Guardar_grafico = True
+    Fondo_transparente = True
+    Mostrar_grafico = True
+    Dark_mode = False
 
-    #* intervalos x e y
-    intervalo_x = [0,6]
-    intervalo_y = [0,1]
+    #* tamaaño de fuentes
+    tam_fuentes = 16
 
-    #* cantidad numero de elementos de la sucesion
+    #* cantidad de puntos en la sucesion
     n=6
 
+    #* intervalos x e y
+    intervalo_x = [0,n]
+    intervalo_y = [0,1.5]
+
+    #* Activar el modo oscuro
+    if Dark_mode:
+        plt.style.use('dark_background')
+    else:
+        plt.style.use('default')
+
+    #* Activar el uso de LaTeX en las etiquetas
     if Full_Latex:
         plt.rcParams.update({
             "text.usetex": True,
             "font.size": tam_fuentes
         })
 
-    #! Configuración de la página de Streamlit
-    st.set_page_config(page_title="Visualización criterio de comparación", layout="wide", initial_sidebar_state='expanded', page_icon=':material/line_axis:')#, menu_items={'Get Help': 'https://www.extremelycoolapp.com/help','Report a bug': "https://www.extremelycoolapp.com/bug",'About': "# This is a header. This is an *extremely* cool app!"})
+    #! Generar gráfico
+    ax, fig = Draw_Criterio_Comparacion(n, intervalo_x, intervalo_y, Plot_dark=Dark_mode, ocultar_funciones=False, ocultar_sumas=False , tam_fuentes=tam_fuentes)
 
-    #! Titulo
-    st.title('Visualización criterio de comparación')
+    #! guardar grafico
+    if Guardar_grafico:
+        #* Verificar si la carpeta imagenes existe, si no, crearla
+        carpeta = Path('./imagenes/')
+        if not carpeta.exists():
+            carpeta.mkdir()
 
-    #! Checkboxes para opciones de visualización
-    n = st.sidebar.number_input('indique el valor de $n$', min_value=1, value=n, step=1)
-    ocultar_etiquetas = st.sidebar.toggle('Ocultar etiquetas sucesión', value=False)
-    ocultar_numeros = st.sidebar.toggle('Ocultar etiquetas eje $x$', value=False)
-    ocultar_a = st.sidebar.toggle('Ocultar sucesión $a_n$', value=False)
-    ocultar_b = st.sidebar.toggle('Ocultar sucesión $b_n$', value=False)
-    ocultar_sumas = st.sidebar.toggle('Ocultar sumas sucesiones', value=True)
-    ocultar_funciones = st.sidebar.toggle('Ocultar funciones de $a_n$ y $b_n$', value=True)
-    Plot_dark = st.sidebar.toggle(label='Gráfico modo oscuro', value=Plot_dark)
-    if Plot_dark:
-        plt.style.use('dark_background')
-        if Full_Latex:
-            plt.rcParams.update({
-                "text.usetex": True,
-                "font.size": tam_fuentes
-            })
-    else:
-        plt.style.use('default')
-        if Full_Latex:
-            plt.rcParams.update({
-                "text.usetex": True,
-                "font.size": tam_fuentes
-            })
+        #* Obtener el nombre del archivo actual sin la extension
+        Nombre = Path(__file__).stem
 
-    #! Generar gráfico con spinner
-    with st.spinner('Generando gráfico...'):
-        fig = Draw_Sucesion_2D(n , intervalo_x, intervalo_y, Plot_dark=Plot_dark, ocultar_numeros=ocultar_numeros, ocultar_etiquetas=ocultar_etiquetas, ocultar_a=ocultar_a, ocultar_b=ocultar_b, ocultar_sumas=ocultar_sumas, ocultar_funciones=ocultar_funciones)
-        st.pyplot(fig)
-        if not ocultar_a:
-            st.markdown(rf"{texto_sucesion_a}")
-        if not ocultar_b:
-            st.markdown(rf"{texto_sucesion_b}")
+        #* Nombre del archivo
+        archivo = f'{carpeta}/{Nombre}.png'
+
+        #* Guardar la figura
+        fig.savefig(archivo, dpi=600, transparent=Fondo_transparente)
+
+    #! Mostrar grafico
+    if Mostrar_grafico:
+        plt.show()
 
 if __name__ == "__main__":
     main()

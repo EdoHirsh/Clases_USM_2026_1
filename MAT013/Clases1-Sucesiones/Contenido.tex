@@ -439,7 +439,7 @@
   \onslide<2->{
     \vspace{-0.7cm}
     \begin{center}
-      \includegraphics[scale=0.33]{./imagenes/CriterioIntegral_Sup_Inf.png}
+      \href{https://seriescriteriointegral.streamlit.app/}{\includegraphics[scale=0.33]{./imagenes/CriterioIntegral_Sup_Inf.png}}
     \end{center}
   }
 \end{frame}
@@ -465,6 +465,14 @@
       \item Si $\sum_{n=1}^{\infty}a_n$ diverge, entonces $\sum_{n=1}^{\infty}b_n$ diverge.
     \end{enumerate}
   \end{thm}
+\end{frame}
+
+\begin{frame}
+  Gráficamente el criterio de comparación ordinaria se puede representar como
+  % \vspace{-5mm}
+  \begin{center}
+    \href{https://seriescriteriocomparacion.streamlit.app/}{\includegraphics[scale=0.33]{./imagenes/Criterio_Comparacion.png}}
+  \end{center}
 \end{frame}
 
 \begin{frame}
@@ -527,6 +535,14 @@
     $$\abs{R_n}=\abs{s-s_n}\leq b_{n+1}$$
   \end{thm}
   \onslide<2->{
+    Gráficamente el error de una serie alternante se puede representar como
+    \vspace{-3mm}
+    \begin{center}
+      \hspace*{-18mm}\href{https://seriessumaalternante.streamlit.app/}{\includegraphics[scale=0.45]{./imagenes/Serie_Alternante.png}}
+    \end{center}
+    \vspace{-6mm}
+  }
+  \onslide<3->{
     \begin{eg}
       En la serie armónica alternante el error al aproximar la serie por $s_9$ esta dado por
         $$\abs{s-s_9}=\sum_{n=1}^{\infty} (-1)^{n-1}\dfrac{1}{n}-\sum_{n=1}^{9} (-1)^{n}\dfrac{1}{n}\leq\dfrac{1}{10}$$
