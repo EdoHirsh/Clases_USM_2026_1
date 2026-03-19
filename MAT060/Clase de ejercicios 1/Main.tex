@@ -1,0 +1,263 @@
+% !TEX root = ./Ejercicios1_Slides.tex
+
+%! Carga de paquetes
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage{amsfonts,dsfont}
+\usepackage{fancyhdr,multicol,multirow}
+\usepackage{graphicx,pgf,tikz,accents,multimedia,tcolorbox}
+
+%! soluciona potencial problema de fuentes en math mode
+%\usefonttheme[onlymath]{serif}
+\usefonttheme{professionalfonts} 
+
+%! Personalización de colores
+%* colores necesarios en algunos documentos
+\newcommand{\red}[1]{{\color{red}{#1}}}
+\newcommand{\blue}[1]{{\color{blue}{#1}}}
+\definecolor{forestgreen}{rgb}{0.13, 0.55, 0.13}
+\newcommand{\green}[1]{{\color{forestgreen}{#1}}}
+\newcommand{\redbf}[1]{{\color{red}{\textbf{#1}}}}
+\newcommand{\violet}[1]{{\color{violet}{#1}}}
+%* Colores institucionales según documento oficial
+\definecolor{BlueUSM}{HTML}{004B85}
+\newcommand{\BlueUSM}[1]{{\color{BlueUSM}{#1}}}
+\definecolor{RedUSM}{HTML}{D60019}
+\newcommand{\RedUSM}[1]{{\color{RedUSM}{#1}}}
+\definecolor{GreenUSM}{HTML}{008452}
+\newcommand{\GreenUSM}[1]{{\color{GreenUSM}{#1}}}
+\definecolor{YellowUSM}{HTML}{F7AE00}
+\newcommand{\YellowUSM}[1]{{\color{YellowUSM}{#1}}}
+\definecolor{BlackUSM}{HTML}{000000}
+\newcommand{\BlackUSM}[1]{{\color{BlackUSM}{#1}}}
+\definecolor{LightBlackUSM}{cmyk}{0,0,0,0.7}
+\newcommand{\LightBlackUSM}[1]{{\color{LightBlackUSM}{#1}}}
+
+%! Beamer configuración básica
+\mode<article>{\usepackage{pgf,fancyhdr}}
+\mode<presentation> {
+% \usetheme{Madrid}
+% Color del tema. (default es el azul tipo "puc")
+\usecolortheme[named=BlueUSM]{structure}
+%\setbeamercovered{transparent} % Transparencia.
+}
+%\setbeameroption{hide notes}
+%\setbeameroption{show notes}
+% left, bottom, or top. (default is right)
+%\setbeameroption{show notes on second screen=⟨location⟩}
+\newtranslation[to=spanish]{Section}{Secci\'on}
+\newtranslation[to=spanish]{Subsection}{Subsecci\'on}
+
+%! Beamer customizations
+\input{../Beamer_Opt.tex}
+
+%! Archivo de comandos personalizados
+\input{../Comandos.tex}
+
+%! Datos del curso
+\input{../Datos.tex}
+
+%! Datos presentación
+\newcommand{\NOMBREDOCUMENTO}{Clase Ejercicios 1}
+\author{\PROFESOR}
+\title[\SIGLACURSO]{\SIGLACURSO:\ \NOMBRECURSO\\ \NOMBREDOCUMENTO}
+\date[\FECHACORTO]{\FECHA}
+\institute[]{}
+
+%! Configuración de las enumeración
+% \usepackage[shortlabels]{enumitem} % facilita la personalización de listas funciona mejor en article
+\setbeamertemplate{enumerate items}{\arabic{enumi}.}
+\setbeamertemplate{enumerate subitem}{\alph{enumii})}
+\setbeamertemplate{enumerate subsubitem}{\roman{enumiii}.}
+
+\only<article>{
+  % limpia el pie de página en estilo fancy
+  \fancyfoot{}
+}
+
+%! Inicio del documento
+\begin{document}
+
+\only<article>{
+%! Encabezado
+\thispagestyle{empty}
+\vspace*{-3cm}
+\begin{center}
+  \includegraphics[scale=.75]{logo-dmat-vertical.pdf}
+\end{center}
+% \vspace{1mm}
+% \noindent\rule[0mm]{175mm}{0.1mm}
+%! Titulo
+\begin{center}
+  \Large\textbf{\SIGLACURSO:\ \NOMBRECURSO}\\[1mm]
+  \Large\textbf{\NOMBREDOCUMENTO}\\
+  {\large\PROFESOR}\\
+  \FECHACORTO
+\end{center}
+\vspace{5mm}
+}
+
+\only<presentation>{
+\begin{frame}
+  \begin{center}
+  \includegraphics[scale=.6]{Logo_USM_MAT.pdf}
+  \end{center}
+  \titlepage
+  \vspace{2cm}
+\end{frame}
+}
+
+\begin{frame}%{Parte 1}
+  \begin{enumerate}
+    \item Dos observadores en la costa, situados en los puntos \(A\) y \(F\), quieren calcular sus distancias a un barco ubicado en el punto \(B\). Los segmentos \(AG\) y \(FB\) se intersectan en el punto \(S\). Además, se sabe que \(FG \parallel AB\) y que \(FG \perp AG\). Si \(AS=120\text{ m}\), \(GS=8\text{ m}\) y \(FG=15\text{ m}\), determine las distancias \(d(AB)\) y \(d(FB)\).
+    \begin{center}
+      \begin{tikzpicture}[scale=0.25,x=0.35cm,y=0.35cm,line cap=round,line join=round]
+        \coordinate (F) at (-6,0);
+        \coordinate (G) at (0,0);
+        \coordinate (S) at (0,5);
+        \coordinate (A) at (0,15);
+        \coordinate (B) at (22,15);
+        \draw[thick] (A)--(G);
+        \draw[thick] (F)--(B);
+        \draw[thick] (F)--(G);
+        \draw[thick] (A)--(B);
+        \node[left] at (A) {$A$};
+        \node[left] at (S) {$S$};
+        \node[right] at (G) {$G$};
+        \node[left] at (F) {$F$};
+        \node[right] at (B) {$B$};
+      \end{tikzpicture}
+    \end{center}
+    % \vspace{5mm}
+    \item Considere dos circunferencias de centros \(O_1\) y \(O\), respectivamente. Los puntos \(A\), \(O\) y \(B\) están alineados. Además, \(A\), \(O\) y \(C\) pertenecen a la circunferencia de centro \(O_1\), mientras que \(O_1\), \(B\) y \(C\) pertenecen a la circunferencia de centro \(O\). Si en el triángulo \(ABC\) se tiene que \(m(\angle BAC)=24^\circ\), determine la medida del ángulo $\alpha=\angle OBC.$
+    \begin{center}
+      \begin{tikzpicture}[scale=0.4,line cap=round,line join=round]
+        \coordinate (O) at (0,0);
+        \coordinate (Oone) at (-1.6,2);
+        \coordinate (A) at (-3.2,0);
+        \coordinate (B) at (2.56,0);
+        \coordinate (C) at (0.93,2.39);
+        \draw[thick] (Oone) circle (2.56);
+        \draw[thick] (O) circle (2.56);
+        \draw[thick] (A)--(B);
+        \draw[thick] (A)--(C);
+        \draw[thick] (B)--(C);
+        \fill (A) circle (1.6pt);
+        \fill (B) circle (1.6pt);
+        \fill (C) circle (1.6pt);
+        \fill (O) circle (1.6pt);
+        \fill (Oone) circle (1.6pt);
+        \node[below] at (A) {$A$};
+        \node[below] at (O) {$O$};
+        \node[below] at (B) {$B$};
+        \node[above] at (C) {$C$};
+        \node[above left] at (Oone) {$O_1$};
+        \node at (1.95,0.3) {\small $\alpha$};
+      \end{tikzpicture}
+    \end{center}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}%{Parte 2}
+  % \vspace*{-3mm}
+  \begin{enumerate}
+    \setcounter{enumi}{2}
+    \item Se construye con 6 cubos congruentes un sólido con forma de escalera, con 3 cubos alineados en el primer nivel, 2 cubos en el segundo nivel, y 1 cubo en el tercer nivel. Si el volumen total del cuerpo es $162\text{cm}^3$, determine.
+    \begin{enumerate}
+      \item la arista de cada cubo,
+      \item el área total de la superficie exterior del sólido.
+    \end{enumerate}
+    \vspace{5mm}
+    \item Una pirámide recta tiene por base un hexágono regular de lado \(8\) cm. La apotema lateral de la pirámide mide \(8\) cm. determine.
+    \begin{tabular}{lc}
+      \begin{minipage}{0.5\textwidth}
+        \begin{enumerate}
+          \item el perímetro de la base,
+          \item el área de la base,
+          \item la altura de la pirámide,
+          \item el área lateral,
+          \item el volumen de la pirámide
+        \end{enumerate}
+      \end{minipage} &
+      \begin{minipage}{0.5\textwidth}
+        \begin{center}
+          \begin{tikzpicture}[scale=0.6,line cap=round,line join=round]
+            \coordinate (A) at (-2.5,0.7);
+            \coordinate (B) at (-1.0,1.5);
+            \coordinate (C) at (1.0,1.5);
+            \coordinate (D) at (2.5,0.7);
+            \coordinate (E) at (1.0,-0.7);
+            \coordinate (F) at (-1.0,-0.7);
+            \coordinate (P) at (0,4.0);
+            \coordinate (O) at (0,0.5);
+            \coordinate (M) at (1.75,0.0);
+            \draw[thick,dashed] (A)--(B)--(C)--(D);
+            \draw[thick] (D)--(E)--(F)--(A);
+            \draw[thick] (A)--(P);
+            \draw[thick,dashed] (B)--(P);
+            \draw[thick,dashed] (C)--(P);
+            \draw[thick] (D)--(P);
+            \draw[thick] (E)--(P);
+            \draw[thick] (F)--(P);
+            \draw[thick] (P)--(M);
+            \draw[dashed] (P)--(O);
+            \draw[dashed] (O)--(M);
+            \fill (A) circle (1.4pt);
+            \fill (B) circle (1.4pt);
+            \fill (C) circle (1.4pt);
+            \fill (D) circle (1.4pt);
+            \fill (E) circle (1.4pt);
+            \fill (F) circle (1.4pt);
+            \fill (P) circle (1.4pt);
+            \fill (O) circle (1.4pt);
+            \fill (M) circle (1.2pt);
+            \node[left] at (A) {$A$};
+            \node[above left] at (B) {$B$};
+            \node[above right] at (C) {$C$};
+            \node[right] at (D) {$D$};
+            \node[below right] at (E) {$E$};
+            \node[below left] at (F) {$F$};
+            \node[above] at (P) {$P$};
+            \node[left] at (O) {$O$};
+            \node[right] at (M) {$M$};
+          \end{tikzpicture}
+        \end{center}
+      \end{minipage}
+    \end{tabular}
+    \vspace{2mm}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}%{Parte 2}
+  % \vspace*{-3mm}
+  \begin{enumerate}
+    \setcounter{enumi}{4}
+    \item Un estanque de agua tiene forma de cilindro recto coronado por una semiesfera en su parte superior. Determine el área exterior y el volumen total del estanque si el radio basal del cilindro es \(30\text{ cm}\) y la altura del cilindro es \(50\text{ cm}\).
+    \begin{center}
+      \begin{tikzpicture}[scale=0.6,line cap=round,line join=round]
+        \def\rx{2.2}
+        \def\ry{0.45}
+        \def\h{4.2}
+        \draw[thick] (-\rx,0) arc[start angle=180,end angle=360,x radius=\rx,y radius=\ry];
+        \draw[thick,dashed] (\rx,0) arc[start angle=0,end angle=180,x radius=\rx,y radius=\ry];
+        \draw[thick] (-\rx,0)--(-\rx,\h);
+        \draw[thick] (\rx,0)--(\rx,\h);
+        \draw[thick] (-\rx,\h) arc[start angle=180,end angle=360,x radius=\rx,y radius=\ry];
+        \draw[thick,dashed] (\rx,\h) arc[start angle=0,end angle=180,x radius=\rx,y radius=\ry];
+        \draw[thick] (-\rx,\h) arc[start angle=180,end angle=0,x radius=\rx,y radius=\rx];
+        \coordinate (O) at (0,\h);
+        \coordinate (R) at (\rx,\h);
+        \draw[dashed] (O)--(R);
+        \draw[dashed] (O)--(0,0);
+        \node[right] at (1.1,\h) {$30\,\text{cm}$};
+        \node[right] at (0,\h/2) {$50\,\text{cm}$};
+        \fill (O) circle (1.4pt);
+        \node[below left] at (O) {$O$};
+      \end{tikzpicture}
+    \end{center}
+
+  \end{enumerate}
+\end{frame}
+
+\end{document}

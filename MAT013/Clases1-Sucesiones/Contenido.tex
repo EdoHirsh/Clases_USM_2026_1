@@ -10,6 +10,13 @@
 \date[\FECHACORTO]{\FECHA}
 \institute[]{}
 
+%! Configuración de las enumeración
+% facilita la personalización de listas funciona mejor en article
+% \usepackage[shortlabels]{enumitem}
+\setbeamertemplate{enumerate items}{\arabic{enumi}.}
+\setbeamertemplate{enumerate subitem}{\alph{enumii})}
+\setbeamertemplate{enumerate subsubitem}{\roman{enumiii}.}
+
 \begin{document}
 
 \only<article>{
@@ -923,7 +930,7 @@
 \begin{frame}
   \begin{center}
     \begin{figure}[ht]
-      \includegraphics[scale=0.35]{./imagenes/TaylorCos_n20.png}
+      \href{https://seriestaylorcos.streamlit.app/}{\includegraphics[scale=0.35]{./imagenes/TaylorCos_n20.png}}
       \caption{$\cos(x)$ con su polinomio de Taylor de grado 20}
     \end{figure}
   \end{center}

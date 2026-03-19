@@ -19,7 +19,7 @@ def sum_a(x: int):
     return np.sum(suc)
 
 #! Función para dibujar la serie alternante y sus sumas parciales
-def Draw_Serie_Alternante(n , intervalo_x = [-0.05,1.05], intervalo_y = [-0.125,0.125],solo_ultimo = False, Plot_dark = True, ocultar_etiquetas = False, tam_fuentes = 12):
+def Draw_Serie_Alternante(n , intervalo_x = [-0.05,1.05], intervalo_y = [-0.125,0.125], solo_ultimo = False, Plot_dark = True, ocultar_etiquetas = False, tam_fuentes = 12):
     indices_suc= np.arange(1,n+1)
 
     #! iniciar figura
@@ -109,13 +109,13 @@ def main():
             })
 
     Suma_total = sum_a(n)
-    latex_suma_total = rf'$\displaystyle s_{{{n}}}={Suma_total}, \quad b_{{{n}}}={np.abs(func_a(n))}, \quad R_n = {Suma_total - np.log(2)}$'
-    latex_suma_serie = r'$\displaystyle s=\sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k} = \ln(2) \approx 0,6931471806$'
+    latex_suma_total = rf'$\displaystyle s_{{{n}}}={Suma_total:.6f}, \quad b_{{{n}}}={np.abs(func_a(n)):.6f}, \quad R_n = {np.abs(Suma_total - np.log(2)):.6f}$'
+    latex_suma_serie = r'$\displaystyle s=\sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k} = \ln(2) \approx 0,693147$'#1806 $'
     #! Generar gráfico con spinner
     with st.spinner('Generando gráfico...'):
         fig , ax = Draw_Serie_Alternante(n , intervalo_x, solo_ultimo=False, Plot_dark=Plot_dark, ocultar_etiquetas=ocultar_etiquetas, tam_fuentes=tam_fuentes)
         if not ocultar_valor_serie:
-            ax.scatter(np.log(2),0, color='red', s=30)
+            ax.scatter(np.log(2),0, color='magenta' if Plot_dark else 'red', s=30)
         st.pyplot(fig)
         st.markdown(f'{latex_tag}')
         st.markdown(f'{latex_suma_total}')
